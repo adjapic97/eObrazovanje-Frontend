@@ -1,14 +1,17 @@
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbLayoutComponent } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbLayoutComponent, NbCardComponent, NbMenuModule, NbCardModule } from '@nebular/theme';
+import { UserSideMenuComponent } from './user-side-menu/user-side-menu.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserSideMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -16,7 +19,12 @@ import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbLayoutComponent } fr
     RouterModule,
     NbLayoutModule,
     NbSidebarModule,
-    NbButtonModule
+    NbButtonModule,
+    NbMenuModule,
+    NbCardModule,
+    NbEvaIconsModule,
+    BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
