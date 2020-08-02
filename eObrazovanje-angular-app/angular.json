@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "eObrazovanje-angular-app": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "eObrazovanje-angular-app"
+    }
+  },
+  "defaultProject": "eObrazovanje-angular-app",
+  "cli": {
+    "analytics": "e594a9a4-e124-432c-8e3d-7b4c206902d4"
+  }
 }
