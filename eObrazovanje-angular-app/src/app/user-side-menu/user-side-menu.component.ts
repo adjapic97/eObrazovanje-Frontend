@@ -1,25 +1,30 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
-import { NbMenuItem } from '@nebular/theme';
-
+import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, Inject } from '@angular/core';
+import { NbMenuItem, NbMenuService, NB_WINDOW } from '@nebular/theme';
 @Component({
   selector: 'app-user-side-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './user-side-menu.component.html',
   styleUrls: ['./user-side-menu.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+
 })
 export class UserSideMenuComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
+  adminItems: NbMenuItem[] = [{
+    title: 'kontrolna tabla',
+    icon: 'browser-outline'
+
+  }]
+
+
   items: NbMenuItem[] = [
-    {
-      title: 'Profile',
-      icon: 'person-outline',
-    },
+
     {
       title: 'Ispiti',
       icon: 'book-outline',
@@ -32,6 +37,7 @@ export class UserSideMenuComponent implements OnInit {
         {
           title: 'Nepoloženi predmeti',
           icon: { icon: 'npm-outline', pack: 'eva' },
+
         },
         {
           title: 'Prijava ispita',
@@ -40,6 +46,10 @@ export class UserSideMenuComponent implements OnInit {
         {
           title: 'Odjava ispita',
           icon: 'close-circle',
+        },
+        {
+          title: 'Istorija polaganja',
+          icon: 'clock-outline'
         }
       ],
     },
@@ -52,14 +62,7 @@ export class UserSideMenuComponent implements OnInit {
     {
       title: 'Dokumenti',
       icon: 'file-text-outline',
-    },
-    {
-      title: 'Podešavanja',
-      icon: 'settings-2-outline',
-    },
-    {
-      title: 'Izloguj se',
-      icon: 'unlock-outline',
-    },
+    }
+
   ];
 }

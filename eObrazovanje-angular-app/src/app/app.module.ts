@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbLayoutComponent, NbCardComponent, NbMenuModule, NbCardModule } from '@nebular/theme';
+import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbLayoutComponent, NbCardComponent, NbMenuModule, NbCardModule, NbIconModule, NbContextMenuModule, NbUserModule } from '@nebular/theme';
 import { UserSideMenuComponent } from './user-side-menu/user-side-menu.component';
 @NgModule({
   declarations: [
@@ -23,7 +23,10 @@ import { UserSideMenuComponent } from './user-side-menu/user-side-menu.component
     NbMenuModule,
     NbCardModule,
     NbEvaIconsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NbIconModule,
+    NbContextMenuModule,
+    NbUserModule
 
   ],
   providers: [],
