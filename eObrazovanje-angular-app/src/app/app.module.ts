@@ -6,12 +6,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbLayoutComponent, NbCardComponent, NbMenuModule, NbCardModule, NbIconModule, NbContextMenuModule, NbUserModule } from '@nebular/theme';
+import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbLayoutComponent, NbCardComponent, NbMenuModule, NbCardModule, NbIconModule, NbContextMenuModule, NbUserModule, NbActionsModule } from '@nebular/theme';
 import { UserSideMenuComponent } from './user-side-menu/user-side-menu.component';
+import { StudentSubjectsComponent } from './student-subjects/student-subjects.component';
+import { HomeNewsNotificationsComponent } from './home-news-notifications/home-news-notifications.component';
 @NgModule({
   declarations: [
     AppComponent,
-    UserSideMenuComponent
+    UserSideMenuComponent,
+    StudentSubjectsComponent,
+    HomeNewsNotificationsComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,8 @@ import { UserSideMenuComponent } from './user-side-menu/user-side-menu.component
     BrowserAnimationsModule,
     NbIconModule,
     NbContextMenuModule,
-    NbUserModule
+    NbUserModule,
+    NbActionsModule
 
   ],
   providers: [],

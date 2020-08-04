@@ -1,0 +1,26 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+  padding: 10px;
+}
+.grid-item {
+  padding: 20px;
+  font-size: 30px;
+  text-align: left;
+}
+
+.header-class{
+  background-color: #878b96;
+  background-size: contain;
+  color: white;
+  font-size: 1rem;
+}
+
+
+.expand-subject-button{
+  background-color: #878b96;
+
+  color: white;
+  border-style: none;
+}

@@ -19,7 +19,6 @@ export class UserSideMenuComponent implements OnInit {
   adminItems: NbMenuItem[] = [{
     title: 'kontrolna tabla',
     icon: 'browser-outline'
-
   }]
 
 
@@ -31,11 +30,17 @@ export class UserSideMenuComponent implements OnInit {
       expanded: true,
       children: [
         {
+          title: 'svi predmeti',
+          icon: 'copy-outline',
+          link: 'student-subjects'
+        },
+        {
           title: 'Položeni predmeti',
           icon: 'checkmark-outline',
         },
         {
           title: 'Nepoloženi predmeti',
+
           icon: { icon: 'npm-outline', pack: 'eva' },
 
         },

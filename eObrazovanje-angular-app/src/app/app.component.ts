@@ -1,4 +1,4 @@
-import { NbMenuService, NB_WINDOW } from '@nebular/theme';
+import { NbMenuService, NB_WINDOW, NbSidebarService } from '@nebular/theme';
 import { Component, ViewEncapsulation, Inject, OnInit } from '@angular/core';
 
 import { filter, map } from 'rxjs/operators';
@@ -19,7 +19,7 @@ import { filter, map } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   title = 'eObrazovanje-angular-app';
 
-  constructor(private nbMenuService : NbMenuService, @Inject(NB_WINDOW) private window ) { }
+  constructor(private sidebarService: NbSidebarService,private nbMenuService : NbMenuService, @Inject(NB_WINDOW) private window ) { }
 
 
   ngOnInit(): void {
@@ -29,6 +29,11 @@ export class AppComponent implements OnInit {
         map(({ item: { title } }) => title),
       )
       .subscribe(title => this.window.alert(`${title} was clicked`));
+  }
+
+  toggle(){
+    this.sidebarService.toggle(true);
+    return false;
   }
 
   profileItems = [

@@ -1,11 +1,19 @@
 <nb-layout >
-  <nb-layout-header fixed class="pull-right" ><h2 style="margin-right: 75%;">Studentska Sluzba</h2>
+  <nb-layout-header fixed class="pull-right" ><h2 style="margin-right: 75%;" routerLink=''>SSluzba</h2>
     <nb-user name="Andrej Dapic"
     title="student"
     [nbContextMenu]="profileItems"
     nbContextMenuTag="my-context-menu"  nbContextMenuPlacement="bottom">
   </nb-user>
 
+  </nb-layout-header>
+
+  <nb-layout-header subheader>
+    <nb-actions>
+      <nb-action icon="home-outline"></nb-action>
+      <nb-action icon="search-outline"></nb-action>
+      <nb-action icon="edit-outline"></nb-action>
+    </nb-actions>
   </nb-layout-header>
 
   <nb-sidebar class="sidebar-main-class" >
@@ -17,54 +25,11 @@
   </nb-sidebar>
 
   <nb-layout-column>
-    <div class="row show-grid">
-      <div class="col-md-6">
-        <nb-card [size]="'small'">
-          <nb-card-header ><nb-icon icon="book-open-outline"></nb-icon> clanak/obavestenje 14/02/2020</nb-card-header>
-          <nb-card-body>
-
-          </nb-card-body>
-        </nb-card>
-      </div>
-      <div class="col-md-6">
-        <nb-card [size]="'small'">
-          <nb-card-header><nb-icon icon="book-open-outline"></nb-icon> clanak/obavestenje</nb-card-header>
-          <nb-card-body>
-
-          </nb-card-body>
-        </nb-card>
-      </div>
-      <div class="col-md-6">
-        <nb-card [size]="'small'">
-          <nb-card-header><nb-icon icon="book-open-outline"></nb-icon> clanak/obavestenje</nb-card-header>
-          <nb-card-body>
-
-          </nb-card-body>
-        </nb-card>
-      </div>
-      <div class="col-md-6">
-        <nb-card [size]="'small'">
-          <nb-card-header><nb-icon icon="book-open-outline"></nb-icon> clanak/obavestenje</nb-card-header>
-          <nb-card-body>
-
-          </nb-card-body>
-        </nb-card>
-      </div>
-      <div class="col-md-6">
-        <nb-card [size]="'small'">
-          <nb-card-header><nb-icon icon="book-open-outline"></nb-icon> clanak/obavestenje</nb-card-header>
-          <nb-card-body>
-
-          </nb-card-body>
-        </nb-card>
-      </div>
-
-    </div>
-
+    <router-outlet></router-outlet>
 </nb-layout-column>
 
   <nb-layout-footer>Contact us</nb-layout-footer>
 </nb-layout>
 
-<router-outlet></router-outlet>
+
 
