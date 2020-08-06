@@ -1,14 +1,7 @@
+*{
+  font-family: 'Nunito', sans-serif;
+}
 .nb-theme-default nb-sidebar .scrollable {
   padding: 0;
 
 }
-
-.header-class{
-  justify-content: space-between;
-}
-
-
-nb-layout-header nav {
-  justify-content: space-between;
-}
-

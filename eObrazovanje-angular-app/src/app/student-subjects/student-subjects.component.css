@@ -1,3 +1,7 @@
+html{
+  font-family: nb-theme(font-family-secondary);
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -24,3 +28,4 @@
   color: white;
   border-style: none;
 }
+

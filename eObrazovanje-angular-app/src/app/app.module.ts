@@ -10,12 +10,14 @@ import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbLayoutComponent, NbC
 import { UserSideMenuComponent } from './user-side-menu/user-side-menu.component';
 import { StudentSubjectsComponent } from './student-subjects/student-subjects.component';
 import { HomeNewsNotificationsComponent } from './home-news-notifications/home-news-notifications.component';
+import { ExamCheckInComponent } from './exam-check-in/exam-check-in.component';
 @NgModule({
   declarations: [
     AppComponent,
     UserSideMenuComponent,
     StudentSubjectsComponent,
-    HomeNewsNotificationsComponent
+    HomeNewsNotificationsComponent,
+    ExamCheckInComponent
   ],
   imports: [
     BrowserModule,

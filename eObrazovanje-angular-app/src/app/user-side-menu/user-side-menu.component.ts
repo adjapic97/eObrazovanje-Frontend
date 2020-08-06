@@ -46,6 +46,7 @@ export class UserSideMenuComponent implements OnInit {
         },
         {
           title: 'Prijava ispita',
+          link: 'prijava-ispita',
           icon: 'radio-button-off-outline',
         },
         {
