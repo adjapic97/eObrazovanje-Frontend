@@ -42,6 +42,8 @@ import { NonPassedSubjectsComponent } from './non-passed-subjects/non-passed-sub
 import { ExamHistoryComponent } from './exam-history/exam-history.component';
 import { FinancialCardComponent } from './financial-card/financial-card.component';
 import { DocumentsComponent } from './documents/documents.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FinancialStatusComponent } from './exam-check-in/financial-status/financial-status.component';
 
 
 
@@ -60,7 +62,8 @@ import { DocumentsComponent } from './documents/documents.component';
     NonPassedSubjectsComponent,
     ExamHistoryComponent,
     FinancialCardComponent,
-    DocumentsComponent
+    DocumentsComponent,
+    FinancialStatusComponent
 
 
   ],
@@ -99,7 +102,8 @@ import { DocumentsComponent } from './documents/documents.component';
     CommonModule,
     NbAlertModule,
     HttpClientModule,
-    NbAuthModule.forRoot()
+    NbAuthModule.forRoot(),
+    NgbModule
 
 
   ],

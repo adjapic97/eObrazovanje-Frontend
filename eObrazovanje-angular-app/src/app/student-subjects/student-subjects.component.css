@@ -29,3 +29,15 @@ html{
   border-style: none;
 }
 
+.card-header{
+  color: white;
+  background-color: rgb(6, 42, 88);
+}
+
+
+.btn-primary{
+  color: white;
+  background-color: rgb(6, 42, 88);
+  text-decoration: none;
+  border: none;
+}
