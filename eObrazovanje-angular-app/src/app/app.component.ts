@@ -1,7 +1,12 @@
+import { MainService } from './services/main.service';
+import { UserService } from './services/user.service';
+import { TokenStorageService } from './services/token-storage.service';
+import { Account } from './classes/Account';
 import { NbMenuService, NB_WINDOW, NbSidebarService } from '@nebular/theme';
 import { Component, ViewEncapsulation, Inject, OnInit } from '@angular/core';
-
+import { NbAuthJWTToken, NbAuthService } from '@nebular/auth';
 import { filter, map } from 'rxjs/operators';
+import { tokenName } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -16,41 +21,165 @@ import { filter, map } from 'rxjs/operators';
     `]
 
 })
+
+
 export class AppComponent implements OnInit {
+
+  private authorities: string[];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  username: string;
+  accountsForUser: Account[];
+  clickedAccount: Account[];
+  isAccountChosen: boolean;
+  emitClassListener = null;
+  profileItems = []
+  role: string;
+  testString: string;
+
   title = 'eObrazovanje-angular-app';
 
-  constructor(private sidebarService: NbSidebarService,private nbMenuService : NbMenuService, @Inject(NB_WINDOW) private window ) { }
+  user: {};
+
+  userLoggedIn: boolean = false;
+
+  constructor(private mainService : MainService, private userService: UserService, private sidebarService: NbSidebarService, private tokenStorageService: TokenStorageService, private nbMenuService : NbMenuService, @Inject(NB_WINDOW) private window, private authService : NbAuthService ) {
+
+
+  }
+
 
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      const userrole = this.tokenStorageService.getAuthorities();
+      this.authorities = user.authorities;
+
+      this.showAdminBoard = this.authorities.includes('ROLE_ADMIN');
+     /// this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+     if(this.showAdminBoard){
+       console.log(this.showAdminBoard)
+       this.role = 'administrator/student'
+       this.testString = 'test works'
+      this.profileItems = [
+        {
+          title: 'Profil',
+          icon: 'person-outline'
+        },
+        {
+          title: 'Podešavanja',
+          icon: 'settings-2-outline',
+          link: 'sluzba/settings'
+
+        },
+        {
+          title: 'Podešavanja',
+          icon: 'settings-2-outline',
+          link: 'sluzba/settings'
+
+        },
+        {
+          title: 'Izloguj se',
+          icon: 'unlock-outline'
+        }
+
+      ]
+
+     } else{
+       this.role = 'Regular student'
+      this.profileItems = [
+        {
+          title: 'Profil',
+          icon: 'person-outline'
+        },
+        {
+          title: 'Podešavanja',
+          icon: 'settings-2-outline',
+          link: 'sluzba/settings'
+
+        },
+        {
+          title: 'Izloguj se',
+          icon: 'unlock-outline'
+        }
+
+      ]
+
+     }
+
+      this.username = user.lastname;
+
+      this.userService.getAccountForUser(user.id).subscribe(
+        response => this.handleSuccessfulResponse(response),
+      );
+
+      if(sessionStorage.getItem('selectedAccount') != null){
+        this.clickedAccount = JSON.parse(sessionStorage.getItem('selectedAccount'));
+        this.isAccountChosen = true;
+      }
+
+/*
     this.nbMenuService.onItemClick()
       .pipe(
         filter(({ tag }) => tag === 'my-context-menu'),
-        map(({ item: { title } }) => title),
+        map(({ item: { title } }) => "Izloguj se"),
       )
-      .subscribe(title => this.window.alert(`${title} was clicked`));
+      .subscribe(title => {
+        switch(title){
+          case "Izloguj se":
+            this.logout();
+            break;
+          default:
+        }
+      }
+
+        ); */
+
+    this.nbMenuService.onItemClick().subscribe((event) => {
+      switch(event.item.title){
+        case 'Izloguj se':
+          this.logout();
+        case 'Podešavanja':
+          console.log("settings");
+        default:
+      }
+    })
   }
 
-  toggle(){
-    this.sidebarService.toggle(true);
-    return false;
-  }
 
-  profileItems = [
-    {
-      title: 'Profil',
-      icon: 'person-outline'
-    },
-    {
-      title: 'Podešavanja',
-      icon: 'settings-2-outline',
-    },
-    {
-      title: 'Izloguj se',
-      icon: 'unlock-outline',
+
+
+  this.emitClassListener = this.mainService.emitClass.subscribe(
+    response => {
+
     }
+  )
 
-  ]
 
 }
 
+ngOnDestroy(){
+  if(this.emitClassListener){
+    this.emitClassListener.unsubscribe();
+  }
+}
+
+toggle(){
+  this.sidebarService.toggle(true);
+  return false;
+}
+
+handleSuccessfulResponse(response)
+{
+    this.accountsForUser=response;
+
+}
+
+logout() {
+  this.tokenStorageService.signOut();
+  window.location.reload();
+}
+}

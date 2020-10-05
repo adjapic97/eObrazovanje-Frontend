@@ -4,15 +4,24 @@
   <nb-layout-header fixed  >
     <h2 routerLink=''  style="margin-right: 85%;">SSluzba</h2>
 
-    <nb-user name="Andrej Dapic"
-    title="student"
+    <nb-user [name]="username" *ngIf="isLoggedIn"
+    [title]="role"
     [nbContextMenu]="profileItems"
+
     nbContextMenuTag="my-context-menu"  nbContextMenuPlacement="bottom">
   </nb-user>
 
+  <nb-user *ngIf="!isLoggedIn"
+  size="large"
+  [routerLink]="['/login']" routerLinkActive="router-link-active"
+
+  > </nb-user>
+
+
+
   </nb-layout-header>
 
-  <nb-layout-header subheader>
+  <nb-layout-header subheader *ngIf="isLoggedIn">
     <nb-actions>
       <nb-action icon="home-outline" routerLink=""></nb-action>
       <nb-action icon="search-outline"></nb-action>
@@ -20,8 +29,12 @@
     </nb-actions>
   </nb-layout-header>
 
-  <nb-sidebar class="sidebar-main-class" >
-    <app-user-side-menu ></app-user-side-menu>
+  <nb-sidebar class="sidebar-main-class" *ngIf="isLoggedIn" >
+    <app-user-side-menu
+    [testString] = "testString"
+    [isLoggedIn] = "isLoggedIn"
+    [showAdminBoard] = "showAdminBoard"
+    ></app-user-side-menu>
 
 
 

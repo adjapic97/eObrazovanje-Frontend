@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-exam-check-in',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExamCheckInComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+
+
+  constructor() {
+    //jjthis.source = new LocalDataSource(this.data)
+   }
+
+   ngOnInit() {
+   }
+
+
+
+
+
 
 }

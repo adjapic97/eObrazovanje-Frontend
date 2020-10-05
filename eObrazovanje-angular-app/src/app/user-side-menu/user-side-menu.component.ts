@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, Inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, Inject, Input } from '@angular/core';
 import { NbMenuItem, NbMenuService, NB_WINDOW } from '@nebular/theme';
 @Component({
   selector: 'app-user-side-menu',
@@ -8,13 +8,139 @@ import { NbMenuItem, NbMenuService, NB_WINDOW } from '@nebular/theme';
   encapsulation: ViewEncapsulation.None,
 
 })
+
 export class UserSideMenuComponent implements OnInit {
+
+  @Input() isLoggedIn: boolean;
+  @Input() authorities: [];
+  @Input() testString: string;
+  @Input() showAdminBoard: boolean;
+  items: NbMenuItem[];
 
   constructor() { }
 
   ngOnInit(): void {
 
+    if(this.showAdminBoard){
+      this.items =  [
+
+        {
+          title: 'Ispiti',
+          icon: 'book-outline',
+          expanded: true,
+          children: [
+            {
+              title: 'svi predmeti',
+              icon: 'copy-outline',
+              link: 'sluzba/student-subjects'
+            },
+            {
+              title: 'Položeni predmeti',
+              icon: 'checkmark-outline',
+              link: 'sluzba/passed-subjects'
+            },
+            {
+              title: 'Nepoloženi predmeti',
+              icon: { icon: 'npm-outline', pack: 'eva' },
+              link: 'sluzba/non-passed-subjects'
+            },
+            {
+              title: 'Prijava ispita',
+              link: 'sluzba/prijava-ispita',
+              icon: 'radio-button-off-outline',
+            },
+            {
+              title: 'Odjava ispita',
+              icon: 'close-circle',
+            },
+            {
+              title: 'Istorija polaganja',
+              icon: 'clock-outline',
+              link: 'sluzba/exam-history'
+
+            }
+          ],
+        },
+
+        {
+          title: 'Finansijska kartica',
+          icon: 'clipboard-outline',
+          link: 'sluzba/financial-card'
+        },
+
+        {
+          title: 'Dokumenti',
+          icon: 'file-text-outline',
+          link: 'sluzba/documents'
+        },
+        {
+          title: 'Admin board',
+          icon: 'keypad-outline',
+          link: 'sluzba/admin-board'
+        }
+
+      ];
+    }
+    else{
+      this.items =  [
+
+        {
+          title: 'Ispiti',
+          icon: 'book-outline',
+          expanded: true,
+          children: [
+            {
+              title: 'svi predmeti',
+              icon: 'copy-outline',
+              link: 'sluzba/student-subjects'
+            },
+            {
+              title: 'Položeni predmeti',
+              icon: 'checkmark-outline',
+              link: 'sluzba/passed-subjects'
+            },
+            {
+              title: 'Nepoloženi predmeti',
+              icon: { icon: 'npm-outline', pack: 'eva' },
+              link: 'sluzba/non-passed-subjects'
+            },
+            {
+              title: 'Prijava ispita',
+              link: 'sluzba/prijava-ispita',
+              icon: 'radio-button-off-outline',
+            },
+            {
+              title: 'Odjava ispita',
+              icon: 'close-circle',
+            },
+            {
+              title: 'Istorija polaganja',
+              icon: 'clock-outline',
+              link: 'sluzba/exam-history'
+            }
+          ],
+        },
+
+        {
+          title: 'Finansijska kartica',
+          icon: 'clipboard-outline',
+          link: 'sluzba/financial-card'
+        },
+
+        {
+          title: 'Dokumenti',
+          icon: 'file-text-outline',
+          link: 'sluzba/documents'
+        },
+
+
+      ];
+
+    }
+
   }
+
+
 
   adminItems: NbMenuItem[] = [{
     title: 'kontrolna tabla',
@@ -22,53 +148,10 @@ export class UserSideMenuComponent implements OnInit {
   }]
 
 
-  items: NbMenuItem[] = [
 
-    {
-      title: 'Ispiti',
-      icon: 'book-outline',
-      expanded: true,
-      children: [
-        {
-          title: 'svi predmeti',
-          icon: 'copy-outline',
-          link: 'student-subjects'
-        },
-        {
-          title: 'Položeni predmeti',
-          icon: 'checkmark-outline',
-        },
-        {
-          title: 'Nepoloženi predmeti',
 
-          icon: { icon: 'npm-outline', pack: 'eva' },
 
-        },
-        {
-          title: 'Prijava ispita',
-          link: 'prijava-ispita',
-          icon: 'radio-button-off-outline',
-        },
-        {
-          title: 'Odjava ispita',
-          icon: 'close-circle',
-        },
-        {
-          title: 'Istorija polaganja',
-          icon: 'clock-outline'
-        }
-      ],
-    },
 
-    {
-      title: 'Finansijska kartica',
-      icon: 'clipboard-outline',
-    },
 
-    {
-      title: 'Dokumenti',
-      icon: 'file-text-outline',
-    }
 
-  ];
 }
