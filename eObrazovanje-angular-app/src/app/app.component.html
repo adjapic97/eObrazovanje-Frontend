@@ -1,33 +1,54 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" style="color: white;" >
+  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="navbar-brand" href="#">
+              <img src="assets/images/logoss.png" width="30" height="30" class="d-inline-block align-top" alt="">
 
+            </a>
+          </li>
+      </ul>
+  </div>
+
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <nb-user [name]="username" *ngIf="isLoggedIn"
+            [title]="role"
+            [nbContextMenu]="profileItems"
+            style="color: white;"
+            nbContextMenuTag="my-context-menu"  nbContextMenuPlacement="bottom">
+          </nb-user>
+
+          <nb-user *ngIf="!isLoggedIn"
+
+          [routerLink]="['/login']" routerLinkActive="router-link-active"
+
+          > </nb-user>
+
+          </li>
+
+      </ul>
+  </div>
+</nav>
 <nb-layout >
-  <nb-layout-header fixed   >
+
+ <!--  <nb-layout-header fixed   >
     <h2 routerLink=''  style="margin-right: 85%;">SSluzba</h2>
 
-    <nb-user [name]="username" *ngIf="isLoggedIn"
-    [title]="role"
-    [nbContextMenu]="profileItems"
-
-    nbContextMenuTag="my-context-menu"  nbContextMenuPlacement="bottom">
-  </nb-user>
-
-  <nb-user *ngIf="!isLoggedIn"
-  size="large"
-  [routerLink]="['/login']" routerLinkActive="router-link-active"
-
-  > </nb-user>
 
 
 
   </nb-layout-header>
-
-  <nb-layout-header subheader *ngIf="isLoggedIn">
+ -->
+<!--   <nb-layout-header subheader *ngIf="isLoggedIn">
     <nb-actions>
       <nb-action icon="home-outline" routerLink=""></nb-action>
       <nb-action icon="search-outline"></nb-action>
       <nb-action icon="edit-outline"></nb-action>
     </nb-actions>
-  </nb-layout-header>
+  </nb-layout-header> -->
 
   <nb-sidebar class="sidebar-main-class" *ngIf="isLoggedIn" >
     <app-user-side-menu

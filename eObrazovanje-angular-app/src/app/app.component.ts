@@ -67,7 +67,8 @@ export class AppComponent implements OnInit {
       this.profileItems = [
         {
           title: 'Profil',
-          icon: 'person-outline'
+          icon: 'person-outline',
+          link: 'sluzba/student-details'
         },
         {
           title: 'Podešavanja',
@@ -89,11 +90,12 @@ export class AppComponent implements OnInit {
       ]
 
      } else{
-       this.role = 'Regular student'
+       this.role = 'regular student'
       this.profileItems = [
         {
           title: 'Profil',
-          icon: 'person-outline'
+          icon: 'person-outline',
+          link: 'sluzba/student-details'
         },
         {
           title: 'Podešavanja',

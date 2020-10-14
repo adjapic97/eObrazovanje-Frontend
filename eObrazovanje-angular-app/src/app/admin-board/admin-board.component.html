@@ -1,1 +1,54 @@
-<p>admin-board works!</p>
+<ul ngbNav #nav="ngbNav"  [(activeId)]="active" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>Predmeti</a>
+    <ng-template ngbNavContent>
+      <app-subjects-admin-board (fromSubjectAdminEmitter)="editSubject($event)"></app-subjects-admin-board>
+      <app-edit-subject *ngIf="isEditSubject" [subject]="subject"></app-edit-subject>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink class="nav-link">Studenti</a>
+    <ng-template ngbNavContent>
+      <p>MARTOVSKI ISPITNI ROK</p>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="3">
+    <a ngbNavLink class="nav-link">Profesori</a>
+    <ng-template ngbNavContent>
+      <p>MARTOVSKI ISPITNI ROK</p>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="4">
+    <a ngbNavLink class="nav-link">Kolokvijumi</a>
+    <ng-template ngbNavContent>
+      <p>MARTOVSKI ISPITNI ROK</p>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="5">
+    <a ngbNavLink class="nav-link">Ispiti</a>
+    <ng-template ngbNavContent>
+      <p>MARTOVSKI ISPITNI ROK</p>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="6">
+    <a ngbNavLink class="nav-link">Dokumenti</a>
+    <ng-template ngbNavContent>
+      <p>MARTOVSKI ISPITNI ROK</p>
+    </ng-template>
+  </li>
+
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+
+
+
+
+
+
+
+
+
+
+

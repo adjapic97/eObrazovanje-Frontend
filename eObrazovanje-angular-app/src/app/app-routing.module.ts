@@ -23,6 +23,7 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
+import { StudentDetailsComponent } from './student-details/student-details.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
     { path: 'exam-history', component: ExamHistoryComponent},
     { path: 'financial-card', component: FinancialCardComponent},
     { path: 'documents', component: DocumentsComponent},
+    { path: 'student-details', component: StudentDetailsComponent},
 
     { path: 'admin-board',
     canActivate: [RoleGuardService],

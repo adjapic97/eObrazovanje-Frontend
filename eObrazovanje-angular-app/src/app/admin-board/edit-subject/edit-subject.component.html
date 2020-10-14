@@ -1,0 +1,88 @@
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <form #heroForm="ngForm">
+
+        <div class="form-group">
+          <label for="subjectName">Naziv predmeta</label>
+          <input type="text" class="form-control" id="subjectName"
+                 required
+                 [(ngModel)]="subject.subjectName" name="subjectName">
+        </div>
+
+        <div class="form-group">
+          <label for="shortName">Sifra predmeta</label>
+          <input type="text"  class="form-control" id="shortName"
+                 [(ngModel)]="subject.shortName" name="shortName">
+        </div>
+
+        <div class="form-group">
+          <label for="ectsPoints">Ects Points</label>
+          <input type="text"  class="form-control" id="ectsPoints"
+          [(ngModel)]="subject.ectsPoints" name="ectsPoints">
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+
+      </form>
+    </div>
+    <div class="col-sm">
+
+      <div class="row">
+        <div class="col">
+          <p>Profesori</p>
+          <table class="table table-bordered table-sm table-striped table-hover">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Ime</th>
+              <th scope="col">Prezime</th>
+              <th scope="col">Zvanje</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let lecturer of subject.lecturerDTO; index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>
+                {{ lecturer.firstName }}
+              </td>
+              <td>{{ lecturer.lastName }}</td>
+              <td><p *ngFor="let role of lecturer.roles">{{ role.name }}</p></td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="w-100"></div>
+        <div class="col">
+          <p>Smerovi kojima predmet pripada</p>
+          <table class="table table-bordered table-sm table-striped table-hover">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Ime smera</th>
+              <th scope="col">Sifra smera</th>
+              <th scope="col">Zvanje</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let course of subject.coursesDTO; index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>
+                {{ course.courseName  }}
+              </td>
+              <td>{{ course.shortName }}</td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

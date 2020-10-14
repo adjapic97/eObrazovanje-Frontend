@@ -1,8 +1,9 @@
+import { SortableDirective } from './directives/sortable.directive';
 import { JwtHelperService, JwtModuleOptions, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { authInterceptorProviders } from './auth/auth.interceptor';
 
 import { LoginComponent } from './login/login.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -44,6 +45,10 @@ import { FinancialCardComponent } from './financial-card/financial-card.componen
 import { DocumentsComponent } from './documents/documents.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FinancialStatusComponent } from './exam-check-in/financial-status/financial-status.component';
+import { SubjectDetailsComponent } from './subject-details/subject-details.component';
+import { StudentDetailsComponent } from './student-details/student-details.component';
+import { SubjectsAdminBoardComponent } from './subjects-admin-board/subjects-admin-board.component';
+import { EditSubjectComponent } from './admin-board/edit-subject/edit-subject.component';
 
 
 
@@ -63,7 +68,13 @@ import { FinancialStatusComponent } from './exam-check-in/financial-status/finan
     ExamHistoryComponent,
     FinancialCardComponent,
     DocumentsComponent,
-    FinancialStatusComponent
+    FinancialStatusComponent,
+    SubjectDetailsComponent,
+    StudentDetailsComponent,
+    SubjectsAdminBoardComponent,
+    SortableDirective,
+    EditSubjectComponent,
+
 
 
   ],
@@ -108,7 +119,7 @@ import { FinancialStatusComponent } from './exam-check-in/financial-status/finan
 
   ],
   providers: [authInterceptorProviders,         { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService
+    JwtHelperService, DecimalPipe
    ],
   bootstrap: [AppComponent]
 })

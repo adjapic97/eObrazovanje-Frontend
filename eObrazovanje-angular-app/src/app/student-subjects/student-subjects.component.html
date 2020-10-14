@@ -1,160 +1,22 @@
 <div class="card-columns">
 
-  <div class="card">
+  <div class="card" *ngFor="let subject of subjects ">
     <div class="card-header">
-      Matematika 1
+      {{subject.subjectName}}
     </div>
     <div class="card-body">
-      <h5 class="card-title">8 ECTS</h5>
-      <p class="card-text">Jednosemestralni predmet, bla bla <br>
-        Profesori:
-        Nedovic Ljubo
-        Radojka Stricevic
-      </p>
-      <a href="#" class="btn btn-primary">Detaljnije...</a>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      Matematika 1
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">8 ECTS</h5>
-      <p class="card-text">Jednosemestralni predmet, bla bla <br>
-        Profesori:
-        Nedovic Ljubo
-        Radojka Stricevic
-      </p>
-      <a href="#" class="btn btn-primary">Detaljnije...</a>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      Matematika 1
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">8 ECTS</h5>
-      <p class="card-text">Jednosemestralni predmet, bla bla <br>
-        Profesori:
-        Nedovic Ljubo
-        Radojka Stricevic
-      </p>
-      <a href="#" class="btn btn-primary">Detaljnije...</a>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      Matematika 1
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">8 ECTS</h5>
-      <p class="card-text">Jednosemestralni predmet, bla bla <br>
-        Profesori:
-        Nedovic Ljubo
-        Radojka Stricevic
-      </p>
-      <a href="#" class="btn btn-primary">Detaljnije...</a>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      Matematika 1
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">8 ECTS</h5>
-      <p class="card-text">Jednosemestralni predmet, bla bla <br>
-        Profesori:
-        Nedovic Ljubo
-        Radojka Stricevic
-      </p>
-      <a href="#" class="btn btn-primary">Detaljnije...</a>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      Matematika 1
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">8 ECTS</h5>
-      <p class="card-text">Jednosemestralni predmet, bla bla <br>
-        Profesori:
-        Nedovic Ljubo
-        Radojka Stricevic
-      </p>
-      <a href="#" class="btn btn-primary">Detaljnije...</a>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      Matematika 1
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">8 ECTS</h5>
-      <p class="card-text">Jednosemestralni predmet, bla bla <br>
-        Profesori:
-        Nedovic Ljubo
-        Radojka Stricevic
-      </p>
-      <a href="#" class="btn btn-primary">Detaljnije...</a>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      Matematika 1
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">8 ECTS</h5>
-      <p class="card-text">Jednosemestralni predmet, bla bla <br>
-        Profesori:
-        Nedovic Ljubo
-        Radojka Stricevic
-      </p>
-      <a href="#" class="btn btn-primary">Detaljnije...</a>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      Matematika 1
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">8 ECTS</h5>
-      <p class="card-text">Jednosemestralni predmet, bla bla <br>
-        Profesori:
-        Nedovic Ljubo
-        Radojka Stricevic
-      </p>
-      <a href="#" class="btn btn-primary">Detaljnije...</a>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      Matematika 1
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">8 ECTS</h5>
-      <p class="card-text">Jednosemestralni predmet, bla bla <br>
-        Profesori:
-        Nedovic Ljubo
-        Radojka Stricevic
-      </p>
-      <a href="#" class="btn btn-primary">Detaljnije...</a>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      Matematika 1
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">8 ECTS</h5>
-      <p class="card-text">Jednosemestralni predmet, bla bla <br>
-        Profesori:
-        Nedovic Ljubo
-        Radojka Stricevic
-      </p>
-      <a href="#" class="btn btn-primary">Detaljnije...</a>
-    </div>
-  </div>
+      <h5 class="card-title">{{subject.ectsPoints}} +  ECTS Points</h5>
+      <p class="card-text">{{subject.shortName}} <br>
 
+      </p>
+      <p *ngFor="let lecturer of subject.lecturerDTO">
+        {{lecturer.firstName + " " + lecturer.lastName}}
+      </p>
+
+
+      <a href="#" class="btn btn-primary">Detaljnije...</a>
+    </div>
+  </div>
 
 
 
