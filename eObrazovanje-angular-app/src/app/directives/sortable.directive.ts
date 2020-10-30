@@ -1,15 +1,18 @@
+import { Student } from './../classes/Student';
 import { Directive, Input, Output, EventEmitter } from '@angular/core';
 import { Subject } from '../classes/Subject';
 
 
 
-export type SortColumn = keyof Subject | '';
+export type SortColumn = keyof Subject |'';
+export type SortColumn2  = keyof Student | '';
 export type SortDirection = 'asc' | 'desc' | '';
 const rotate: {[key: string]: SortDirection} = { 'asc': 'desc', 'desc': '', '': 'asc' };
 
 export interface SortEvent {
   column: SortColumn;
   direction: SortDirection;
+
 }
 
 @Directive({

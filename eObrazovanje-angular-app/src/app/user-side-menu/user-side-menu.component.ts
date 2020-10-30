@@ -30,22 +30,22 @@ export class UserSideMenuComponent implements OnInit {
           expanded: true,
           children: [
             {
-              title: 'svi predmeti',
+              title: 'predmeti koje predaje',
               icon: 'copy-outline',
-              link: 'sluzba/student-subjects'
+              link: 'sluzba/profesor-subjects'
             },
             {
-              title: 'Položeni predmeti',
+              title: 'Upravljanje aktivnim rokom',
               icon: 'checkmark-outline',
               link: 'sluzba/passed-subjects'
             },
             {
-              title: 'Nepoloženi predmeti',
+              title: 'statistika',
               icon: { icon: 'npm-outline', pack: 'eva' },
               link: 'sluzba/non-passed-subjects'
             },
             {
-              title: 'Prijava ispita',
+              title: '',
               link: 'sluzba/prijava-ispita',
               icon: 'radio-button-off-outline',
             },

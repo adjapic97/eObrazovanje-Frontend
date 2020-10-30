@@ -49,6 +49,8 @@ import { SubjectDetailsComponent } from './subject-details/subject-details.compo
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { SubjectsAdminBoardComponent } from './subjects-admin-board/subjects-admin-board.component';
 import { EditSubjectComponent } from './admin-board/edit-subject/edit-subject.component';
+import { EditStudentBoardComponent } from './admin-board/edit-student-board/edit-student-board.component';
+import { EditStudentComponent } from './admin-board/edit-student-board/edit-student/edit-student.component';
 
 
 
@@ -74,6 +76,8 @@ import { EditSubjectComponent } from './admin-board/edit-subject/edit-subject.co
     SubjectsAdminBoardComponent,
     SortableDirective,
     EditSubjectComponent,
+    EditStudentBoardComponent,
+    EditStudentComponent,
 
 
 

@@ -9,7 +9,8 @@
   <li [ngbNavItem]="2">
     <a ngbNavLink class="nav-link">Studenti</a>
     <ng-template ngbNavContent>
-      <p>MARTOVSKI ISPITNI ROK</p>
+      <app-edit-student-board (fromStudentAdminEmitter)="editStudents($event)"></app-edit-student-board>
+      <app-edit-student *ngIf="isEditStudent" [student]="student"></app-edit-student>
     </ng-template>
   </li>
   <li [ngbNavItem]="3">

@@ -1,0 +1,144 @@
+<div *ngIf="isSuccessful">
+  <h2>Edited Student: {{student.firstName + " " + student.lastName}}</h2>
+
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <button class="btn btn-secondary btn-sm" (click)="enableEdit()"><nb-icon icon="edit-outline"></nb-icon></button>
+
+      <form #heroForm="ngForm">
+        <fieldset [disabled]="this.isDisabled">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="firstName">Ime</label>
+                <input type="text" class="form-control" id="firstName"
+                       required
+                       [(ngModel)]="student.firstName" name="firstName">
+              </div>
+
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="lastName">Prezime</label>
+                <input type="text"  class="form-control" id="lastName"
+                       [(ngModel)]="student.lastName" name="lastName">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="indexNumber">Broj indeksa</label>
+                <input type="text"  class="form-control" id="indexNumber"
+                [(ngModel)]="student.indexNumber" name="indexNumber">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="dateOfBirth">Datum rodjenja</label>
+                <input type="text"  class="form-control" id="dateOfBirth"
+                [(ngModel)]="student.dateOfBirth" name="dateOfBirth">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="gender">Pol</label>
+                <input type="text"  class="form-control" id="gender"
+                [(ngModel)]="student.gender" name="gender">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="highSchool">Srednja skola</label>
+                <input type="text"  class="form-control" id="highSchool"
+                [(ngModel)]="student.highSchool" name="highSchool">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="hsFinishYear">Godina zavrsetka</label>
+                <input type="text"  class="form-control" id="hsFinishYear"
+                [(ngModel)]="student.hsFinishYear" name="hsFinishYear">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="currentYear">godina studija</label>
+                <input type="text"  class="form-control" id="currentYear"
+                [(ngModel)]="student.currentYear" name="currentYear">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="studentStatus">Status studenta</label>
+                <input type="text"  class="form-control" id="studentStatus"
+                [(ngModel)]="student.studentStatus" name="studentStatus">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="city">Grad</label>
+                <input type="text"  class="form-control" id="city"
+                [(ngModel)]="student.city" name="city">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="residence_address">Adresa stanovanja</label>
+                <input type="text"  class="form-control" id="residence_address"
+                [(ngModel)]="student.residence_address" name="residence_address">
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+        <div class="form-group" *ngIf="student.course !== null; else chooseCourse">
+          <label for="course">Smer</label>
+          <input type="text"  class="form-control" id="course"
+          [(ngModel)]="student.course.courseName" name="course">
+        </div>
+        <div class="form-group" #chooseCourse>
+          <div class="input-group mb-3">
+
+            <select class="custom-select" id="inputGroupSelect01">
+              <option selected>Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="mobilePhoneNumber"></label>
+          <input type="text"  class="form-control" id="mobilePhoneNumber"
+          [(ngModel)]="student.mobilePhoneNumber" name="mobilePhoneNumber">
+        </div>
+
+        <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
+      </fieldset>
+      </form>
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+</div>

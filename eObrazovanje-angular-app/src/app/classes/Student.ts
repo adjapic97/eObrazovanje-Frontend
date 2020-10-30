@@ -1,0 +1,31 @@
+import { StudentHasSubject } from './StudentHasSubject';
+import { Courses } from './Courses';
+import { Role } from './Role';
+export class Student{
+  id: number;
+  firstName: string;
+  lastName: string;
+  deleted: boolean;
+  username: string;
+  gender: string;
+  dateOfBirth: Date;
+  placeOfBirth: string;
+  stateOfBirth: string;
+  residence_address: string;
+  township: string;
+  city: string;
+  phoneNumber: string;
+  mobilePhoneNumber: string;
+  citizenship: string;
+  ethnicity: string;
+  indexNumber: string;
+  highSchool: string;
+  hsFinishYear: string;
+  parentName: string;
+  currentYear: number;
+  course: Courses;
+  avgGrade: number;
+  studentStatus: string;
+  StudentHasSubjectDTO: StudentHasSubject[];
+  roles: Role[];
+}
