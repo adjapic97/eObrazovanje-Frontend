@@ -27,7 +27,7 @@ interface State {
   sortDirection: SortDirection;
 }
 
-const compare = (v1: string |  number | Lecturer[] | Courses[] | Colloqium[] | StudentHasSubject[], v2: string | number  | Lecturer[] | Courses[] | Colloqium[] | StudentHasSubject[]) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
+const compare = (v1: string |  number | Lecturer[] | Courses[] | Colloqium[] | StudentHasSubject[] | boolean, v2: string | number  | Lecturer[] | Courses[] | Colloqium[] | StudentHasSubject[] | boolean) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
 
 
 function sort(subjects: Subject[], column: SortColumn, direction: string): Subject[] {

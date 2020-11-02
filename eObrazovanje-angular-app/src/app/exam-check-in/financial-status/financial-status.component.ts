@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-financial-status',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./financial-status.component.css']
 })
 export class FinancialStatusComponent implements OnInit {
+
+
+  @Input() totalPrice: number;
 
   constructor() { }
 

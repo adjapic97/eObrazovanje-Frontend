@@ -12,7 +12,7 @@ export class Subject {
   coursesDTO?: Courses[];
   colloqiums?: Colloqium[];
   studentHasSubjects?: StudentHasSubject[];
-
+  selected?: boolean = true;
 
 
   constructor() { }

@@ -8,5 +8,6 @@ export class StudentHasSubject {
   brPokusaja: number;
   passed: boolean;
   exams?: Exam[];
+  prijavio: boolean;
 
 }
