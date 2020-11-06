@@ -1,32 +1,162 @@
 <div class="container-fluid">
   <div class="row">
+    <div class="col-sm-3">
+
+    </div>
     <div class="col-sm-6">
-      <div class="card" style="width: 100%; height: 700px;">
+      <div class="card" style="width: 100%; height: 800px;">
         <div class="card-body">
-          <div class="container" style="padding-top: 20px;">
+          <div class="container" style="padding-top: 20px; margin: 0;">
             <div class="row">
 
-              <div class="col-sm-6">
-                One of three columns
+              <div class="col-sm-12" style="margin-left: 0; margin-bottom: 20px;">
+                <div class="media">
+                  <img src="./assets/images/avatar.png" style="width: 100px; height: 100px;" class="mr-3" alt="...">
+                  <div class="media-body">
+                    <h5 class="mt-0">{{student?.firstName}} {{student?.lastName}}</h5>
+                    <p>{{student?.indexNumber}}</p>
+                    <button class="btn btn-sm btn-outline-secondary" ngbTooltip="Izmeni lozinku" placement="right"><nb-icon icon="settings-outline"></nb-icon></button>
+                  </div>
+                </div>
               </div>
-              <div class="col-sm-6">
-                One of three columns
+
+              <div class="col-sm-12">
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Smer</span>
+                  </div>
+                  <input type="text" class="form-control" [value]="student?.course.courseName"
+                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">br. indeksa</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Sizing example input"
+                    [value]="student?.indexNumber" disabled=true aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Godina studija</span>
+                  </div>
+                  <input type="text" class="form-control" disabled=true aria-label="Sizing example input"
+                    [value]="student?.currentYear" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">korisnicko ime</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Sizing example input" [value]="student?.username"
+                    aria-describedby="inputGroup-sizing-sm">
+
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                      <nb-icon icon="edit-outline"></nb-icon>
+                    </button>
+                  </div>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">datum rodjenja</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Sizing example input"
+                    [value]="student?.dateOfBirth" aria-describedby="inputGroup-sizing-sm">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                        <nb-icon icon="edit-outline"></nb-icon>
+                      </button>
+                    </div>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">broj telefona</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Sizing example input"
+                    [value]="student?.phoneNumber" aria-describedby="inputGroup-sizing-sm">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                        <nb-icon icon="edit-outline"></nb-icon>
+                      </button>
+                    </div>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Adresa stanovanja</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Sizing example input"
+                    [value]="student?.residence_address" aria-describedby="inputGroup-sizing-sm">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                        <nb-icon icon="edit-outline"></nb-icon>
+                      </button>
+                    </div>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Srednja skola</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Sizing example input" [value]="student?.highSchool"
+                    aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Godina zavrsetka</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Sizing example input"
+                    [value]="student?.hsFinishYear" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Ime roditelja</span>
+                  </div>
+                  <input type="text" class="form-control"  aria-label="Sizing example input"
+                    [value]="student?.parentName" aria-describedby="inputGroup-sizing-sm">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                        <nb-icon icon="edit-outline"></nb-icon>
+                      </button>
+                    </div>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Prosecna ocena</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Sizing example input" disabled=true
+                    [value]="student?.avgGrade" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Status studenta</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Sizing example input"
+                    [value]="student?.studentStatus" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Drzavljanstvo</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Sizing example input"
+                    [value]="student?.citizenship" aria-describedby="inputGroup-sizing-sm">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                        <nb-icon icon="edit-outline"></nb-icon>
+                      </button>
+                    </div>
+                </div>
+
               </div>
-              <div class="col-sm-6">
-                One of three columns
-              </div>
-              <div class="col-sm-6">
-                One of three columns
-              </div>
+
             </div>
           </div>
 
         </div>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-3">
 
     </div>
+
 
   </div>
 </div>

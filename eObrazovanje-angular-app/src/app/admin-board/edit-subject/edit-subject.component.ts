@@ -1,5 +1,7 @@
+import { SubjectService } from './../../services/subject-service/subject.service';
 import { Subject } from './../../classes/Subject';
 import { Component, OnInit, Input } from '@angular/core';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-subject',
@@ -7,8 +9,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./edit-subject.component.css']
 })
 export class EditSubjectComponent implements OnInit {
-
-  constructor() { }
+  isSuccessful = false;
+  isDisabled = true;
+  constructor(private service : SubjectService) { }
 
 
   @Input() subject: Subject;
@@ -16,5 +19,40 @@ export class EditSubjectComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+
+  enableEdit(){
+    this.isDisabled = !this.isDisabled;
+    console.log(this.isDisabled)
+  }
+
+   delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
+
+
+  onSubmit(){
+    this.service.update(this.subject).subscribe(
+      data => {
+
+        (async () => {
+          // Do something before delay
+          this.isSuccessful = true;
+          this.isDisabled = true;
+
+          await delay(2000);
+
+          // Do something after
+         // this.isSuccessful = false;
+      })();
+      },
+      err => {
+
+      }
+
+    )
+  }
+
 
 }

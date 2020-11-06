@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
 
       this.showAdminBoard = this.authorities.includes('ROLE_ADMIN');
      /// this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-     if(this.showAdminBoard){
+     if(this.showAdminBoard && this.checkIfContainsRole("PROFESSOR") == true || this.checkIfContainsRole("ASSISTANT_PROFESSOR") ){
        console.log(this.showAdminBoard)
        this.role = 'administrator/student'
        this.testString = 'test works'
@@ -71,15 +71,15 @@ export class AppComponent implements OnInit {
           link: 'sluzba/student-details'
         },
         {
-          title: 'Podešavanja',
+          title: 'Studenti',
           icon: 'settings-2-outline',
-          link: 'sluzba/settings'
+          link: ''
 
         },
         {
-          title: 'Podešavanja',
+          title: 'Predmeti',
           icon: 'settings-2-outline',
-          link: 'sluzba/settings'
+          link: ''
 
         },
         {
@@ -89,8 +89,8 @@ export class AppComponent implements OnInit {
 
       ]
 
-     } else{
-       this.role = 'regular student'
+     } else if(this.showAdminBoard){
+       this.role = 'Administrator'
       this.profileItems = [
         {
           title: 'Profil',
@@ -100,7 +100,7 @@ export class AppComponent implements OnInit {
         {
           title: 'Podešavanja',
           icon: 'settings-2-outline',
-          link: 'sluzba/settings'
+          link: ''
 
         },
         {
@@ -114,9 +114,7 @@ export class AppComponent implements OnInit {
 
       this.username = user.lastname;
 
-      this.userService.getAccountForUser(user.id).subscribe(
-        response => this.handleSuccessfulResponse(response),
-      );
+
 
       if(sessionStorage.getItem('selectedAccount') != null){
         this.clickedAccount = JSON.parse(sessionStorage.getItem('selectedAccount'));
@@ -154,6 +152,7 @@ export class AppComponent implements OnInit {
 
 
 
+
   this.emitClassListener = this.mainService.emitClass.subscribe(
     response => {
 
@@ -178,6 +177,11 @@ handleSuccessfulResponse(response)
 {
     this.accountsForUser=response;
 
+}
+
+checkIfContainsRole(role){
+
+  return this.showAdminBoard && JSON.parse(sessionStorage.getItem('auth-user')).authorities.includes(role);
 }
 
 logout() {

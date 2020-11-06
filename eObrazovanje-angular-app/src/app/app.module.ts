@@ -1,3 +1,4 @@
+import { CreateUserModalComponent } from './create-user-modal/create-user-modal.component';
 import { SortableDirective } from './directives/sortable.directive';
 import { JwtHelperService, JwtModuleOptions, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { authInterceptorProviders } from './auth/auth.interceptor';
@@ -51,6 +52,7 @@ import { SubjectsAdminBoardComponent } from './subjects-admin-board/subjects-adm
 import { EditSubjectComponent } from './admin-board/edit-subject/edit-subject.component';
 import { EditStudentBoardComponent } from './admin-board/edit-student-board/edit-student-board.component';
 import { EditStudentComponent } from './admin-board/edit-student-board/edit-student/edit-student.component';
+import { UserCreationComponent } from './user-creation/user-creation.component';
 
 
 
@@ -78,6 +80,8 @@ import { EditStudentComponent } from './admin-board/edit-student-board/edit-stud
     EditSubjectComponent,
     EditStudentBoardComponent,
     EditStudentComponent,
+    CreateUserModalComponent,
+    UserCreationComponent
 
 
 

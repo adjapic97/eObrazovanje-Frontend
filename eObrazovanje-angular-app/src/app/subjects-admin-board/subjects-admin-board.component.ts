@@ -1,8 +1,9 @@
+import { Subject } from './../classes/Subject';
 import { SubjectService } from './../services/subject-service/subject.service';
 import { SortableDirective, SortEvent } from './../directives/sortable.directive';
 import { Component, OnInit, ViewChildren, QueryList, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Subject } from '../classes/Subject';
+
 
 export var SUBJECTS: Subject[] = [];
 
@@ -15,6 +16,7 @@ export class SubjectsAdminBoardComponent implements OnInit {
 
   subjects$: Observable<Subject[]>;
   total$: Observable<number>;
+  subjects: Subject[] = [];
   @Output() fromSubjectAdminEmitter = new EventEmitter<{subject: Subject, showw: boolean}>();
 
 
@@ -23,25 +25,16 @@ export class SubjectsAdminBoardComponent implements OnInit {
 
 
   constructor(public service: SubjectService) {
-    this.subjects$ = service.subjects$;
-    this.total$ = service.total$;
+
   }
 
 
-  onSort({column, direction}: SortEvent) {
-    // resetting other headers
-    this.headers.forEach(header => {
-      if (header.sortable !== column) {
-        header.direction = '';
-      }
-    });
 
-    this.service.sortColumn = column;
-    this.service.sortDirection = direction;
-  }
 
   ngOnInit(): void {
-      SUBJECTS = this.service.getSubjectList();
+     this.service.getSubjects().subscribe(response => {
+       this.subjects = response;
+     })
   }
 
   editSubject(subj : Subject, show: boolean){

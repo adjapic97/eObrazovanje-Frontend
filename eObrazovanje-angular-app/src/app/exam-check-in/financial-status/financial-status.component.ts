@@ -1,3 +1,5 @@
+import { StudentService } from './../../services/student-service/student.service';
+import { Subject } from './../../classes/Subject';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -9,10 +11,19 @@ export class FinancialStatusComponent implements OnInit {
 
 
   @Input() totalPrice: number;
+  @Input() ispitiZaPrijavu: Subject[];
 
-  constructor() { }
+
+  constructor(private studentService : StudentService) { }
 
   ngOnInit(): void {
+  }
+
+
+
+
+  submit(){
+    this.studentService.prijaviIspite(this.ispitiZaPrijavu)
   }
 
 }

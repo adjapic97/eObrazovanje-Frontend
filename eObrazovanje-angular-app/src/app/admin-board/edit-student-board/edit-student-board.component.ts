@@ -15,7 +15,7 @@ export var STUDENTS: Student[] = [];
 })
 export class EditStudentBoardComponent implements OnInit {
 
-  students$: Observable<Student[]>;
+  students: Student[] =[];
   total$: Observable<number>;
   @Output() fromStudentAdminEmitter = new EventEmitter<{student: Student, show: boolean}>();
 
@@ -24,26 +24,12 @@ export class EditStudentBoardComponent implements OnInit {
   @ViewChildren(SortableDirective) headers: QueryList<SortableDirective>;
 
   constructor(public service: StudentService) {
-      this.students$ = service.students$;
-      this.total$ = service.total$;
 
-  }
-
-  onSort({column, direction}: SortEvent) {
-    // resetting other headers
-    this.headers.forEach(header => {
-      if (header.sortable !== column) {
-        header.direction = '';
-      }
-    });
-
-    this.service.sortColumn = column;
-    this.service.sortDirection = direction;
   }
 
   ngOnInit(): void {
 
-    STUDENTS = this.service.getStudentsList();
+    this.service.getStudents().subscribe(response => this.students = response)
     console.log(STUDENTS)
   }
 

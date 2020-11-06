@@ -150,10 +150,6 @@ export class ExamCheckInComponent implements OnInit {
     }
 
 
-    submit(){
 
-      this.studentService.prijaviIspite(this.ispitiZaPrijavu)
-      console.log(this.form.value)
-    }
 
 }

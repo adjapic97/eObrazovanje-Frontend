@@ -1,4 +1,5 @@
-<ul ngbNav #nav="ngbNav"  [(activeId)]="active" class="nav-tabs">
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+
   <li [ngbNavItem]="1">
     <a ngbNavLink>Predmeti</a>
     <ng-template ngbNavContent>
@@ -14,42 +15,35 @@
     </ng-template>
   </li>
   <li [ngbNavItem]="3">
-    <a ngbNavLink class="nav-link">Profesori</a>
-    <ng-template ngbNavContent>
-      <p>MARTOVSKI ISPITNI ROK</p>
-    </ng-template>
-  </li>
-  <li [ngbNavItem]="4">
-    <a ngbNavLink class="nav-link">Kolokvijumi</a>
-    <ng-template ngbNavContent>
-      <p>MARTOVSKI ISPITNI ROK</p>
-    </ng-template>
-  </li>
-  <li [ngbNavItem]="5">
-    <a ngbNavLink class="nav-link">Ispiti</a>
-    <ng-template ngbNavContent>
-      <p>MARTOVSKI ISPITNI ROK</p>
-    </ng-template>
-  </li>
-  <li [ngbNavItem]="6">
     <a ngbNavLink class="nav-link">Dokumenti</a>
     <ng-template ngbNavContent>
       <p>MARTOVSKI ISPITNI ROK</p>
     </ng-template>
   </li>
+  <li [ngbNavItem]="4">
+    <a ngbNavLink class="nav-link">
+      <nb-icon icon="person-add-outline"></nb-icon>
+    </a>
+    <ng-template ngbNavContent>
+      <app-user-creation></app-user-creation>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="5">
+    <a ngbNavLink class="nav-link">
+      <nb-icon icon="copy-outline"></nb-icon>
+    </a>
+    <ng-template ngbNavContent>
+
+    </ng-template>
+  </li>
 
 </ul>
+
+
 
 <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
 
 
 
-
-
-
-
-
-
-
-
+<app-create-user-modal #content></app-create-user-modal>

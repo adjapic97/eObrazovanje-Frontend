@@ -1,0 +1,391 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+
+
+    </div>
+    <div class="col-sm-6">
+
+      <div class="card" style="width: 100%; height: 1000px;">
+        <div class="card-body">
+          <div class="container" style="padding-top: 20px; margin: 0;">
+            <div class="row">
+
+              <div class="col-sm-12">
+                <div class="container" style="margin:0;">
+                  <div class="row">
+                    <div class="col-sm-3">
+
+                    </div>
+                    <div class="col-sm-6">
+                      <h2>Kreiraj novog korisnika</h2>
+                    </div>
+                    <div class="col-sm-3">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+
+                <div class="form-group">
+                  <label class="input-field-label" for="roleSelect ">Tip korisnika</label>
+                  <select class="form-control form-control-sm" [(ngModel)]="selectedOption" name="selectedOption"
+                    id="roleSelect">
+
+
+                    <option></option>
+                    <option *ngFor="let r of roles">
+
+                      {{r.name}}
+                    </option>
+                  </select>
+                </div>
+
+                <form [formGroup]="angForm" (ngSubmit)="submitCreateStudent()"
+                  *ngIf="selectedOption == 'STUDENT' || selectedOption == '' ">
+                  <div *ngIf="angForm.errors" class="alert alert-danger">
+                    Username/password invalid
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-3">
+                      <div class="form-group">
+                        <label class="input-field-label" for="cardTypeSelect">Finansiranje</label>
+                        <select formControlName="cardType"
+                          [ngClass]="angForm.controls['cardType'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" name="cardType" id="cardTypeSelect">
+
+
+                          <option value="B">Budzet</option>
+                          <option value="S">Samofinansiranje</option>
+
+                        </select>
+                      </div>
+
+                    </div>
+
+                    <div class="col-9">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="roleSelect">Smer</label>
+                        <select class="form-control form-control-sm"
+                          [ngClass]="angForm.controls['course'].invalid ? 'is-invalid' : ''" formControlName="course"
+                          name="courseName" id="courseSelect">
+
+
+                          <option></option>
+                          <option *ngFor="let c of courses">
+
+                            {{c.courseName}}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="firstName">Ime studenta</label>
+                        <input type="text" class="form-control form-control-sm" formControlName="firstName"
+                          [ngClass]="angForm.controls['firstName'].invalid ? 'is-invalid' : ''" id="firstName" required
+                          aria-describedby="firstName" placeholder="Ime">
+                        <small *ngIf="firstName.touched && firstName.invalid" class="text-error">
+                          <span *ngIf="firstName.errors.required">Ovo polje je obavezno</span>
+                        </small>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="lastName">Prezime studenta</label>
+                        <input type="text" formControlName="lastName"
+                          [ngClass]="angForm.controls['lastName'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="lastName" aria-describedby="lastName"
+                          placeholder="Prezime">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-2">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="indexNumber">Broj indeksa</label>
+                        <input type="text" formControlName="indexNumber" class="form-control form-control-sm"
+                          [ngClass]="angForm.controls['indexNumber'].invalid ? 'is-invalid' : ''" id="indexNumber"
+                          aria-describedby="indexNumber" placeholder="Broj indeksa">
+                        <div *ngIf="indexNumber.touched && indexNumber.invalid" class="alert alert-danger">
+                          <label class="col" *ngIf="indexNumber.errors.cannotContainSpace">
+                            <nb-icon icon="checkmark-circle-2-outline"></nb-icon>
+                            Polje je obavezno
+                          </label>
+                          <label class="col" *ngIf="indexNumber.errors.required">
+                            <nb-icon icon="checkmark-circle-2-outline"></nb-icon>
+                            Obavezno polje!
+                          </label>
+
+
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="username">Korisnicko ime</label>
+                        <input type="text" formControlName="username" class="form-control form-control-sm"
+                          [ngClass]="angForm.controls['username'].invalid ? 'is-invalid' : ''" id="username"
+                          aria-describedby="username" placeholder="Korisnicko ime">
+                        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+                          <label class="col" *ngIf="username.errors.cannotContainSpace">
+                            <nb-icon icon="checkmark-circle-2-outline"></nb-icon>
+                            Ne sme biti razmaka
+                          </label>
+                          <label class="col" *ngIf="username.errors.required">
+                            <nb-icon icon="checkmark-circle-2-outline"></nb-icon>
+                            Obavezno polje!
+                          </label>
+
+
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="password">Lozinka</label>
+                        <input type="password" formControlName="password" class="form-control form-control-sm"
+                          id="password" aria-describedby="password" placeholder="Lozinka "
+                          [ngClass]="angForm.controls['password'].invalid ? 'is-invalid' : ''" placeholder="Password">
+
+                        <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+                          <label class="col"
+                            [ngClass]="angForm.controls['password'].hasError('required') || angForm.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                            <nb-icon icon="checkmark-circle-2-outline">{{ angForm.controls['password'].hasError('required') ||
+                              angForm.controls['password'].hasError('minlength') ? 'cancel' :
+                              'check_circle' }}</nb-icon>
+                            Must be at least 8 characters!
+                          </label>
+                          <label class="col"
+                            [ngClass]="angForm.controls['password'].hasError('required') || angForm.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                            <nb-icon icon="checkmark-circle-2-outline">{{ angForm.controls['password'].hasError('required') ||
+                              angForm.controls['password'].hasError('hasNumber') ? 'cancel' :
+                              'check_circle' }}</nb-icon>
+                            Must contain at least 1 number!
+                          </label>
+                          <label class="col"
+                            [ngClass]="angForm.controls['password'].hasError('required') || angForm.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                            <nb-icon icon="checkmark-circle-2-outline">{{ angForm.controls['password'].hasError('required') ||
+                              angForm.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
+                              'check_circle' }}</nb-icon>
+                            Must contain at least 1 in Capital Case!
+                          </label>
+                          <label class="col"
+                            [ngClass]="angForm.controls['password'].hasError('required') || angForm.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                            <nb-icon icon="checkmark-circle-2-outline">{{ angForm.controls['password'].hasError('required') ||
+                              angForm.controls['password'].hasError('hasSmallCase') ? 'cancel' :
+                              'check_circle' }}</nb-icon>
+                            Must contain at least 1 Letter in Small Case!
+                          </label>
+                          <label class="col"
+                            [ngClass]="angForm.controls['password'].hasError('required') || angForm.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                            <nb-icon icon="checkmark-circle-2-outline">{{ angForm.controls['password'].hasError('required') ||
+                              angForm.controls['password'].hasError('hasSpecialCharacters') ? 'cancel' :
+                              'check_circle' }}</nb-icon>
+                            Must contain at least 1 Special Character!
+                          </label>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <hr />
+
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="city">Grad</label>
+                        <input type="text" formControlName="city" class="form-control form-control-sm"
+                          [ngClass]="angForm.controls['city'].invalid ? 'is-invalid' : ''" id="city"
+                          aria-describedby="city" placeholder="Grad">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="residence_address">Adresa</label>
+                        <input type="text" formControlName="residence_address"
+                          [ngClass]="angForm.controls['residence_address'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="residence_address"
+                          aria-describedby="residence_address" placeholder="Adresa">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="citizenship">Drzavljanstvo</label>
+                        <input type="text" formControlName="citizenship"
+                          [ngClass]="angForm.controls['citizenship'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="citizenship" aria-describedby="citizenship"
+                          placeholder="Drzavljanstvo">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="placeOfBirth">Mesto Rodjenja</label>
+                        <input type="text" formControlName="placeOfBirth"
+                          [ngClass]="angForm.controls['placeOfBirth'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="placeOfBirth" aria-describedby="placeOfBirth"
+                          placeholder="Mesto Rodjenja">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="stateOfBirth">Drzava rodjenja</label>
+                        <input type="text" formControlName="stateOfBirth"
+                          [ngClass]="angForm.controls['stateOfBirth'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="stateOfBirth" aria-describedby="stateOfBirth"
+                          placeholder="Drzava rodjenja">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="emailAddress">E mail</label>
+                        <input type="email" formControlName="emailAddress"
+                          [ngClass]="angForm.controls['emailAddress'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="emailAddress" aria-describedby="emailAddress"
+                          placeholder="E mail">
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="parentName">Ime roditelja</label>
+                        <input type="text" formControlName="parentName"
+                          [ngClass]="angForm.controls['parentName'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="parentName" aria-describedby="parentName"
+                          placeholder="Ime roditelja">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <label class="input-field-label" for="roleSelect">Pol</label>
+                        <select formControlName="gender"
+                          [ngClass]="angForm.controls['gender'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" name="gender" id="genderSelect">
+
+
+                          <option value="1">Muski</option>
+                          <option value="2">Zenski</option>
+
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="phoneNumber">Fiksni telefon</label>
+                        <input type="text" formControlName="phoneNumber"
+                          [ngClass]="angForm.controls['phoneNumber'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="phoneNumber" aria-describedby="phoneNumber"
+                          placeholder="phoneNumber">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="mobilePhoneNumber">Mobilni Telefon</label>
+                        <input type="text" formControlName="mobilePhoneNumber"
+                          [ngClass]="angForm.controls['mobilePhoneNumber'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" formControlName="mobilePhoneNumber"
+                          id="mobilePhoneNumber" aria-describedby="mobilePhoneNumber" placeholder="Mobilni telefon">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="input-field-label" for="dateOfBirth">Datum rodjenja</label>
+                    <div class="input-group">
+
+                      <input class="form-control form-control-sm"
+                        [ngClass]="angForm.controls['dateOfBirth'].invalid ? 'is-invalid' : ''" id="dateOfBirth"
+                        placeholder="yyyy-mm-dd" name="dp" formControlName="dateOfBirth" ngbDatepicker
+                        #d="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary btn-sm" (click)="d.toggle()" type="button">
+                          <nb-icon icon="calendar-outline"></nb-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <input class="form-control form-control-sm" formControlName="role" id="role" hidden="false">
+                  <button type="submit"  class="btn btn-secondary">Kreiraj</button>
+                </form>
+
+                <!--
+
+                <form
+                  *ngIf="selectedOption == 'PROFESSOR' || selectedOption == 'ROLE_ADMIN' || selectedOption == 'ROLE_USER' || selectedOption == 'ASSISTANT_PROFESSOR' ">
+                  <div class="form-group">
+
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                      placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                      else.</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password"
+                      [ngClass]="angForm.controls['password'].invalid ? 'is-invalid' : ''" placeholder="Password">
+
+
+                  </div>
+                  <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  </div>
+                  <button  type="submit" class="btn btn-primary">Submit</button>
+                </form> -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>

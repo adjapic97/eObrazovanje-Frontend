@@ -1,10 +1,14 @@
+<div *ngIf="isSuccessful">
+  <h2>Edited Subject: {{subject.subjectName}}</h2>
 
+</div>
 
+<button class="btn btn-secondary btn-sm" (click)="enableEdit()"><nb-icon icon="edit-outline"></nb-icon></button>
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm">
       <form #heroForm="ngForm">
-
+        <fieldset [disabled]="this.isDisabled">
         <div class="form-group">
           <label for="subjectName">Naziv predmeta</label>
           <input type="text" class="form-control" id="subjectName"
@@ -31,8 +35,8 @@
         </div>
 
 
-        <button type="submit" class="btn btn-success">Submit</button>
-
+        <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
+</fieldset>
       </form>
     </div>
     <div class="col-sm">
@@ -60,6 +64,7 @@
             </tr>
             </tbody>
           </table>
+
 
         </div>
 

@@ -23,8 +23,10 @@ export class RoleGuardService implements CanActivate {
     const token = this.tokenStorageService.getToken();
     // decode the token to get its payload
     const tokenPayload = decode(token);
+
     console.log(this.isAdmin)
-    console.log(tokenPayload.role)
+    console.log(tokenPayload)
+
     if (
       !this.auth.isAuthenticated() ||
       !this.isAdmin

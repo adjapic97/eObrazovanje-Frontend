@@ -1,6 +1,7 @@
 import { Student } from './../classes/Student';
 import { Subject } from './../classes/Subject';
 import { Component, OnInit } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-admin-board',
@@ -13,7 +14,8 @@ export class AdminBoardComponent implements OnInit {
   student: Student;
   isEditSubject: boolean;
   isEditStudent: boolean;
-  constructor() { }
+  closeResult = '';
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.isEditSubject = false;
@@ -30,6 +32,24 @@ export class AdminBoardComponent implements OnInit {
     this.isEditStudent = fromStudentAdminEmitter.show;
     this.student = fromStudentAdminEmitter.student;
 
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 }

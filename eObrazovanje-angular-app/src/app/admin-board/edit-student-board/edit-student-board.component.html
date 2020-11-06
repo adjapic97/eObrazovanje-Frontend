@@ -1,81 +1,72 @@
 <form>
-  <div class="form-group form-inline">
-      Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
-      <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
-  </div>
+
 
   <table class="table table-striped table-hover table-bordered table-sm  table-responsive">
     <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col" sortable="firstName" (sort)="onSort($event)">Ime</th>
-      <th scope="col" sortable="lastName" (sort)="onSort($event)">Prezime</th>
-      <th scope="col" sortable="indexNumber" (sort)="onSort($event)">broj indeksa</th>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" sortable="firstName">Ime</th>
+        <th scope="col" sortable="lastName">Prezime</th>
+        <th scope="col" sortable="indexNumber">broj indeksa</th>
 
-      <th scope="col" sortable="username" (sort)="onSort($event)">Korisnicko ime</th>
-      <th scope="col" sortable="gender" (sort)="onSort($event)">Pol</th>
-      <th scope="col" sortable="dateOfBirth" (sort)="onSort($event)">Datum rodjenja</th>
-      <th scope="col" sortable="stateOfBirth" (sort)="onSort($event)">Drzava rodjenja</th>
-      <th scope="col" sortable="placeOfBirth" (sort)="onSort($event)">Mesto rodjenja</th>
-      <th scope="col" sortable="residence_address" (sort)="onSort($event)">Adresa</th>
-      <th scope="col" sortable="township" (sort)="onSort($event)">Maticni grad</th>
-      <th scope="col" sortable="city" (sort)="onSort($event)">Grad Stanovanja</th>
-      <th scope="col" sortable="phoneNumber" (sort)="onSort($event)">Broj telefona</th>
-      <th scope="col" sortable="mobilePhoneNumber" (sort)="onSort($event)">Broj Mobilnog</th>
-      <th scope="col" sortable="citizenship" (sort)="onSort($event)">Drzavljanstvo</th>
-      <th scope="col" sortable="ethnicity" (sort)="onSort($event)">Veroispovest</th>
-      <th scope="col" sortable="highSchool" (sort)="onSort($event)">Srednja skola</th>
-      <th scope="col" sortable="hsFinishYear" (sort)="onSort($event)">zavrsena</th>
-      <th scope="col" sortable="currentYear" (sort)="onSort($event)">Godina studija</th>
-      <th scope="col" sortable="course" (sort)="onSort($event)">Smer</th>
-      <th scope="col" sortable="studentStatus" (sort)="onSort($event)">status studenta</th>
-
+        <th scope="col" sortable="username">Korisnicko ime</th>
+        <th scope="col" sortable="gender">Pol</th>
+        <th scope="col" sortable="dateOfBirth">Datum rodjenja</th>
+        <th scope="col" sortable="stateOfBirth">Drzava rodjenja</th>
+        <th scope="col" sortable="placeOfBirth">Mesto rodjenja</th>
+        <th scope="col" sortable="residence_address">Adresa</th>
+        <th scope="col" sortable="township">Maticni grad</th>
+        <th scope="col" sortable="city">Grad Stanovanja</th>
+        <th scope="col" sortable="phoneNumber">Broj telefona</th>
+        <th scope="col" sortable="mobilePhoneNumber">Broj Mobilnog</th>
+        <th scope="col" sortable="citizenship">Drzavljanstvo</th>
+        <th scope="col" sortable="ethnicity">Veroispovest</th>
+        <th scope="col" sortable="highSchool">Srednja skola</th>
+        <th scope="col" sortable="hsFinishYear">zavrsena</th>
+        <th scope="col" sortable="currentYear">Godina studija</th>
+        <th scope="col" sortable="studentStatus">status studenta</th>
 
 
-      <th scope="col" sortable="ectsPoints" >Izmeni</th>
 
-    </tr>
+        <th scope="col" sortable="ectsPoints">Izmeni</th>
+
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let student of students$ | async">
-      <th scope="row">{{ student.id }}</th>
-      <td>
-        <ngb-highlight [result]="student.firstName" [term]="service.searchTerm"></ngb-highlight>
-      </td>
-      <td><ngb-highlight [result]="student.lastName" [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.indexNumber " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.username " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.gender " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.dateOfBirth " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.stateOfBirth " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.placeOfBirth " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.residence_address" [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.township" [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.city " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.phoneNumber " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.mobilePhoneNumber " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.citizenship " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.ethnicity " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.highSchool " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.hsFinishYear " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.currentYear " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.course " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><ngb-highlight [result]="student.studentStatus " [term]="service.searchTerm"></ngb-highlight></td>
-      <td><button class="btn btn-sm" (click)="editStudents(student,true)"><nb-icon icon="edit-outline"></nb-icon></button></td>
-    </tr>
+      <tr *ngFor="let student of students">
+        <th scope="row">{{ student.id }}</th>
+        <td>
+          {{student.firstName}}
+        </td>
+        <td>
+          {{student.lastName}}
+        </td>
+        <td>
+          {{student.indexNumber}}
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button class="btn btn-sm" (click)="editStudents(student,true)">
+            <nb-icon icon="edit-outline"></nb-icon>
+          </button></td>
+      </tr>
     </tbody>
   </table>
 
-  <div class="d-flex justify-content-between p-2">
-    <ngb-pagination
-      [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
-    </ngb-pagination>
 
-    <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
-      <option [ngValue]="6">6 items per page</option>
-      <option [ngValue]="8">8 items per page</option>
-      <option [ngValue]="10">10 items per page</option>
-    </select>
-  </div>
 
 </form>

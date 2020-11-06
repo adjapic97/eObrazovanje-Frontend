@@ -38,7 +38,7 @@ export class EditStudentComponent implements OnInit {
           this.isDisabled = true;
 
           await delay(2000);
-
+          this.isSuccessful = false;
           // Do something after
          // this.isSuccessful = false;
       })();
