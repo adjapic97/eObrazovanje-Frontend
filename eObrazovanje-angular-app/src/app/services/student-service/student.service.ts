@@ -99,6 +99,21 @@ getLoggedStudent(): Observable<any>{
 }
 
 
+getStudentFinancialCard(id): Observable<any>{
+  return this.http.get(STUDENTURL + "get-financial-card?studentId=" + id);
+}
+
+
+depositAmount(amount, student){
+
+  return this.http.post<Student>('http://localhost:8080/api/manager/deposit-amount?amount=' + amount, student, httpOptions).subscribe(
+    (response) => {console.log(response)},
+
+  )
+
+  //this.http.post(STUDENTURL + "deposit-amount")
+
+}
 
 
 //SEARCH

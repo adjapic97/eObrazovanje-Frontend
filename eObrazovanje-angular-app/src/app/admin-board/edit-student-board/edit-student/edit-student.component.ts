@@ -1,3 +1,5 @@
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FinancialCard } from './../../../classes/FinancialCard';
 import { StudentService } from './../../../services/student-service/student.service';
 import { Student } from './../../../classes/Student';
 import { Component, Input, OnInit } from '@angular/core';
@@ -12,12 +14,24 @@ export class EditStudentComponent implements OnInit {
 
   isSuccessful = false;
   isDisabled = true;
-  constructor(private service: StudentService) { }
-
+  finCardForm: FormGroup;
+  constructor(private service: StudentService, private fb : FormBuilder) { }
 
   @Input() student: Student;
+  @Input() financialCard : FinancialCard;
+  //@Input() financialCard : FinancialCard;
   ngOnInit(): void {
+    this.finCardForm = this.createForm();
+
   }
+
+
+  createForm(): FormGroup {
+    return this.fb.group({
+      amount: [0, Validators.required]
+    })
+  }
+
 
   enableEdit(){
     this.isDisabled = !this.isDisabled;
@@ -48,6 +62,13 @@ export class EditStudentComponent implements OnInit {
       }
 
     )
+  }
+
+
+  onFinancialCardSubmit(){
+    console.log(this.student)
+    console.log(this.finCardForm.value.amount)
+    this.service.depositAmount(this.finCardForm.value.amount, this.student)
   }
 
 }

@@ -18,7 +18,8 @@
 
                     </div>
                     <div class="col-sm-6">
-                      <h2>Kreiraj novog korisnika</h2>
+                      <h2 *ngIf="!errorOccured">Kreiraj novog korisnika</h2>
+                      <h2 *ngIf="errorOccured">Proveri Unos!</h2>
                     </div>
                     <div class="col-sm-3">
 

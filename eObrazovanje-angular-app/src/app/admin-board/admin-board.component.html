@@ -11,7 +11,7 @@
     <a ngbNavLink class="nav-link">Studenti</a>
     <ng-template ngbNavContent>
       <app-edit-student-board (fromStudentAdminEmitter)="editStudents($event)"></app-edit-student-board>
-      <app-edit-student *ngIf="isEditStudent" [student]="student"></app-edit-student>
+      <app-edit-student *ngIf="isEditStudent" [student]="student" [financialCard]="financialCard"></app-edit-student>
     </ng-template>
   </li>
   <li [ngbNavItem]="3">

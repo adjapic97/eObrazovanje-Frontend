@@ -30,6 +30,7 @@ export class UserCreationComponent implements OnInit {
   public flag: boolean;
   roles: Role[] = [];
   courses: Courses[] = [];
+  errorOccured: boolean = false;
 
   constructor(private fb: FormBuilder, private authSerivce: AuthGuardService, private userService : UserService) {
     this.angForm = this.createForm();
@@ -144,7 +145,9 @@ export class UserCreationComponent implements OnInit {
           console.log(this.angForm)
       },
       err => {
-          console.log(err)
+
+        this.errorOccured = true;
+          console.log(err.error.message)
       }
     );
   }

@@ -1,3 +1,4 @@
+import { FinancialCard } from './FinancialCard';
 import { StudentHasSubject } from './StudentHasSubject';
 import { Courses } from './Courses';
 import { Role } from './Role';
@@ -28,4 +29,5 @@ export class Student{
   studentStatus: string;
   StudentHasSubjectDTO: StudentHasSubject[];
   roles: Role[];
+  financialCard: FinancialCard;
 }

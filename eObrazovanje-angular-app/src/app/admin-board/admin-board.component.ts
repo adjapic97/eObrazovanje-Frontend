@@ -1,3 +1,4 @@
+import { FinancialCard } from './../classes/FinancialCard';
 import { Student } from './../classes/Student';
 import { Subject } from './../classes/Subject';
 import { Component, OnInit } from '@angular/core';
@@ -12,10 +13,11 @@ export class AdminBoardComponent implements OnInit {
   active = 1;
   subject: Subject;
   student: Student;
+  financialCard: FinancialCard;
   isEditSubject: boolean;
   isEditStudent: boolean;
   closeResult = '';
-  constructor(private modalService: NgbModal) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.isEditSubject = false;
@@ -31,25 +33,9 @@ export class AdminBoardComponent implements OnInit {
   editStudents(fromStudentAdminEmitter){
     this.isEditStudent = fromStudentAdminEmitter.show;
     this.student = fromStudentAdminEmitter.student;
+    this.financialCard = fromStudentAdminEmitter.finacialCard;
 
   }
 
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
 
 }
