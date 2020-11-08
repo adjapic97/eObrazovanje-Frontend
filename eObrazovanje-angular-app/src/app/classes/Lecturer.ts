@@ -1,3 +1,4 @@
+import { Subject } from './Subject';
 import { Role } from './Role';
 
 export class Lecturer{
@@ -19,6 +20,7 @@ export class Lecturer{
   citizenship: string;
   ethnicity: string;
   roles: Role[];
+  subjects?: Subject[];
 
 
 }

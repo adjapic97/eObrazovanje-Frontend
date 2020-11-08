@@ -53,6 +53,9 @@ import { EditSubjectComponent } from './admin-board/edit-subject/edit-subject.co
 import { EditStudentBoardComponent } from './admin-board/edit-student-board/edit-student-board.component';
 import { EditStudentComponent } from './admin-board/edit-student-board/edit-student/edit-student.component';
 import { UserCreationComponent } from './user-creation/user-creation.component';
+import { SubjectCreationComponent } from './subject-creation/subject-creation.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 
 
@@ -81,7 +84,8 @@ import { UserCreationComponent } from './user-creation/user-creation.component';
     EditStudentBoardComponent,
     EditStudentComponent,
     CreateUserModalComponent,
-    UserCreationComponent
+    UserCreationComponent,
+    SubjectCreationComponent
 
 
 
@@ -122,7 +126,10 @@ import { UserCreationComponent } from './user-creation/user-creation.component';
     NbAlertModule,
     HttpClientModule,
     NbAuthModule.forRoot(),
-    NgbModule
+    NgbModule,
+    FormsModule,
+    NgSelectModule
+
 
 
   ],
@@ -131,4 +138,4 @@ import { UserCreationComponent } from './user-creation/user-creation.component';
    ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {  }

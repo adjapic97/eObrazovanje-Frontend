@@ -1,3 +1,6 @@
+import { LecturerService } from './../services/lecturer-service/lecturer.service';
+import { SubjectService } from './../services/subject-service/subject.service';
+import { Subject } from './../classes/Subject';
 import { UserService } from './../services/user.service';
 import { Student } from "./../classes/Student";
 import { CustomValidator } from "./../common/validators/custom-validator";
@@ -24,19 +27,25 @@ export class UserCreationComponent implements OnInit {
   courseName: string;
   printedOption: string;
   angForm: FormGroup;
+  lectForm: FormGroup;
   dateOfBirth: NgbDateStruct;
   public student: Student;
   private routerInfo: BehaviorSubject<string>;
   public flag: boolean;
   roles: Role[] = [];
+  selectedRoles: Role[] = [];
+  subjects: Subject[] = [];
+  selectedSubjects: Subject [] = [];
   courses: Courses[] = [];
   errorOccured: boolean = false;
 
-  constructor(private fb: FormBuilder, private authSerivce: AuthGuardService, private userService : UserService) {
+  constructor(private fb: FormBuilder,private lecturerService : LecturerService, private authSerivce: AuthGuardService, private userService : UserService, private subjectService : SubjectService) {
     this.angForm = this.createForm();
+    this.lectForm = this.createLectForm();
 
     this.routerInfo = new BehaviorSubject<string>("");
   }
+
 
 
 
@@ -94,7 +103,67 @@ export class UserCreationComponent implements OnInit {
     });
   }
 
+
+  createLectForm(): FormGroup {
+    return this.fb.group({
+      firstName: ["", Validators.required],
+      course: ["", Validators.required],
+      dateOfBirth: ["", Validators.required],
+      lastName: ["", Validators.required],
+      indexNumber: ["", Validators.required],
+      username: [
+        "",
+        Validators.compose([
+          Validators.required,
+          CustomValidator.cannotContainSpace,
+        ]),
+      ],
+      password: [
+        null,
+        Validators.compose([
+          Validators.required,
+          // 2. check whether the entered password has a number
+          CustomValidator.patternValidator(/\d/, { hasNumber: true }),
+          // 3. check whether the entered password has upper case letter
+          CustomValidator.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
+          // 4. check whether the entered password has a lower-case letter
+          CustomValidator.patternValidator(/[a-z]/, { hasSmallCase: true }),
+          // 5. check whether the entered password has a special character
+          CustomValidator.patternValidator(
+            /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
+            {
+              hasSpecialCharacters: true,
+            }
+          ),
+          // 6. Has a minimum length of 8 characters
+          Validators.minLength(8),
+        ]),
+      ],
+      city: ["", Validators.required],
+      residence_address: ["", Validators.required],
+      citizenship: ["", Validators.required],
+      placeOfBirth: ["", Validators.required],
+      stateOfBirth: ["", Validators.required],
+      cardType: ["", Validators.required],
+      emailAddress: [
+        "",
+        [Validators.required,
+        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
+      ],
+      parentName: ["", Validators.required],
+      gender: ["", Validators.required],
+      mobilePhoneNumber: ["", Validators.required],
+      phoneNumber: ["", Validators.required],
+
+    });
+  }
+
+
   async ngOnInit(): Promise<void> {
+    this.subjectService.getSubjects().subscribe(response => {
+      this.subjects = response;
+    })
+
     this.authSerivce.getRoles().subscribe((response) => {
       this.roles = response;
     });
@@ -150,5 +219,16 @@ export class UserCreationComponent implements OnInit {
           console.log(err.error.message)
       }
     );
+  }
+
+  submitCreateLecturer(){
+    this.lecturerService.createLecturer(this.lectForm.value,this.selectedRoles, this.selectedSubjects).subscribe(
+      data => {
+        console.log(data)
+      },
+      err => {
+        console.log(err.error.message)
+      }
+    )
   }
 }

@@ -78,4 +78,16 @@ export class SubjectService {
 
 
 
+  createSubject(form, lecturers){
+
+    return this.http.post<Subject>("http://localhost:8080/api/manager/" + 'create-subject',{
+      subjectName: form.subjectName,
+      shortName: form.shortName,
+      ectsPoints: form.ectsPoints,
+      lecturerDTO: lecturers
+    }, httpOptions);
+
+  }
+
+
 }

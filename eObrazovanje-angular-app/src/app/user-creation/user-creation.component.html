@@ -352,9 +352,275 @@
                   </div>
                   <hr />
                   <input class="form-control form-control-sm" formControlName="role" id="role" hidden="false">
-                  <button type="submit"  class="btn btn-secondary">Kreiraj</button>
+                  <button type="submit" class="btn btn-secondary">Kreiraj</button>
                 </form>
 
+
+                <div
+                  *ngIf="selectedOption == 'PROFESSOR' || selectedOption == 'DEMONSTRATOR' || selectedOption == 'HELPER' || selectedOption == 'ASSISTANT_PROFESSOR' || selectedOption == 'ROLE_ADMIN' "
+                  class="form-group">
+                  <label class="input-field-label" for="roleSelect">Zvanja i uloge</label>
+                  <ng-select class="custom" id="roleSelect" [multiple]="true" [closeOnSelect]="false" [(ngModel)]="selectedRoles">
+                    <ng-option *ngFor="let role of roles" [value]="role">{{role.name.toLowerCase()}}
+                    </ng-option>
+
+                  </ng-select>
+                </div>
+
+
+                <div
+                  *ngIf="selectedOption == 'PROFESSOR' || selectedOption == 'DEMONSTRATOR' || selectedOption == 'HELPER' || selectedOption == 'ASSISTANT_PROFESSOR' || selectedOption == 'ROLE_ADMIN' "
+                  class="form-group">
+                  <label class="input-field-label" for="subjectSelect">Predmeti</label>
+                  <ng-select class="custom" id="subjectSelect" [multiple]="true" [closeOnSelect]="false" [(ngModel)]="selectedSubjects">
+                    <ng-option *ngFor="let role of subjects" [value]="role">{{role.subjectName}}
+                    </ng-option>
+
+                  </ng-select>
+                </div>
+
+                <form [formGroup]="lectForm" (ngSubmit)="submitCreateLecturer()"
+                  *ngIf="selectedOption == 'PROFESSOR' || selectedOption == 'DEMONSTRATOR' || selectedOption == 'HELPER' || selectedOption == 'ASSISTANT_PROFESSOR' || selectedOption == 'ROLE_ADMIN' ">
+                  <div *ngIf="lectForm.errors" class="alert alert-danger">
+                    Username/password invalid
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="firstName">Ime Predavaca</label>
+                        <input type="text" class="form-control form-control-sm" formControlName="firstName"
+                          [ngClass]="lectForm.controls['firstName'].invalid ? 'is-invalid' : ''" id="firstName" required
+                          aria-describedby="firstName" placeholder="Ime">
+                        <small *ngIf="firstName.touched && firstName.invalid" class="text-error">
+                          <span *ngIf="firstName.errors.required">Ovo polje je obavezno</span>
+                        </small>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="lastName">Prezime Predavaca</label>
+                        <input type="text" formControlName="lastName"
+                          [ngClass]="lectForm.controls['lastName'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="lastName" aria-describedby="lastName"
+                          placeholder="Prezime">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+
+                    <div class="col-6">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="username">Korisnicko ime</label>
+                        <input type="text" formControlName="username" class="form-control form-control-sm"
+                          [ngClass]="lectForm.controls['username'].invalid ? 'is-invalid' : ''" id="username"
+                          aria-describedby="username" placeholder="Korisnicko ime">
+                        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+                          <label class="col" *ngIf="username.errors.cannotContainSpace">
+                            <nb-icon icon="checkmark-circle-2-outline"></nb-icon>
+                            Ne sme biti razmaka
+                          </label>
+                          <label class="col" *ngIf="username.errors.required">
+                            <nb-icon icon="checkmark-circle-2-outline"></nb-icon>
+                            Obavezno polje!
+                          </label>
+
+
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="password">Lozinka</label>
+                        <input type="password" formControlName="password" class="form-control form-control-sm"
+                          id="password" aria-describedby="password" placeholder="Lozinka "
+                          [ngClass]="lectForm.controls['password'].invalid ? 'is-invalid' : ''" placeholder="Password">
+
+                        <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+                          <label class="col"
+                            [ngClass]="lectForm.controls['password'].hasError('required') || angForm.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                            <nb-icon icon="checkmark-circle-2-outline">{{ angForm.controls['password'].hasError('required') ||
+                            lectForm.controls['password'].hasError('minlength') ? 'cancel' :
+                            'check_circle' }}</nb-icon>
+                            Must be at least 8 characters!
+                          </label>
+                          <label class="col"
+                            [ngClass]="lectForm.controls['password'].hasError('required') || angForm.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                            <nb-icon icon="checkmark-circle-2-outline">{{ angForm.controls['password'].hasError('required') ||
+                            angForm.controls['password'].hasError('hasNumber') ? 'cancel' :
+                            'check_circle' }}</nb-icon>
+                            Must contain at least 1 number!
+                          </label>
+                          <label class="col"
+                            [ngClass]="lectForm.controls['password'].hasError('required') || angForm.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                            <nb-icon icon="checkmark-circle-2-outline">{{ angForm.controls['password'].hasError('required') ||
+                            lectForm.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
+                            'check_circle' }}</nb-icon>
+                            Must contain at least 1 in Capital Case!
+                          </label>
+                          <label class="col"
+                            [ngClass]="lectForm.controls['password'].hasError('required') || angForm.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                            <nb-icon icon="checkmark-circle-2-outline">{{ angForm.controls['password'].hasError('required') ||
+                            lectForm.controls['password'].hasError('hasSmallCase') ? 'cancel' :
+                            'check_circle' }}</nb-icon>
+                            Must contain at least 1 Letter in Small Case!
+                          </label>
+                          <label class="col"
+                            [ngClass]="lectForm.controls['password'].hasError('required') || angForm.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                            <nb-icon icon="checkmark-circle-2-outline">{{ angForm.controls['password'].hasError('required') ||
+                            lectForm.controls['password'].hasError('hasSpecialCharacters') ? 'cancel' :
+                            'check_circle' }}</nb-icon>
+                            Must contain at least 1 Special Character!
+                          </label>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <hr />
+
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="city">Grad</label>
+                        <input type="text" formControlName="city" class="form-control form-control-sm"
+                          [ngClass]="lectForm.controls['city'].invalid ? 'is-invalid' : ''" id="city"
+                          aria-describedby="city" placeholder="Grad">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="residence_address">Adresa</label>
+                        <input type="text" formControlName="residence_address"
+                          [ngClass]="lectForm.controls['residence_address'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="residence_address"
+                          aria-describedby="residence_address" placeholder="Adresa">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="citizenship">Drzavljanstvo</label>
+                        <input type="text" formControlName="citizenship"
+                          [ngClass]="lectForm.controls['citizenship'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="citizenship" aria-describedby="citizenship"
+                          placeholder="Drzavljanstvo">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="placeOfBirth">Mesto Rodjenja</label>
+                        <input type="text" formControlName="placeOfBirth"
+                          [ngClass]="lectForm.controls['placeOfBirth'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="placeOfBirth" aria-describedby="placeOfBirth"
+                          placeholder="Mesto Rodjenja">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="stateOfBirth">Drzava rodjenja</label>
+                        <input type="text" formControlName="stateOfBirth"
+                          [ngClass]="lectForm.controls['stateOfBirth'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="stateOfBirth" aria-describedby="stateOfBirth"
+                          placeholder="Drzava rodjenja">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="emailAddress">E mail</label>
+                        <input type="email" formControlName="emailAddress"
+                          [ngClass]="lectForm.controls['emailAddress'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="emailAddress" aria-describedby="emailAddress"
+                          placeholder="E mail">
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+
+
+
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="phoneNumber">Fiksni telefon</label>
+                        <input type="text" formControlName="phoneNumber"
+                          [ngClass]="lectForm.controls['phoneNumber'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" id="phoneNumber" aria-describedby="phoneNumber"
+                          placeholder="phoneNumber">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+
+                        <label class="input-field-label" for="mobilePhoneNumber">Mobilni Telefon</label>
+                        <input type="text" formControlName="mobilePhoneNumber"
+                          [ngClass]="lectForm.controls['mobilePhoneNumber'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" formControlName="mobilePhoneNumber"
+                          id="mobilePhoneNumber" aria-describedby="mobilePhoneNumber" placeholder="Mobilni telefon">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-2">
+                      <div class="form-group">
+                        <label class="input-field-label" for="roleSelect">Pol</label>
+                        <select formControlName="gender"
+                          [ngClass]="lectForm.controls['gender'].invalid ? 'is-invalid' : ''"
+                          class="form-control form-control-sm" name="gender" id="genderSelect">
+
+
+                          <option value="male">Muski</option>
+                          <option value="female">Zenski</option>
+
+                        </select>
+                      </div>
+
+                    </div>
+                    <div class="col-10">
+
+                      <div class="form-group">
+                        <label class="input-field-label" for="dateOfBirth">Datum rodjenja</label>
+                        <div class="input-group">
+
+                          <input class="form-control form-control-sm"
+                            [ngClass]="lectForm.controls['dateOfBirth'].invalid ? 'is-invalid' : ''" id="dateOfBirth"
+                            placeholder="yyyy-mm-dd" name="dp" formControlName="dateOfBirth" ngbDatepicker
+                            #d="ngbDatepicker">
+                          <div class="input-group-append">
+                            <button class="btn btn-outline-secondary btn-sm" (click)="d.toggle()" type="button">
+                              <nb-icon icon="calendar-outline"></nb-icon>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr />
+                  <button type="submit" class="btn btn-secondary">Kreiraj</button>
+                </form>
                 <!--
 
                 <form
