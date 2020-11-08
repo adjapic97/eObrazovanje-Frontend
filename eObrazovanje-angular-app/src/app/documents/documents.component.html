@@ -1,1 +1,23 @@
-<p>documents works!</p>
+<table class="table table-bordered table-sm table-striped table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Format Dokumenta</th>
+    <th scope="col">Ime</th>
+    <th scope="col">Prezime</th>
+    <th scope="col">Zvanje</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let document of documents;">
+    <td><nb-icon icon="file-text-outline"></nb-icon>
+      {{document.type.toUpperCase()}}
+    </td>
+    <td>
+      {{ document.name }}
+    </td>
+    <td><a  href="javascript:void(0)"
+      style="cursor:pointer"
+      (click)="downloadPdf(document.url,document.name)">download</a></td>
+  </tr>
+  </tbody>
+</table>
