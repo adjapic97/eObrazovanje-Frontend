@@ -25,10 +25,8 @@
         <th scope="col" sortable="hsFinishYear">zavrsena</th>
         <th scope="col" sortable="currentYear">Godina studija</th>
         <th scope="col" sortable="studentStatus">status studenta</th>
-
-
-
-        <th scope="col" sortable="ectsPoints">Izmeni</th>
+        <th scope="col" >Izmeni</th>
+        <th scope="col" >Izbrisi</th>
 
       </tr>
     </thead>
@@ -44,24 +42,29 @@
         <td>
           {{student.indexNumber}}
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><button class="btn btn-sm" (click)="editStudents(student,true)">
+        <td>{{student.username}}</td>
+        <td>{{student.gender}}</td>
+        <td>{{student.dateOfBirth}}</td>
+        <td>{{student.stateOfBirth}}</td>
+        <td>{{student.placeOfBirth}}</td>
+        <td>{{student.residence_address}}</td>
+        <td>{{student.township}}</td>
+        <td>{{student.city}}</td>
+        <td>{{student.phoneNumber}}</td>
+        <td>{{student.mobilePhoneNumber}}</td>
+        <td>{{student.citizenship}}</td>
+        <td>{{student.ethnicity}}</td>
+        <td>{{student.highSchool}}</td>
+        <td>{{student.hsFinishYear}}</td>
+        <td>{{student.currentYear}}</td>
+        <td>{{student.studentStatus}}</td>
+
+        <td><button class="btn btn-sm btn-success" (click)="editStudents(student,true)">
             <nb-icon icon="edit-outline"></nb-icon>
+          </button></td>
+
+          <td><button class="btn btn-sm btn-danger" (click)="editStudents(student,true)">
+            <nb-icon icon="trash-2-outline"></nb-icon>
           </button></td>
       </tr>
     </tbody>

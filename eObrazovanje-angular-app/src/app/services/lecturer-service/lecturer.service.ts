@@ -35,6 +35,7 @@ export class LecturerService {
     return this.http.post<Lecturer>("http://localhost:8080/api/manager/create-lecturer",{
       firstName: form.firstName,
       lastName: form.lastName,
+      password: form.password,
       username: form.username,
       gender: form.gender,
       dateOfBirth: date,

@@ -55,6 +55,7 @@ import { EditStudentComponent } from './admin-board/edit-student-board/edit-stud
 import { UserCreationComponent } from './user-creation/user-creation.component';
 import { SubjectCreationComponent } from './subject-creation/subject-creation.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SubjectExamManagmentComponent } from './subject-exam-managment/subject-exam-managment.component';
 
 
 
@@ -85,7 +86,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     EditStudentComponent,
     CreateUserModalComponent,
     UserCreationComponent,
-    SubjectCreationComponent
+    SubjectCreationComponent,
+    SubjectExamManagmentComponent
 
 
 

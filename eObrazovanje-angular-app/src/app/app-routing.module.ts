@@ -1,3 +1,4 @@
+import { SubjectExamManagmentComponent } from './subject-exam-managment/subject-exam-managment.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { FinancialCardComponent } from './financial-card/financial-card.component';
 import { ExamHistoryComponent } from './exam-history/exam-history.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
     { path: 'financial-card', component: FinancialCardComponent},
     { path: 'documents', component: DocumentsComponent},
     { path: 'student-details', component: StudentDetailsComponent},
+    { path: 'subject-manage-exam', component: SubjectExamManagmentComponent},
 
     { path: 'admin-board',
     canActivate: [RoleGuardService],

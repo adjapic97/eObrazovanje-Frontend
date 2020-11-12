@@ -77,9 +77,9 @@ export class AppComponent implements OnInit {
 
         },
         {
-          title: 'Predmeti',
+          title: 'Upravljaj polaganjima',
           icon: 'settings-2-outline',
-          link: ''
+          link: 'subject-manage-exam'
 
         },
         {

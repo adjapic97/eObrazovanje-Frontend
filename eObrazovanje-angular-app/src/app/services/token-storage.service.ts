@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 const TOKEN_KEY = 'accessToken';
@@ -9,10 +10,11 @@ const USER_KEY = 'auth-user';
 export class TokenStorageService {
 
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
 
   signOut() {
     window.sessionStorage.clear();
+    this.http.get("http://localhost:8080/logout")
   }
 
   public saveToken(token: string) {
