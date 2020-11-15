@@ -6,18 +6,18 @@
       <form>
         <div class="mb-3">
           <label for="ukupanTrosak" class="form-label">Za prijavu</label>
-          <input type="text" [placeholder]="totalPrice" class="form-control" id="ukupanTrosak" aria-describedby="ukupnoZaUplatu">
+          <input type="text" [placeholder]="totalPrice" (change)="change($event)" class="form-control" id="ukupanTrosak" aria-describedby="ukupnoZaUplatu">
 
         </div>
         <div class="mb-3">
           <label for="stanjeNaKartici" class="form-label">Trenutno stanje na racunu</label>
-          <input type="text" placeholder="0.00" class="form-control" id="stanjeNaKartici">
+          <input type="text" placeholder="0.00" class="form-control" [value]="financialCard?.balance" id="stanjeNaKartici">
         </div>
         <div class="mb-3">
           <label for="stanjePoslePrijave" class="form-label">Stanje posle prijave</label>
-          <input type="text" placeholder="0.00" class="form-control" id="stanjePoslePrijave">
+          <input type="text" placeholder="0.00" class="form-control" name="afterCheckValue"  [value]="financialCard?.balance - totalPrice" id="stanjePoslePrijave">
         </div>
-        <button type="submit" class="btn btn-primary btn-prijavi" (click)="submit()">Prijavi ispite</button>
+        <button type="submit" class="btn btn-primary btn-prijavi"  (click)="submit()">Prijavi ispite</button>
       </form>
     </div>
     <div class="col-sm">

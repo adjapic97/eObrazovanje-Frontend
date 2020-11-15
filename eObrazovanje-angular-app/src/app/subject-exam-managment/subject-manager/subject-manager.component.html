@@ -1,0 +1,51 @@
+<div class="card card-block2" style="height: 700px; margin-top: 10px;">
+  <div class="container-fluid" style="margin:0; margin-top: 50px;">
+    <div class="row">
+      <div class="col-sm-4">
+        {{subject?.subjectName}}
+
+      </div>
+      <div class="col-sm-8">
+        <table class="table table-bordered table-sm table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Ime</th>
+              <th scope="col">Prezime</th>
+              <th scope="col">Zvanje</th>
+              <th scope="col">Bodovi</th>
+              <th scope="col">Ocena</th>
+              <th scope="col">Polozio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of students; index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>
+                {{ student.firstName }}
+              </td>
+              <td>{{ student.lastName }}</td>
+              <td>
+                <p *ngFor="let role of student.roles">{{ role.name }}</p>
+              </td>
+              <td>
+                <div class="input-group mb-3">
+                  <input type="number" max="100" class="form-control" aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default">
+                </div>
+              </td>
+              <td>
+                <div class="input-group mb-3">
+
+                  <input type="text" class="form-control" aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default">
+                </div>
+              </td>
+              <td> <input type="checkbox" aria-label="Checkbox for following text input"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

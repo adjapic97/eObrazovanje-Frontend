@@ -43,3 +43,7 @@ h1{
 .card-block:hover{
   transform: scale(1.01);
 }
+
+.card-title{
+  font-size: 3rem;
+}

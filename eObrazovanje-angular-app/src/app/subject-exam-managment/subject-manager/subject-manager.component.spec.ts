@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExamCheckInTableComponent } from './exam-check-in-table.component';
+import { SubjectManagerComponent } from './subject-manager.component';
 
-describe('ExamCheckInTableComponent', () => {
-  let component: ExamCheckInTableComponent;
-  let fixture: ComponentFixture<ExamCheckInTableComponent>;
+describe('SubjectManagerComponent', () => {
+  let component: SubjectManagerComponent;
+  let fixture: ComponentFixture<SubjectManagerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExamCheckInTableComponent ]
+      declarations: [ SubjectManagerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExamCheckInTableComponent);
+    fixture = TestBed.createComponent(SubjectManagerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,3 +1,4 @@
+import { TokenStorageService } from './../token-storage.service';
 import { Lecturer } from './../../classes/Lecturer';
 import { Subject } from './../../classes/Subject';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -24,7 +25,7 @@ const httpOptions = {
 export class StudentService implements OnInit {
 
 
-  constructor(private http : HttpClient, private pipe: DecimalPipe) {
+  constructor(private http : HttpClient, private pipe: DecimalPipe, private tokenSS : TokenStorageService) {
 
 
   }
@@ -82,13 +83,30 @@ export class StudentService implements OnInit {
     }, httpOptions);
   }
 
+  updatePartial(form): Observable<any>{
+    console.log(form)
+    return this.http.put(STUDENTURL + "update-partial/" + this.tokenSS.getUser().id, {
+      username: form.username,
+      mobilePhoneNumber: form.mobilePhoneNumber,
+      phoneNumber: form.phoneNumber,
+      residence_address: form.residence_address
+    }, httpOptions)
+  }
 
 
-  prijaviIspite(subjects){
+  prijaviIspite(subjects, totalPrice){
 
     console.log(subjects)
-    return this.http.post('http://localhost:8080/api/student/exam-check',subjects,httpOptions)
-    .subscribe(subjects => (console.log(subjects)))
+    return this.http.post('http://localhost:8080/api/student/exam-check?totalPrice=' + totalPrice,subjects,httpOptions)
+
+
+  }
+
+  odjaviIspite(subjects, totalPrice){
+
+    console.log(subjects)
+    return this.http.post('http://localhost:8080/api/student/exam-check-out?returnAmount=' + totalPrice,subjects,httpOptions)
+
 
   }
 
@@ -110,6 +128,7 @@ depositAmount(amount, student){
     (response) => {console.log(response)},
 
   )
+
 
   //this.http.post(STUDENTURL + "deposit-amount")
 

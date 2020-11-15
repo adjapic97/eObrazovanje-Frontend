@@ -1,5 +1,5 @@
-import { Subject } from './../../classes/Subject';
 import { Observable } from 'rxjs';
+import { Subject } from './../../classes/Subject';
 import { ExamPeriod } from './../../classes/ExamPeriod';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -31,6 +31,10 @@ export class ExamService {
 
   getNonPassedSubjects(): Observable<Subject[]>{
     return this.http.get<Subject[]>('http://localhost:8080/api/exam-period/get-subjects?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
+  }
+
+  getPrijavioSubjects(): Observable<Subject[]> {
+    return this.http.get<Subject[]>('http://localhost:8080/api/exam-period/get-subjects-prijavio?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
   }
 
 

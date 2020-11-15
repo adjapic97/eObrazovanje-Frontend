@@ -13,6 +13,8 @@ export class Subject {
   colloqiums?: Colloqium[];
   studentHasSubjects?: StudentHasSubject[];
   selected?: boolean = true;
+  placeOfExam?: string;
+  examDate?: Date;
 
 
   constructor() { }

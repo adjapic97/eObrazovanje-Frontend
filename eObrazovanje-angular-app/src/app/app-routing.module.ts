@@ -1,3 +1,4 @@
+import { ExamCheckOutComponent } from './exam-check-out/exam-check-out.component';
 import { SubjectExamManagmentComponent } from './subject-exam-managment/subject-exam-managment.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { FinancialCardComponent } from './financial-card/financial-card.component';
@@ -37,6 +38,7 @@ const routes: Routes = [
   canActivate: [AuthGuardService],
   children: [
     { path: 'prijava-ispita', component: ExamCheckInComponent},
+    { path: 'odjava-ispita', component: ExamCheckOutComponent},
     { path: 'student-subjects', component: StudentSubjectsComponent },
     { path: 'passed-subjects', component: PassedSubjectsComponent},
     { path: 'non-passed-subjects', component: NonPassedSubjectsComponent},

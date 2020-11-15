@@ -9,6 +9,7 @@ import { Injectable, PipeTransform, OnInit } from '@angular/core';
 import { BehaviorSubject, Subject as _Subject, Observable, of } from 'rxjs';
 import { DecimalPipe } from '@angular/common';
 import { tap, debounceTime, switchMap, delay } from 'rxjs/operators';
+import { Student } from 'src/app/classes/Student';
 
 
 
@@ -62,6 +63,13 @@ export class SubjectService {
     return this.subjectsList;
   }
 
+  getSubjectsForLecturer(id) {
+    return this.http.get<Subject[]>(SUBJECTURL + "get-subjects-for-lecturer?lecturerId=" + id );
+  }
+
+  getStudentsForSubjectPrijavio(id){
+    return this.http.get<Student[]>(SUBJECTURL + "get-students-prijavio?subjectId=" + id);
+  }
 
 
   update(subject): Observable<any>{

@@ -32,7 +32,7 @@ export class UserSideMenuComponent implements OnInit {
             {
               title: 'predmeti koje predaje',
               icon: 'copy-outline',
-              link: 'sluzba/profesor-subjects'
+              link: 'sluzba/subject-manage-exam'
             },
             {
               title: 'Upravljanje aktivnim rokom',
@@ -52,6 +52,7 @@ export class UserSideMenuComponent implements OnInit {
             {
               title: 'Odjava ispita',
               icon: 'close-circle',
+              link: 'sluzba/odjava-ispita'
             },
             {
               title: 'Istorija polaganja',

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FsIconComponent } from './fs-icon.component';
+import { ExamCheckOutComponent } from './exam-check-out.component';
 
-describe('FsIconComponent', () => {
-  let component: FsIconComponent;
-  let fixture: ComponentFixture<FsIconComponent>;
+describe('ExamCheckOutComponent', () => {
+  let component: ExamCheckOutComponent;
+  let fixture: ComponentFixture<ExamCheckOutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FsIconComponent ]
+      declarations: [ ExamCheckOutComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FsIconComponent);
+    fixture = TestBed.createComponent(ExamCheckOutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,10 +1,6 @@
-<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-  <li  *ngFor="let examPeriods of examPeriod" [ngbNavItem]="examPeriods.id" #thenBlock>
-    <a ngbNavLink>{{examPeriods?.examPeriodName}}</a>
 
-    <ng-template ngbNavContent>
 
-      <table class="table table-striped table-bordered table-hover">
+      <table class="table table-striped table-bordered table-hover table-lg">
         <thead>
         <tr>
           <th scope="col">Naziv predmeta</th>
@@ -12,7 +8,7 @@
           <th scope="col">ECTS Poeni</th>
           <th scople="col">Mesto odrzavanja ispita</th>
           <th scople="col">Datum odrzavanja ispita</th>
-          <th scope="col">Prijavi ispit</th>
+          <th scope="col">Odjavi ispit</th>
         </tr>
         </thead>
         <tbody>
@@ -33,14 +29,7 @@
         </tbody>
       </table>
 
-    </ng-template>
+      <button class="btn btn-success btn-md" (click)="checkOut()">Odjavi</button>
 
 
-  </li>
 
-
-</ul>
-
-<div [ngbNavOutlet]="nav" class="mt-2"></div>
-
-<app-financial-status [totalPrice]="totalPrice" [ispitiZaPrijavu]="ispitiZaPrijavu" ></app-financial-status>

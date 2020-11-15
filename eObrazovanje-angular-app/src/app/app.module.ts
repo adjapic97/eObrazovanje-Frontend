@@ -31,8 +31,6 @@ import {ContextMenuModule} from 'primeng/contextmenu';
 import {ButtonModule} from 'primeng/button';
 import {ToastModule, Toast} from 'primeng/toast';
 import {InputTextModule} from 'primeng/inputtext';
-import { ExamCheckInTableComponent } from './exam-check-in-table/exam-check-in-table.component';
-import { FsIconComponent } from './exam-check-in-table/fs-icon/fs-icon.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
@@ -56,6 +54,8 @@ import { UserCreationComponent } from './user-creation/user-creation.component';
 import { SubjectCreationComponent } from './subject-creation/subject-creation.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SubjectExamManagmentComponent } from './subject-exam-managment/subject-exam-managment.component';
+import { SubjectManagerComponent } from './subject-exam-managment/subject-manager/subject-manager.component';
+import { ExamCheckOutComponent } from './exam-check-out/exam-check-out.component';
 
 
 
@@ -67,8 +67,6 @@ import { SubjectExamManagmentComponent } from './subject-exam-managment/subject-
     StudentSubjectsComponent,
     HomeNewsNotificationsComponent,
     ExamCheckInComponent,
-    ExamCheckInTableComponent,
-    FsIconComponent,
     LoginComponent,
     AdminBoardComponent,
     PassedSubjectsComponent,
@@ -87,7 +85,9 @@ import { SubjectExamManagmentComponent } from './subject-exam-managment/subject-
     CreateUserModalComponent,
     UserCreationComponent,
     SubjectCreationComponent,
-    SubjectExamManagmentComponent
+    SubjectExamManagmentComponent,
+    SubjectManagerComponent,
+    ExamCheckOutComponent
 
 
 

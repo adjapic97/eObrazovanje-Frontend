@@ -1,55 +1,19 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
-      <h1 class="mt-5">Upravljanje predmetima</h1>
       <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
 
-        <div class="col-5">
-          <div class="card card-block card-1">
+        <div class="col-5 " *ngFor="let subject of lecturerSubjects">
+          <div class="card card-block card-1" >
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-
+              <h5 class="card-title" >{{subject.subjectName}}</h5>
+              <p class="card-text">{{subject.shortName}}</p>
+              <p class="card-text">{{subject.ectsPoints}}</p>
+              <button class="btn btn-success" (click)="manage(subject)"> edit</button>
             </div>
           </div>
         </div>
 
-        <div class="col-5">
-          <div class="card card-block card-1">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-5">
-          <div class="card card-block card-1">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-5">
-          <div class="card card-block card-1">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
 
 
 
@@ -58,10 +22,9 @@
     </div>
 
     <div class="col-sm-12">
-      <div class="card card-block2" style="height: 700px; margin-top: 10px;">
-
-      </div>
+      <app-subject-manager [subject]="subject" ></app-subject-manager>
     </div>
+
 
 
   </div>
