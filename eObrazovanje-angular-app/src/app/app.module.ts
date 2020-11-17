@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbLayoutComponent, NbCardComponent, NbMenuModule, NbCardModule, NbIconModule, NbContextMenuModule, NbUserModule, NbActionsModule, NbProgressBarModule, NbTreeGridModule, NbAlertModule, NbLayoutFooterComponent } from '@nebular/theme';
+import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbLayoutComponent, NbCardComponent, NbMenuModule, NbCardModule, NbIconModule, NbContextMenuModule, NbUserModule, NbActionsModule, NbProgressBarModule, NbTreeGridModule, NbAlertModule, NbLayoutFooterComponent, NbSearchModule } from '@nebular/theme';
 import { UserSideMenuComponent } from './user-side-menu/user-side-menu.component';
 import { StudentSubjectsComponent } from './student-subjects/student-subjects.component';
 import { HomeNewsNotificationsComponent } from './home-news-notifications/home-news-notifications.component';
@@ -87,7 +87,8 @@ import { ExamCheckOutComponent } from './exam-check-out/exam-check-out.component
     SubjectCreationComponent,
     SubjectExamManagmentComponent,
     SubjectManagerComponent,
-    ExamCheckOutComponent
+    ExamCheckOutComponent,
+
 
 
 
@@ -130,7 +131,8 @@ import { ExamCheckOutComponent } from './exam-check-out/exam-check-out.component
     NbAuthModule.forRoot(),
     NgbModule,
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
+    NbSearchModule
 
 
 

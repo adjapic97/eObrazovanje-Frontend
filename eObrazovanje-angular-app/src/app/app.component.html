@@ -1,10 +1,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
-<nav class="navbar navbar-expand-md navbar-dark bg-dark" style="color: white;" >
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" style="color: white; position: fixed;" style="height: 10;" >
   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
       <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="navbar-brand">
-              <img src="assets/images/logoss.png" (click)="toggle()" width="30" height="30" class="d-inline-block align-top" alt="">
+              <img src="assets/images/logoss.png" (click)="toggle()" width="50" height="50" class="d-inline-block align-top" alt="">
 
             </a>
           </li>
@@ -17,7 +17,7 @@
             <nb-user [name]="username" *ngIf="isLoggedIn"
             [title]="role"
             [nbContextMenu]="profileItems"
-            style="color: white;"
+
             nbContextMenuTag="my-context-menu"  nbContextMenuPlacement="bottom">
           </nb-user>
 
@@ -33,6 +33,7 @@
   </div>
 </nav>
 <nb-layout >
+
 
  <!--  <nb-layout-header fixed   >
     <h2 routerLink=''  style="margin-right: 85%;">SSluzba</h2>

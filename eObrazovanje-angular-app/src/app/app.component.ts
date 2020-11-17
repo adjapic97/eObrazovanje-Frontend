@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
      /// this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
      if(this.showAdminBoard && this.checkIfContainsRole("PROFESSOR") == true || this.checkIfContainsRole("ASSISTANT_PROFESSOR") ){
        console.log(this.showAdminBoard)
-       this.role = 'administrator/student'
+       this.role = 'administrator/professor'
        this.testString = 'test works'
       this.profileItems = [
         {

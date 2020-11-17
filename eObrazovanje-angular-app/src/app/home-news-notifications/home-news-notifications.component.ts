@@ -1,3 +1,7 @@
+import { Article } from './../classes/Article';
+import { ArticleService } from './../services/article-service/article.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +11,59 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeNewsNotificationsComponent implements OnInit {
 
-  constructor() { }
+  closeResult = '';
+  articleForm : FormGroup;
+  created : boolean = false;
+  articles : Article[] = [];
+
+  constructor(private modalService: NgbModal, private fb : FormBuilder, private articleService : ArticleService) { }
 
   ngOnInit(): void {
+    this.articleForm = this.createForm();
+
+    this.articleService.getAllArticles().subscribe(
+      response => this.articles = response
+    )
   }
 
+  createForm(): FormGroup{
+    return this.fb.group({
+      articleName: [""],
+      articleText: [""],
+      important: [""]
+    })
+
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', size: 'lg' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+
+  createArticle(){
+    this.articleService.createArticle(this.articleForm.value).subscribe(
+      response => {
+        console.log(response)
+        this.created = true;
+      },
+      err => {
+        console.log(err.error.message);
+        this.created = true;
+      }
+    )
+  }
 }

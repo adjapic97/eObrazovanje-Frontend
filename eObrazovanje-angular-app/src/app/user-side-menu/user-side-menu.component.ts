@@ -23,6 +23,10 @@ export class UserSideMenuComponent implements OnInit {
 
     if(this.showAdminBoard){
       this.items =  [
+        {
+          title: 'Pocetna',
+          link: '/home'
+        },
 
         {
           title: 'Ispiti',
@@ -40,21 +44,6 @@ export class UserSideMenuComponent implements OnInit {
               link: 'sluzba/passed-subjects'
             },
             {
-              title: 'statistika',
-              icon: { icon: 'npm-outline', pack: 'eva' },
-              link: 'sluzba/non-passed-subjects'
-            },
-            {
-              title: '',
-              link: 'sluzba/prijava-ispita',
-              icon: 'radio-button-off-outline',
-            },
-            {
-              title: 'Odjava ispita',
-              icon: 'close-circle',
-              link: 'sluzba/odjava-ispita'
-            },
-            {
               title: 'Istorija polaganja',
               icon: 'clock-outline',
               link: 'sluzba/exam-history'
@@ -62,13 +51,6 @@ export class UserSideMenuComponent implements OnInit {
             }
           ],
         },
-
-        {
-          title: 'Finansijska kartica',
-          icon: 'clipboard-outline',
-          link: 'sluzba/financial-card'
-        },
-
         {
           title: 'Dokumenti',
           icon: 'file-text-outline',

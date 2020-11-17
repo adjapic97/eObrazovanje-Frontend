@@ -8,6 +8,7 @@ export class Lecturer{
   lastName: string;
   deleted: boolean;
   username: string;
+  password: string;
   gender: string;
   dateOfBirth: Date;
   placeOfBirth: string;

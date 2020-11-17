@@ -1,21 +1,63 @@
+<button class="btn btn-secondary" style="margin-bottom: 20px;">
+  <nb-icon icon="plus-outline"  (click)="open(content)"></nb-icon>
+</button>
+
 <div class="row show-grid">
-  <div class="col-md">
-    <nb-card [size]="'small'">
-      <nb-card-header ><nb-icon icon="book-open-outline"></nb-icon> clanak/obavestenje 14/02/2020</nb-card-header>
-      <nb-card-body>
-
-      </nb-card-body>
-    </nb-card>
+  <div class="col-md-12" *ngFor="let article of articles">
+    <nb-reveal-card>
+      <nb-card-front>
+        <nb-card accent="success">
+          <nb-card-header>{{article.articleName}}</nb-card-header>
+          <nb-card-body>
+            {{article.articleText}}
+          </nb-card-body>
+          <nb-card-footer>
+            <small disabled> created by : {{article.lecturer.firstName}} {{article.lecturer.lastName}} </small>
+          <br><small>{{article.dateCreated}}</small>
+          </nb-card-footer>
+        </nb-card>
+      </nb-card-front>
+    </nb-reveal-card>
   </div>
-  <div class="col-md-3">
-    <nb-card [size]="'small'">
-      <nb-card-header><nb-icon icon="book-open-outline"></nb-icon> clanak/obavestenje</nb-card-header>
-      <nb-card-body>
 
-      </nb-card-body>
-    </nb-card>
-  </div>
+
+
+
+
+
+
 
 
 </div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Kreiraj obavestenje</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
 
+    <form [formGroup]="articleForm" (ngSubmit)="createArticle()" >
+      <fieldset [disabled]="created">
+      <div class="form-group">
+        <label for="articleName">Naslov</label>
+        <input type="text" class="form-control" formControlName="articleName" id="articleName" aria-describedby="articleName" placeholder="Naslov...">
+      </div>
+      <div class="form-group">
+        <label for="articleText">Tekst obavestenja</label>
+        <textarea class="form-control" id="articleText" formControlName="articleText" rows="6"></textarea>
+      </div>
+      <div class="form-check">
+
+        <input class="form-check-input position-static" formControlName="important" type="checkbox" id="important" value="true" aria-label="..." style="margin-right: 5px;">
+        <label class="form-check-label" for="important">   Vazno obavestenje</label>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-dark">Save</button>
+      </div>
+    </fieldset>
+    </form>
+  </div>
+
+</ng-template>
