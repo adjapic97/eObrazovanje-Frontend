@@ -1,3 +1,4 @@
+import { TokenStorageService } from './../services/token-storage.service';
 import { Observable } from 'rxjs';
 import { Document } from './../classes/Document';
 import { DocumentService } from './../services/documents-service/document.service';
@@ -21,13 +22,20 @@ export class DocumentsComponent implements OnInit {
 
   fileInfos: Observable<any>;
 
-  constructor(private documentService : DocumentService) { }
+  constructor(private documentService : DocumentService, private tokenStorageService : TokenStorageService) { }
 
   ngOnInit(): void {
+    if(this.tokenStorageService.getUser().authorities.includes('PROFESSOR')){
+      this.documentService.getAllDocumentsForLecturer().subscribe(
+        response => this.documents = response
+      )
+    }
+    else{
+      this.documentService.getAllDocumentsForStudent().subscribe(
+        response => this.documents = response
+      )
+    }
 
-    this.documentService.getAllDocuments().subscribe(
-      response => this.documents = response
-    )
   }
 
 
@@ -52,10 +60,18 @@ export class DocumentsComponent implements OnInit {
           this.progress = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
-          this.fileInfos = this.documentService.getAllDocuments();
-          this.documentService.getAllDocuments().subscribe(
-            response => this.documents = response
-          )
+          if(this.tokenStorageService.getUser().authorities.includes('PROFESSOR')){
+            this.fileInfos = this.documentService.getAllDocumentsForLecturer();
+            this.documentService.getAllDocumentsForLecturer().subscribe(
+              response => this.documents = response
+            )
+          } else{
+            this.fileInfos = this.documentService.getAllDocumentsForStudent();
+            this.documentService.getAllDocumentsForStudent().subscribe(
+              response => this.documents = response
+            )
+          }
+
         }
       },
       err => {

@@ -1,0 +1,85 @@
+<div *ngIf="isSuccessful">
+  <h2>Edited Student: {{lecturer.firstName + " " + lecturer.lastName}}</h2>
+
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6" style="padding:0; padding-right: 15px;">
+      <div class="card" style="width: 100%; height: 100%;">
+        <div class="card-body">
+          <button class="btn btn-secondary btn-sm" (click)="enableEdit()">
+            <nb-icon icon="edit-outline"></nb-icon>
+          </button>
+
+          <form #heroForm="ngForm">
+            <fieldset [disabled]="this.isDisabled">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="firstName">Ime</label>
+                    <input type="text" class="form-control" id="firstName" required [(ngModel)]="lecturer.firstName"
+                      name="firstName">
+                  </div>
+
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="lastName">Prezime</label>
+                    <input type="text" class="form-control" id="lastName" [(ngModel)]="lecturer.lastName"
+                      name="lastName">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="dateOfBirth">Datum rodjenja</label>
+                    <input type="text" class="form-control" id="dateOfBirth" [(ngModel)]="lecturer.dateOfBirth"
+                      name="dateOfBirth">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="gender">Pol</label>
+                    <input type="text" class="form-control" id="gender" [(ngModel)]="lecturer.gender" name="gender">
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="city">Grad</label>
+                    <input type="text" class="form-control" id="city" [(ngModel)]="lecturer.city" name="city">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="residence_address">Adresa stanovanja</label>
+                    <input type="text" class="form-control" id="residence_address"
+                      [(ngModel)]="lecturer.residence_address" name="residence_address">
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              <div class="form-group">
+                <label for="mobilePhoneNumber"></label>
+                <input type="text" class="form-control" id="mobilePhoneNumber" [(ngModel)]="lecturer.mobilePhoneNumber"
+                  name="mobilePhoneNumber">
+              </div>
+
+              <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

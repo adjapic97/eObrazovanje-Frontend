@@ -56,6 +56,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { SubjectExamManagmentComponent } from './subject-exam-managment/subject-exam-managment.component';
 import { SubjectManagerComponent } from './subject-exam-managment/subject-manager/subject-manager.component';
 import { ExamCheckOutComponent } from './exam-check-out/exam-check-out.component';
+import { EditLecturerBoardComponent } from './admin-board/edit-lecturer-board/edit-lecturer-board.component';
+import { EditLecturerComponent } from './admin-board/edit-lecturer/edit-lecturer.component';
 
 
 
@@ -88,6 +90,8 @@ import { ExamCheckOutComponent } from './exam-check-out/exam-check-out.component
     SubjectExamManagmentComponent,
     SubjectManagerComponent,
     ExamCheckOutComponent,
+    EditLecturerBoardComponent,
+    EditLecturerComponent,
 
 
 

@@ -20,6 +20,7 @@ export class Lecturer{
   emailAddress: string;
   citizenship: string;
   ethnicity: string;
+  residence_address: string;
   roles: Role[];
   subjects?: Subject[];
 

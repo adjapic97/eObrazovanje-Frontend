@@ -1,3 +1,4 @@
+import { Lecturer } from './../classes/Lecturer';
 import { FinancialCard } from './../classes/FinancialCard';
 import { Student } from './../classes/Student';
 import { Subject } from './../classes/Subject';
@@ -13,9 +14,11 @@ export class AdminBoardComponent implements OnInit {
   active = 1;
   subject: Subject;
   student: Student;
+  lecturer: Lecturer;
   financialCard: FinancialCard;
   isEditSubject: boolean;
   isEditStudent: boolean;
+  isEditLecturer: boolean;
   closeResult = '';
   constructor() { }
 
@@ -35,6 +38,11 @@ export class AdminBoardComponent implements OnInit {
     this.student = fromStudentAdminEmitter.student;
     this.financialCard = fromStudentAdminEmitter.finacialCard;
 
+  }
+
+  editLecturer(fromLecturerAdminEmitter){
+    this.isEditLecturer = fromLecturerAdminEmitter.show;
+    this.lecturer = fromLecturerAdminEmitter.lecturer;
   }
 
 

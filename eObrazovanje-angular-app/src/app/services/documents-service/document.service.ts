@@ -1,41 +1,45 @@
-import { Observable } from 'rxjs';
-import { Document } from './../../classes/Document';
-import { TokenStorageService } from './../token-storage.service';
-import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Observable } from "rxjs";
+import { Document } from "./../../classes/Document";
+import { TokenStorageService } from "./../token-storage.service";
+import { HttpClient, HttpEvent, HttpRequest } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
-const URL = "http://localhost:8080/api/document/"
-
-
+const URL = "http://localhost:8080/api/document/";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class DocumentService {
   id: number;
 
-  constructor(private http : HttpClient, private tst : TokenStorageService) { }
+  constructor(private http: HttpClient, private tst: TokenStorageService) {}
 
-
-  getAllDocuments(){
+  getAllDocumentsForStudent() {
     this.id = this.tst.getUser().id;
 
-
-    return this.http.get<Document[]>(URL + "files-for-student?id=" + this.id)
-
+    return this.http.get<Document[]>(URL + "files-for-student?id=" + this.id);
   }
 
+  getAllDocumentsForLecturer() {
+    this.id = this.tst.getUser().id;
 
+    return this.http.get<Document[]>(URL + "files-for-lecturer?id=" + this.id);
+  }
 
-  uploadFile(file : File): Observable<HttpEvent<any>> {
+  uploadFile(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
 
-    formData.append('file', file);
+    formData.append("file", file);
 
-    const req = new HttpRequest('POST', "http://localhost:8080/api/document/upload", formData, {
-      reportProgress: true,
-      responseType: 'json'
-    });
+    const req = new HttpRequest(
+      "POST",
+      "http://localhost:8080/api/document/upload",
+      formData,
+      {
+        reportProgress: true,
+        responseType: "json",
+      }
+    );
     return this.http.request(req);
   }
 }

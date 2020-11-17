@@ -1,0 +1,61 @@
+<form>
+
+
+  <table class="table table-striped table-hover table-bordered table-sm ">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" sortable="firstName">Ime</th>
+        <th scope="col" sortable="lastName">Prezime</th>
+        <th scope="col" sortable="username">Korisnicko ime</th>
+        <th scope="col" sortable="gender">Pol</th>
+        <th scope="col" sortable="dateOfBirth">Datum rodjenja</th>
+        <th scope="col" sortable="stateOfBirth">Drzava rodjenja</th>
+        <th scope="col" sortable="placeOfBirth">Mesto rodjenja</th>
+        <th scope="col" sortable="residence_address">Adresa</th>
+        <th scope="col" sortable="city">Grad</th>
+        <th scope="col" sortable="phoneNumber">Broj telefona</th>
+        <th scope="col" sortable="mobilePhoneNumber">Broj Mobilnog</th>
+        <th scope="col" sortable="citizenship">Drzavljanstvo</th>
+        <th scope="col" sortable="citizenship">Veroispovest</th>
+
+        <th scope="col">Izmeni</th>
+        <th scope="col">Izbrisi</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lecturer of lecturers">
+        <th scope="row">{{ lecturer.id }}</th>
+        <td>
+          {{lecturer.firstName}}
+        </td>
+        <td>
+          {{lecturer.lastName}}
+        </td>
+        <td>{{lecturer.username}}</td>
+        <td>{{lecturer.gender}}</td>
+        <td>{{lecturer.dateOfBirth}}</td>
+        <td>{{lecturer.stateOfBirth}}</td>
+        <td>{{lecturer.placeOfBirth}}</td>
+        <td>{{lecturer.residence_address}}</td>
+        <td>{{lecturer.city}}</td>
+        <td>{{lecturer.phoneNumber}}</td>
+        <td>{{lecturer.mobilePhoneNumber}}</td>
+        <td>{{lecturer.citizenship}}</td>
+        <td>{{lecturer.ethnicity}}</td>
+
+        <td><button class="btn btn-sm btn-success" (click)="editLecturer(lecturer,true)">
+            <nb-icon icon="edit-outline"></nb-icon>
+          </button></td>
+
+        <td><button class="btn btn-sm btn-danger" (click)="deleteLecturer(lecturer)">
+            <nb-icon icon="trash-2-outline"></nb-icon>
+          </button></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+</form>

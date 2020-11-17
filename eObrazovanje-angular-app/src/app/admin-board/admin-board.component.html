@@ -15,9 +15,10 @@
     </ng-template>
   </li>
   <li [ngbNavItem]="3">
-    <a ngbNavLink class="nav-link">Dokumenti</a>
+    <a ngbNavLink class="nav-link">Profesori</a>
     <ng-template ngbNavContent>
-      <p>MARTOVSKI ISPITNI ROK</p>
+      <app-edit-lecturer-board (fromLecturerAdminEmitter)="editLecturer($event)"></app-edit-lecturer-board>
+      <app-edit-lecturer *ngIf="isEditLecturer" [lecturer]="lecturer"></app-edit-lecturer>
     </ng-template>
   </li>
   <li [ngbNavItem]="4">
