@@ -48,7 +48,17 @@ export class UserSideMenuComponent implements OnInit {
               icon: 'clock-outline',
               link: 'sluzba/exam-history'
 
-            }
+            },
+            {
+              title: 'Prijava ispita',
+              link: 'sluzba/prijava-ispita',
+              icon: 'radio-button-off-outline',
+            },
+            {
+              title: 'Odjava ispita',
+              icon: 'close-circle',
+              link: 'sluzba/odjava-ispita'
+            },
           ],
         },
         {
