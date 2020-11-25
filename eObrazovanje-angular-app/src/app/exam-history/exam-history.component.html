@@ -1,6 +1,8 @@
+<p>Istorija polaganja</p>
 <table class="table table-striped table-bordered table-hover table-lg">
   <thead>
     <tr>
+      <th scope="col">#</th>
       <th scope="col">Oznaka</th>
       <th scope="col">Naziv predmeta</th>
       <th scope="col">Datum</th>
@@ -8,6 +10,16 @@
       <th scople="col">Ocena</th>
     </tr>
   </thead>
-
+  <tbody>
+    <tr *ngFor="let record of examRecords">
+      <th scope="row"></th>
+      <td>{{record.subjectShortName}}</td>
+      <td>{{record.subjectName}}</td>
+      <td>{{record.examDate}}</td>
+      <td>{{record.lecturerName}}</td>
+      <td>{{record.ocena}}</td>
+    </tr>
+  </tbody>
 
 </table>
+
