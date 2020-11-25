@@ -1,4 +1,4 @@
-<form>
+
   <table class="table table-striped table-hover table-bordered table-sm">
     <thead>
       <tr>
@@ -14,16 +14,16 @@
     <tbody>
       <tr *ngFor="let subject of subjects">
         <th scope="row"></th>
-        <td>{{subject.oznaka}}</td>
-        <td>{{subject.naziv_predmeta}}</td>
-        <td>{{subject.ects}}</td>
-        <td>{{subject.datum}}</td>
-        <td>{{subject.nastavnik}}</td>
-        <td>{{subject.ocena}}</td>
+        <td>{{subject.shortName}}</td>
+        <td>{{subject.subjectName}}</td>
+        <td>{{subject.ectsPoints}}</td>
+        <td>{{subject.examDate}}</td>
+        <td *ngFor="let lecture of subject.lecturerDTO">{{lecture.firstName + " " + lecture.lastName}}</td>
+        <td *ngFor="let studHasSubj of subject.studentHasSubjects"
+            >{{studHasSubj.ocena}}</td>
+
       </tr>
     </tbody>
   </table>
-
-</form>
 
 

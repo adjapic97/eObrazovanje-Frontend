@@ -37,7 +37,9 @@ export class ExamService {
     return this.http.get<Subject[]>('http://localhost:8080/api/exam-period/get-subjects-prijavio?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
   }
 
-
+  getPassedSubjects(): Observable<Subject[]> {
+    return this.http.get<Subject[]>('http://localhost:8080/api/exam-record/get-passed-subjects?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
+  }
 
 
 
