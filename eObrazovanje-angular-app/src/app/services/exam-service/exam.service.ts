@@ -3,7 +3,7 @@ import { Subject } from './../../classes/Subject';
 import { ExamPeriod } from './../../classes/ExamPeriod';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ExamRecord } from './../../classes/ExamRecord';
+import { StudentHasSubject } from 'src/app/classes/StudentHasSubject';
 
 
 
@@ -38,13 +38,10 @@ export class ExamService {
     return this.http.get<Subject[]>('http://localhost:8080/api/exam-period/get-subjects-prijavio?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
   }
 
-  getPassedSubjects(): Observable<Subject[]> {
-    return this.http.get<Subject[]>('http://localhost:8080/api/exam-record/get-passed-subjects?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
+  getPassedSubjects(): Observable<StudentHasSubject[]> {
+    return this.http.get<StudentHasSubject[]>('http://localhost:8080/api/exam-record/get-passed-subjects?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
   }
 
-  getPassedSubjectsHistory(): Observable<ExamRecord[]> {
-    return this.http.get<ExamRecord[]>('http://localhost:8080/api/exam-record/get-passed-subjects-history?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
-  }
 
 
 }
