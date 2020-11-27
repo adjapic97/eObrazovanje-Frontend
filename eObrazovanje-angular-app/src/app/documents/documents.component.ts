@@ -34,6 +34,7 @@ export class DocumentsComponent implements OnInit {
       this.documentService.getAllDocumentsForStudent().subscribe(
         response => this.documents = response
       )
+      console.log(this.documents)
     }
 
   }
