@@ -105,6 +105,7 @@ export class UserSideMenuComponent implements OnInit {
             {
               title: 'Odjava ispita',
               icon: 'close-circle',
+              link: 'sluzba/odjava-ispita'
             },
             {
               title: 'Istorija polaganja',

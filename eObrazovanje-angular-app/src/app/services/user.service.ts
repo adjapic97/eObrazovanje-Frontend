@@ -31,7 +31,7 @@ export class UserService {
      return this.http.post<Person>(MANAGERURL + 'create-user?courseName=' + form.course +'&cardType=' + form.cardType + '&role=' + form.role + '&indexNumber=' + form.indexNumber,  {
       firstName: form.firstName,
       lastName: form.lastName,
-      password :  form.password,
+      password : form.password,
       username: form.username,
       gender : form.gender,
       dateOfBirth : date,
