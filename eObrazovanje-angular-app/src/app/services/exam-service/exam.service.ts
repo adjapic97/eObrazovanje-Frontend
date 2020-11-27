@@ -4,6 +4,8 @@ import { ExamPeriod } from './../../classes/ExamPeriod';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { StudentHasSubject } from 'src/app/classes/StudentHasSubject';
+import { ExamRecord } from 'src/app/classes/ExamRecord';
+im
 
 
 
@@ -42,6 +44,8 @@ export class ExamService {
     return this.http.get<StudentHasSubject[]>('http://localhost:8080/api/exam-record/get-passed-subjects?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
   }
 
-
+  getPassedSubjectsHistory(): Observable<ExamRecord[]> {
+    return this.http.get<ExamRecord[]>('http://localhost:8080/api/exam-record/get-passed-subjects-history?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
+  }
 
 }
