@@ -110,6 +110,26 @@ export class AppComponent implements OnInit {
 
       ]
 
+     } else if(!this.showAdminBoard){
+      this.profileItems = [
+        {
+          title: 'Profil',
+          icon: 'person-outline',
+          link: 'sluzba/student-details'
+        },
+        {
+          title: 'Podešavanja',
+          icon: 'settings-2-outline',
+          link: ''
+
+        },
+        {
+          title: 'Izloguj se',
+          icon: 'unlock-outline'
+        }
+
+      ]
+
      }
 
       this.username = user.lastname;

@@ -208,6 +208,7 @@ export class UserCreationComponent implements OnInit {
   submitCreateStudent() {
     this.angForm.value.role = this.selectedOption;
     console.log(this.angForm.value.firstName)
+    console.log(this.angForm.value.password)
     console.log(this.angForm.value.course)
     this.userService.createNewStudent(this.angForm.value).subscribe(
       data => {

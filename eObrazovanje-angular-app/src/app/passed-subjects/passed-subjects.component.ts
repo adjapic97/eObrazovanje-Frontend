@@ -95,7 +95,7 @@ export class PassedSubjectsComponent implements OnInit {
   handlePassedSubjects(response) {
     this.subjects = response;
     this.lecturer = response.lecturerDTO;
-    this.studentHasSubjects = response.studentHasSubDTO;
+    this.studentHasSubjects = response;
     console.log(this.subjects);
     console.log(this.lecturer);
     console.log(this.studentHasSubjects);

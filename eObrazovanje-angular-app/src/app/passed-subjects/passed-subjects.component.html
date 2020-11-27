@@ -12,15 +12,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let subject of subjects">
+      <tr *ngFor="let subject of studentHasSubjects">
         <th scope="row"></th>
         <td>{{subject.shortName}}</td>
         <td>{{subject.subjectName}}</td>
         <td>{{subject.ectsPoints}}</td>
         <td>{{subject.examDate}}</td>
-        <td *ngFor="let lecture of subject.lecturerDTO">{{lecture.firstName + " " + lecture.lastName}}</td>
-        <td *ngFor="let studHasSubj of subject.studentHasSubjects"
-            >{{studHasSubj.ocena}}</td>
+        <td>{{subject.lecturerName}}</td>
+        <td>{{subject.ocena}}</td>
+
+
 
       </tr>
     </tbody>

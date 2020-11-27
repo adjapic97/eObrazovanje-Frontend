@@ -9,5 +9,10 @@ export class StudentHasSubject {
   passed: boolean;
   exams?: Exam[];
   prijavio: boolean;
+  lecturerName: string;
+  shortName: string;
+  subjectName: string;
+  examDate: Date;
+  ectsPoints: number;
 
 }
