@@ -1,3 +1,6 @@
+import { Student } from './../classes/Student';
+import { Observable } from 'rxjs';
+import { StudentService } from './../services/student-service/student.service';
 import { SubjectService } from './../services/subject-service/subject.service';
 import { Subject } from './../classes/Subject';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
@@ -11,13 +14,16 @@ export class SubjectExamManagmentComponent implements OnInit {
 
   lecturerSubjects: Subject[] = [];
   subject: Subject;
+  students$ : Observable<Student[]>;
 
 
 
 
-  constructor(private subjectService : SubjectService) { }
+  constructor(private subjectService : SubjectService, private studentService : StudentService) { }
 
   ngOnInit(): void {
+
+
 
     this.subjectService.getSubjectsForLecturer(JSON.parse(sessionStorage.getItem("auth-user")).id)
     .subscribe(
@@ -29,5 +35,6 @@ export class SubjectExamManagmentComponent implements OnInit {
 
   manage(subject){
     this.subject = subject;
+    this.students$ = this.studentService.getStudentsForSubjectActivePeriod(this.subject.id);
   }
 }

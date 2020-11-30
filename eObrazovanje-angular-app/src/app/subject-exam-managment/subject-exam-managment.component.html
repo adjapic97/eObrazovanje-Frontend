@@ -27,7 +27,7 @@
     </div>
 
     <div class="col-sm-12">
-      <app-subject-manager [subject]="subject"></app-subject-manager>
+      <app-subject-manager *ngIf="subject" [subject]="subject" [students$]="students$"></app-subject-manager>
     </div>
 
 
