@@ -20,7 +20,9 @@ export class SubjectManagerComponent implements OnInit {
   pointNumber: number;
   grade: number;
   selectedOcena: number = 5;
-  isDisabled: boolean = false;
+  //isDisabled: boolean = false;
+
+  click: boolean = false;
 
 
   constructor(
@@ -48,7 +50,8 @@ export class SubjectManagerComponent implements OnInit {
     //this.passedStudents.push(...new ExamObject(student.id,0, Number(this.selectedOcena), true));
     this.passedStudents = [...this.passedStudents, new ExamObject(student.id,0, Number(this.selectedOcena), true) ]
     console.log(this.passedStudents);
-    this.isDisabled = true;
+    //this.isDisabled = true;
+    this.click = true;
 
   }
 
