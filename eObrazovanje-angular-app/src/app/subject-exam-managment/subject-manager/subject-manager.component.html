@@ -6,7 +6,7 @@
 
       </div>
       <div class="col-sm-8">
-        <table class="table table-bordered table-sm table-striped table-hover">
+        <table ng-editable class="table table-bordered table-sm table-striped table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -46,9 +46,9 @@
 
                 </select>
               </td>
-              <td ><button class="btn btn-success btn-block" type="button"
-                  (click)="pushStudent(student, pointNumber, grade )" >polozio</button></td>
-              <td><button class="btn btn-danger btn-block" type="button"
+              <td ><button class="btn btn-success btn-block" type="button" id="btnPolozio" 
+                  (click)="pushStudent(student)" [disabled]="click" >polozio</button></td>
+              <td><button class="btn btn-danger btn-block" type="button" id="btnUkloni"
                   (click)="removeStudent(student)">ukloni</button></td>
             </tr>
           </tbody>

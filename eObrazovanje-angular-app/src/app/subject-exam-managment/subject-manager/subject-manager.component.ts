@@ -20,6 +20,9 @@ export class SubjectManagerComponent implements OnInit {
   grade: number;
   selectedOcena: number = 5;
   isDisabled: boolean = false;
+
+  click : boolean = false;
+
   ocene = [
     {
       number: 5,
@@ -54,21 +57,31 @@ export class SubjectManagerComponent implements OnInit {
 
   ngOnInit(): void {
     this.students$ = this.studentService.getStudentsForSubjectActivePeriod(2);
-    this.grade = this.checkGrade(this.pointNumber);
+    //this.grade = this.checkGrade(this.pointNumber);
   }
+/* 
+  function onEdit(index){
+  students$[index].isEditing = true;
+}
 
-  pushStudent(student, pointNumber, grade) {
+function onUpdate(index){
+  // You may want to do something with the new data, maybe some validation or so
+  MyTblDataList[index].isEditing = false;
+}
+ */
+
+  pushStudent(student) {
     console.log(student.id);
     var studentExam = new StudentExamObject();
     studentExam.student = student;
-    //grade = this.checkGrade(this.pointNumber);
     studentExam.grade = this.selectedOcena;
-    // studentExam.pointNumber = pointNumber;
     studentExam.passed = true;
 
     this.passedStudents.push(studentExam);
     console.log(this.passedStudents);
-    this.isDisabled = true;
+    
+    this.click = true;
+
 
   }
 
@@ -99,7 +112,7 @@ export class SubjectManagerComponent implements OnInit {
       console.log("array is empty");
     }
   }
-
+/* 
   checkGrade(pointNumber): number {
     var grade = 0;
     if (pointNumber == 0 && pointNumber <= 50) {
@@ -117,4 +130,7 @@ export class SubjectManagerComponent implements OnInit {
     }
     return grade;
   }
+
+ */
+
 }

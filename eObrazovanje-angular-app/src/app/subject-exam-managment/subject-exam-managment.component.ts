@@ -22,8 +22,10 @@ export class SubjectExamManagmentComponent implements OnInit {
     this.subjectService.getSubjectsForLecturer(JSON.parse(sessionStorage.getItem("auth-user")).id)
     .subscribe(
       response => this.lecturerSubjects = response
+            
     );
-
+    console.log(this.lecturerSubjects);
+    
 
   }
 
