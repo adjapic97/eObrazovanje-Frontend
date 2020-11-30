@@ -42,7 +42,7 @@ import { NonPassedSubjectsComponent } from './non-passed-subjects/non-passed-sub
 import { ExamHistoryComponent } from './exam-history/exam-history.component';
 import { FinancialCardComponent } from './financial-card/financial-card.component';
 import { DocumentsComponent } from './documents/documents.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FinancialStatusComponent } from './exam-check-in/financial-status/financial-status.component';
 import { SubjectDetailsComponent } from './subject-details/subject-details.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
@@ -138,13 +138,13 @@ import { ExampleComponentComponent } from './example-component/example-component
     NgbModule,
     FormsModule,
     NgSelectModule,
-    NbSearchModule
+    NbSearchModule,
 
 
 
   ],
   providers: [authInterceptorProviders,         { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService, DecimalPipe
+    JwtHelperService, DecimalPipe,
    ],
   bootstrap: [AppComponent]
 })

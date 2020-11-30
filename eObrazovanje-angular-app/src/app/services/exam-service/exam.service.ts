@@ -5,7 +5,6 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { StudentHasSubject } from 'src/app/classes/StudentHasSubject';
 import { ExamRecord } from 'src/app/classes/ExamRecord';
-im
 
 
 

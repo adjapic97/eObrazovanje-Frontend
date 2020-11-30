@@ -11,8 +11,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let record of examRecords">
-      <th scope="row"></th>
+    <tr *ngFor="let record of examRecords; index as i">
+      <th scope="row">{{i + 1}}</th>
       <td>{{record.subjectShortName}}</td>
       <td>{{record.subjectName}}</td>
       <td>{{record.examDate}}</td>
@@ -22,4 +22,6 @@
   </tbody>
 
 </table>
+
+
 

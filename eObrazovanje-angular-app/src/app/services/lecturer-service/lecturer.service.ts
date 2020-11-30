@@ -2,7 +2,7 @@ import { Observable, of } from "rxjs";
 import { Lecturer } from "./../../classes/Lecturer";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { delay } from "rxjs/operators";
+import { map, filter, switchMap } from "rxjs/operators";
 
 const LECTURER_URL = "http://localhost:8080/api/lecturer/";
 
@@ -20,6 +20,10 @@ export class LecturerService {
 
   getAllLecturers() {
     return this.http.get<Lecturer[]>(LECTURER_URL + "get-all");
+  }
+
+  getAllNotEnrolled(subject): Observable<Lecturer[]>{
+    return this.http.get<any>(LECTURER_URL + "get-not-enrolled/" + subject.id)
   }
 
   createLecturer(form, roles, subjects) {
@@ -80,5 +84,13 @@ export class LecturerService {
       },
       httpOptions
     );
+  }
+
+  deleteFromSubject(lecturer: any) {
+    return this.http
+      .delete(LECTURER_URL + "delete-for-subject/" + lecturer.id)
+      .subscribe(
+        response => console.log(response)
+      );
   }
 }
