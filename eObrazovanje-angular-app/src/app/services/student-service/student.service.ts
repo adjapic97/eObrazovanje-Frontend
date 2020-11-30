@@ -48,6 +48,10 @@ export class StudentService implements OnInit {
    return  this.http.get<Student>(STUDENTURL + 'get-student-status')
   }
 
+  getStudentsForSubjectActivePeriod(subjectId){
+    return this.http.get<Student[]>(STUDENTURL + "get-for-active?subjectId=" + subjectId);
+  }
+
 
 
 
@@ -115,6 +119,7 @@ export class StudentService implements OnInit {
 getLoggedStudent(): Observable<any>{
   return this.http.get(STUDENTURL+ "get-logged-student");
 }
+
 
 
 getStudentFinancialCard(id): Observable<any>{
