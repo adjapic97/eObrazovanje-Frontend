@@ -5,6 +5,7 @@ export class StudentHasSubject {
   studentId: number;
   subjectId: number;
   ocena: number;
+  studentName: string;
   brPokusaja: number;
   passed: boolean;
   exams?: Exam[];

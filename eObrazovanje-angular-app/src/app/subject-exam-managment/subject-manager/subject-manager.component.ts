@@ -1,4 +1,5 @@
-import { ExamService } from './../../services/exam-service/exam.service';
+import { StudentHasSubject } from 'src/app/classes/StudentHasSubject';
+import { ExamService } from "./../../services/exam-service/exam.service";
 import { ExamObject } from "../../classes/ExamObject";
 import { Observable } from "rxjs";
 import { StudentService } from "./../../services/student-service/student.service";
@@ -14,7 +15,8 @@ import { Student } from "src/app/classes/Student";
 })
 export class SubjectManagerComponent implements OnInit {
   @Input() subject: Subject;
-  @Input() students$ : Observable<Student[]>;
+  @Input() students$: Observable<Student[]>;
+  @Input() allStudents$: Observable<StudentHasSubject[]>;
   passedStudents: ExamObject[] = [];
   polozio: boolean = false;
   pointNumber: number;
@@ -22,22 +24,19 @@ export class SubjectManagerComponent implements OnInit {
   selectedOcena: number = 5;
   isDisabled: boolean = false;
 
-
   constructor(
     private subjectService: SubjectService,
     private studentService: StudentService,
-    private examService : ExamService
+    private examService: ExamService
   ) {}
 
   ngOnInit(): void {
-
-
     this.grade = this.checkGrade(this.pointNumber);
   }
 
   pushStudent(student, pointNumber, grade) {
     console.log(student.id);
-   // var studentExam = new ExamObject();
+    // var studentExam = new ExamObject();
     // studentExam.studentId = student.id;
     // //grade = this.checkGrade(this.pointNumber);
     // studentExam.grade = Number(this.selectedOcena);
@@ -46,10 +45,12 @@ export class SubjectManagerComponent implements OnInit {
     // studentExam.passed = true;
 
     //this.passedStudents.push(...new ExamObject(student.id,0, Number(this.selectedOcena), true));
-    this.passedStudents = [...this.passedStudents, new ExamObject(student.id,0, Number(this.selectedOcena), true) ]
+    this.passedStudents = [
+      ...this.passedStudents,
+      new ExamObject(student.id, 0, Number(this.selectedOcena), true),
+    ];
     console.log(this.passedStudents);
     this.isDisabled = true;
-
   }
 
   selectChangeHandler(event: any) {
@@ -58,10 +59,12 @@ export class SubjectManagerComponent implements OnInit {
     console.log(this.selectedOcena);
   }
 
-  sendStudents(){
-    this.examService.sendExamObjectList(this.passedStudents, this.subject.id).subscribe(response =>{
-      console.log(response);
-    })
+  sendStudents() {
+    this.examService
+      .sendExamObjectList(this.passedStudents, this.subject.id)
+      .subscribe((response) => {
+        console.log(response);
+      });
   }
 
   removeStudent(student: Student) {
