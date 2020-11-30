@@ -1,3 +1,4 @@
+import { StudentHasSubject } from 'src/app/classes/StudentHasSubject';
 import { Student } from './../classes/Student';
 import { Observable } from 'rxjs';
 import { StudentService } from './../services/student-service/student.service';
@@ -15,6 +16,7 @@ export class SubjectExamManagmentComponent implements OnInit {
   lecturerSubjects: Subject[] = [];
   subject: Subject;
   students$ : Observable<Student[]>;
+  allStudents$ : Observable<StudentHasSubject[]>;
 
 
 
@@ -36,5 +38,6 @@ export class SubjectExamManagmentComponent implements OnInit {
   manage(subject){
     this.subject = subject;
     this.students$ = this.studentService.getStudentsForSubjectActivePeriod(this.subject.id);
+    this.allStudents$ = this.studentService.getAllForSubject(this.subject.id);
   }
 }

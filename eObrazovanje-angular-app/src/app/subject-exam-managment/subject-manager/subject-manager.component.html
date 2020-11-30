@@ -1,11 +1,36 @@
 <div class="card card-block2" style="height: 700px; margin-top: 10px;">
   <div class="container-fluid" style="margin:0; margin-top: 50px;">
     <div class="row">
-      <div class="col-sm-4">
-        {{subject?.subjectName}}
+      <div class="col-sm-6">
+        <table class="table table-bordered table-sm table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Ime i prezime</th>
+              <th scope="col">Broj pokusaja</th>
+              <th scope="col">polozio</th>
+              <!-- <th scope="col">Bodovi</th> -->
 
+              <th scope="col">Vise o</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of allStudents$ | async; index as i" >
+              <th scope="row">{{ i + 1 }}</th>
+              <td>
+                {{ student.studentName }}
+              </td>
+              <td>{{ student.brPokusaja }}</td>
+              <td>
+                {{student.passed? 'Polozio': 'Nije polozio'}}
+              </td>
+              <td><button class="btn btn-warning btn-sm btn-block"><nb-icon icon="more-horizontal-outline"></nb-icon></button></td>
+
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="col-sm-8">
+      <div class="col-sm-6">
         <table class="table table-bordered table-sm table-striped table-hover">
           <thead>
             <tr>
