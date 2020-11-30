@@ -13,8 +13,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let transaction of transactionDTO">
-      <th scope="row"></th>
+    <tr *ngFor="let transaction of transactionDTO; index as i">
+      <th scope="row">{{ i + 1}}</th>
       <td>{{transaction.transactionDate}}</td>
       <td>{{transaction.paymentPurpose}}</td>
       <td>{{transaction.amount}}</td>
