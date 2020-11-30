@@ -1,4 +1,5 @@
-import { StudentExamObject } from "./../../classes/StudentExamObject";
+import { ExamService } from './../../services/exam-service/exam.service';
+import { ExamObject } from "../../classes/ExamObject";
 import { Observable } from "rxjs";
 import { StudentService } from "./../../services/student-service/student.service";
 import { SubjectService } from "./../../services/subject-service/subject.service";
@@ -13,75 +14,41 @@ import { Student } from "src/app/classes/Student";
 })
 export class SubjectManagerComponent implements OnInit {
   @Input() subject: Subject;
-  students$: Observable<Student[]>;
-  passedStudents: StudentExamObject[] = [];
+  @Input() students$ : Observable<Student[]>;
+  passedStudents: ExamObject[] = [];
   polozio: boolean = false;
   pointNumber: number;
   grade: number;
   selectedOcena: number = 5;
   isDisabled: boolean = false;
 
-  click : boolean = false;
-
-  ocene = [
-    {
-      number: 5,
-      name: "pet",
-    },
-    {
-      number: 6,
-      name: "sest",
-    },
-    {
-      number: 7,
-      name: "sedam",
-    },
-    {
-      number: 8,
-      name: "osam",
-    },
-    {
-      number: 9,
-      name: "devet",
-    },
-    {
-      number: 10,
-      name: "deset",
-    },
-  ];
 
   constructor(
     private subjectService: SubjectService,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private examService : ExamService
   ) {}
 
   ngOnInit(): void {
-    this.students$ = this.studentService.getStudentsForSubjectActivePeriod(2);
-    //this.grade = this.checkGrade(this.pointNumber);
+
+
+    this.grade = this.checkGrade(this.pointNumber);
   }
-/* 
-  function onEdit(index){
-  students$[index].isEditing = true;
-}
 
-function onUpdate(index){
-  // You may want to do something with the new data, maybe some validation or so
-  MyTblDataList[index].isEditing = false;
-}
- */
-
-  pushStudent(student) {
+  pushStudent(student, pointNumber, grade) {
     console.log(student.id);
-    var studentExam = new StudentExamObject();
-    studentExam.student = student;
-    studentExam.grade = this.selectedOcena;
-    studentExam.passed = true;
+   // var studentExam = new ExamObject();
+    // studentExam.studentId = student.id;
+    // //grade = this.checkGrade(this.pointNumber);
+    // studentExam.grade = Number(this.selectedOcena);
+    // studentExam.pointNumber = 0;
+    // // studentExam.pointNumber = pointNumber;
+    // studentExam.passed = true;
 
-    this.passedStudents.push(studentExam);
+    //this.passedStudents.push(...new ExamObject(student.id,0, Number(this.selectedOcena), true));
+    this.passedStudents = [...this.passedStudents, new ExamObject(student.id,0, Number(this.selectedOcena), true) ]
     console.log(this.passedStudents);
-    
-    this.click = true;
-
+    this.isDisabled = true;
 
   }
 
@@ -91,15 +58,21 @@ function onUpdate(index){
     console.log(this.selectedOcena);
   }
 
+  sendStudents(){
+    this.examService.sendExamObjectList(this.passedStudents, this.subject.id).subscribe(response =>{
+      console.log(response);
+    })
+  }
+
   removeStudent(student: Student) {
     //this.passedStudents.push(student)
     var found = false;
     if (this.passedStudents.length != 0) {
       for (var i = 0; i <= this.passedStudents.length; i++) {
-        if (this.passedStudents[i].student.id == student.id) {
+        if (this.passedStudents[i].studentId == student.id) {
           var removeIndex = this.passedStudents
             .map(function (student) {
-              return student.student.id;
+              return student.studentId;
             })
             .indexOf(student.id);
           this.passedStudents.splice(removeIndex, 1);
@@ -112,7 +85,7 @@ function onUpdate(index){
       console.log("array is empty");
     }
   }
-/* 
+
   checkGrade(pointNumber): number {
     var grade = 0;
     if (pointNumber == 0 && pointNumber <= 50) {
@@ -130,7 +103,4 @@ function onUpdate(index){
     }
     return grade;
   }
-
- */
-
 }

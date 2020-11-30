@@ -1,3 +1,4 @@
+import { ExamObject } from '../../classes/ExamObject';
 import { Observable } from 'rxjs';
 import { Subject } from './../../classes/Subject';
 import { ExamPeriod } from './../../classes/ExamPeriod';
@@ -45,6 +46,11 @@ export class ExamService {
 
   getPassedSubjectsHistory(): Observable<ExamRecord[]> {
     return this.http.get<ExamRecord[]>('http://localhost:8080/api/exam-record/get-passed-subjects-history?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
+  }
+
+
+  sendExamObjectList(examObject : ExamObject[], subjectId){
+    return this.http.post('http://localhost:8080/api/exam-record/send-students?subjectId=' + subjectId, httpOptions)
   }
 
 }
