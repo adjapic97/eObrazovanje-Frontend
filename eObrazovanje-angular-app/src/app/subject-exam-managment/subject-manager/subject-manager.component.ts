@@ -1,4 +1,4 @@
-import { StudentHasSubject } from "src/app/classes/StudentHasSubject";
+import { StudentHasSubject } from 'src/app/classes/StudentHasSubject';
 import { ExamService } from "./../../services/exam-service/exam.service";
 import { ExamObject } from "../../classes/ExamObject";
 import { Observable } from "rxjs";
@@ -58,21 +58,32 @@ export class SubjectManagerComponent implements OnInit {
         "Note + add dynamic"
       ),
     ]; */
-    
+
     const studentExists = this.passedStudents.find(s=> s.studentId === student.id)
     if(!studentExists) {
+<<<<<<< HEAD
       this.passedStudents.push({ "studentId": student.id, 
                                   "pointNumber": 0, 
                                   "grade": this.selectedOcena, 
                                   "passed": true });
       console.log(this.subject.id);
+=======
+      this.passedStudents.push({ "studentId": student.id,
+                                  "pointNumber": 0,
+                                  "grade": Number(this.selectedOcena),
+                                  "passed": true,
+                                "note": 'aaa' });
+    }else{
+      this.updateGrade(Number(this.selectedOcena), this.passedStudents, student)
+>>>>>>> c5880df01c0a04d4d216a518f4abc0ed41672b8e
     }
-    
+
     console.log(studentExists);
-    
+
     console.log(this.passedStudents);
     //this.isDisabled = true;
     this.click = true;
+
   }
 
   selectChangeHandler(event: any) {
@@ -85,7 +96,12 @@ export class SubjectManagerComponent implements OnInit {
     this.examService
       .sendExamObjectList(this.passedStudents, this.subject.id)
       .subscribe((response) => {
+<<<<<<< HEAD
         console.log(response);        
+=======
+        console.log(response);
+        window.location.reload();
+>>>>>>> c5880df01c0a04d4d216a518f4abc0ed41672b8e
       });
   }
 
@@ -127,5 +143,11 @@ export class SubjectManagerComponent implements OnInit {
       grade = 10;
     }
     return grade;
+  }
+
+  updateGrade(grade, passedStudents, student){
+    const stud = this.passedStudents.find(s=> s.studentId === student.id)
+    stud.grade = grade;
+    console.log(this.passedStudents)
   }
 }
