@@ -61,13 +61,6 @@ export class SubjectManagerComponent implements OnInit {
 
     const studentExists = this.passedStudents.find(s=> s.studentId === student.id)
     if(!studentExists) {
-<<<<<<< HEAD
-      this.passedStudents.push({ "studentId": student.id, 
-                                  "pointNumber": 0, 
-                                  "grade": this.selectedOcena, 
-                                  "passed": true });
-      console.log(this.subject.id);
-=======
       this.passedStudents.push({ "studentId": student.id,
                                   "pointNumber": 0,
                                   "grade": Number(this.selectedOcena),
@@ -75,7 +68,6 @@ export class SubjectManagerComponent implements OnInit {
                                 "note": 'aaa' });
     }else{
       this.updateGrade(Number(this.selectedOcena), this.passedStudents, student)
->>>>>>> c5880df01c0a04d4d216a518f4abc0ed41672b8e
     }
 
     console.log(studentExists);
@@ -96,12 +88,8 @@ export class SubjectManagerComponent implements OnInit {
     this.examService
       .sendExamObjectList(this.passedStudents, this.subject.id)
       .subscribe((response) => {
-<<<<<<< HEAD
-        console.log(response);        
-=======
         console.log(response);
         window.location.reload();
->>>>>>> c5880df01c0a04d4d216a518f4abc0ed41672b8e
       });
   }
 
