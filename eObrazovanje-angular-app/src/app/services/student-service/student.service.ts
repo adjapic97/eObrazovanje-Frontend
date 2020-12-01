@@ -101,10 +101,10 @@ export class StudentService implements OnInit {
     );
   }
 
-  prijaviIspite(subjects, totalPrice) {
+  prijaviIspite(subjects, totalPrice, exPerName) {
     console.log(subjects);
     return this.http.post(
-      "http://localhost:8080/api/student/exam-check?totalPrice=" + totalPrice,
+      "http://localhost:8080/api/student/exam-check?totalPrice=" + totalPrice + "&examPeriodName=" + exPerName,
       subjects,
       httpOptions
     );

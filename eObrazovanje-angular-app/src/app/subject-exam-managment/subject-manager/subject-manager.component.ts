@@ -1,4 +1,4 @@
-import { StudentHasSubject } from 'src/app/classes/StudentHasSubject';
+import { StudentHasSubject } from "src/app/classes/StudentHasSubject";
 import { ExamService } from "./../../services/exam-service/exam.service";
 import { ExamObject } from "../../classes/ExamObject";
 import { Observable } from "rxjs";
@@ -49,14 +49,17 @@ export class SubjectManagerComponent implements OnInit {
     //this.passedStudents.push(...new ExamObject(student.id,0, Number(this.selectedOcena), true));
     this.passedStudents = [
       ...this.passedStudents,
-      new ExamObject(student.id, 0, Number(this.selectedOcena), true),
+      new ExamObject(
+        student.id,
+        0,
+        Number(this.selectedOcena),
+        true,
+        "Note + add dynamic"
+      ),
     ];
     console.log(this.passedStudents);
-
     //this.isDisabled = true;
     this.click = true;
-
-
   }
 
   selectChangeHandler(event: any) {

@@ -72,6 +72,7 @@ export class ExamCheckInComponent implements OnInit {
   student: Student;
   examPrice: number;
   totalPrice: number = 0;
+  exPerName: string = "";
   //subjects = SUBJECTS;
 
   constructor( private examService : ExamService, private fb: FormBuilder, private studentService : StudentService) {
@@ -149,6 +150,9 @@ export class ExamCheckInComponent implements OnInit {
       console.log(this.ispitiZaPrijavu)
     }
 
+    onExamPeriodChange(examPeriodName){
+      this.exPerName = examPeriodName;
+    }
 
 
 

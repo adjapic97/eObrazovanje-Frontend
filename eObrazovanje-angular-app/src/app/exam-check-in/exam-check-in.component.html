@@ -1,8 +1,8 @@
-<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+<ul ngbNav #nav="ngbNav"  [(activeId)]="active" class="nav-tabs">
   <li  *ngFor="let examPeriods of examPeriod" [ngbNavItem]="examPeriods.id" #thenBlock>
-    <a ngbNavLink>{{examPeriods?.examPeriodName}}</a>
+    <a ngbNavLink (click)="onExamPeriodChange(examPeriods?.examPeriodName)">{{examPeriods?.examPeriodName}}</a>
 
-    <ng-template ngbNavContent>
+    <ng-template ngbNavContent >
 
       <table class="table table-striped table-bordered table-hover">
         <thead>
@@ -43,4 +43,4 @@
 
 <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
-<app-financial-status [totalPrice]="totalPrice" [ispitiZaPrijavu]="ispitiZaPrijavu" ></app-financial-status>
+<app-financial-status [totalPrice]="totalPrice" [ispitiZaPrijavu]="ispitiZaPrijavu" [exPerName]="exPerName" ></app-financial-status>

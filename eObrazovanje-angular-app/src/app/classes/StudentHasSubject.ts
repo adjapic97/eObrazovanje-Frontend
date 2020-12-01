@@ -15,5 +15,6 @@ export class StudentHasSubject {
   subjectName: string;
   examDate: Date;
   ectsPoints: number;
+  examPeriodName: string;
 
 }

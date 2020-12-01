@@ -13,6 +13,7 @@ import { AfterViewInit, Component, Input, OnInit } from "@angular/core";
 export class FinancialStatusComponent implements OnInit, AfterViewInit {
   @Input() totalPrice: number;
   @Input() ispitiZaPrijavu: Subject[];
+  @Input() exPerName: string;
 
   financialCard: FinancialCard;
   afterCheckValue: number = 0;
@@ -37,7 +38,7 @@ export class FinancialStatusComponent implements OnInit, AfterViewInit {
   submit() {
     console.log(this.afterCheckValue);
     this.studentService
-      .prijaviIspite(this.ispitiZaPrijavu, this.totalPrice)
+      .prijaviIspite(this.ispitiZaPrijavu, this.totalPrice, this.exPerName)
       .subscribe(
         (response) => {
          window.location.reload();
