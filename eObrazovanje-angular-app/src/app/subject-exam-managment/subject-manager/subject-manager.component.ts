@@ -52,13 +52,9 @@ export class SubjectManagerComponent implements OnInit {
       new ExamObject(student.id, 0, Number(this.selectedOcena), true),
     ];
     console.log(this.passedStudents);
-<<<<<<< HEAD
     //this.isDisabled = true;
     this.click = true;
 
-=======
-    this.isDisabled = true;
->>>>>>> b3bb918fb7988c7748b380abc0152bd86b81e202
   }
 
   selectChangeHandler(event: any) {
