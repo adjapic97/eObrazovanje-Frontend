@@ -89,6 +89,7 @@ export class SubjectManagerComponent implements OnInit {
       .sendExamObjectList(this.passedStudents, this.subject.id)
       .subscribe((response) => {
         console.log(response);
+        window.location.reload();
       });
   }
 

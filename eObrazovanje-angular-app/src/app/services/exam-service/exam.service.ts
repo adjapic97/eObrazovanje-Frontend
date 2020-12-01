@@ -50,8 +50,8 @@ export class ExamService {
   }
 
 
-  sendExamObjectList(examObject : iExamObject[], subjectId){
-    return this.http.post('http://localhost:8080/api/exam-record/send-students?subjectId=' + subjectId, httpOptions)
+  sendExamObjectList(examObject : ExamObject[], subjectId){
+    return this.http.post('http://localhost:8080/api/exam-record/send-students?subjectId=' + subjectId, examObject, httpOptions)
   }
 
   deactivate(id){
