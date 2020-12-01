@@ -7,17 +7,24 @@
       <th scope="col">Naziv predmeta</th>
       <th scope="col">Datum</th>
       <th scople="col">Nastavnik</th>
+      <th scope="col">Ispitni rok</th>
       <th scople="col">Ocena</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let record of examRecords; index as i">
+    <tr *ngFor="let record of examRecords; index as i" [ngClass]="record.passed? 'green':'red'" >
+
       <th scope="row">{{i + 1}}</th>
       <td>{{record.subjectShortName}}</td>
       <td>{{record.subjectName}}</td>
-      <td>{{record.examDate}}</td>
+      <td>{{record.passed}}</td>
       <td>{{record.lecturerName}}</td>
+      <td>{{record.examPeriod?.examPeriodName}}</td>
+
+
+
       <td>{{record.ocena}}</td>
+
     </tr>
   </tbody>
 
