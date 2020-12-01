@@ -59,6 +59,7 @@ import { ExamCheckOutComponent } from './exam-check-out/exam-check-out.component
 import { EditLecturerBoardComponent } from './admin-board/edit-lecturer-board/edit-lecturer-board.component';
 import { EditLecturerComponent } from './admin-board/edit-lecturer/edit-lecturer.component';
 import { ExampleComponentComponent } from './example-component/example-component.component';
+import { ExamManagmentComponent } from './admin-board/exam-managment/exam-managment.component';
 
 
 
@@ -94,6 +95,7 @@ import { ExampleComponentComponent } from './example-component/example-component
     EditLecturerBoardComponent,
     EditLecturerComponent,
     ExampleComponentComponent,
+    ExamManagmentComponent,
 
 
 

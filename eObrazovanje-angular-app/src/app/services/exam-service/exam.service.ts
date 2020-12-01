@@ -53,4 +53,10 @@ export class ExamService {
     return this.http.post('http://localhost:8080/api/exam-record/send-students?subjectId=' + subjectId, httpOptions)
   }
 
+  deactivate(id){
+    return this.http.post('http://localhost:8080/api/exam-period/deactivate?examPeriodId=' + id,{
+      headers: new HttpHeaders({ 'Content-Type': 'text' })
+    } );
+  }
+
 }
