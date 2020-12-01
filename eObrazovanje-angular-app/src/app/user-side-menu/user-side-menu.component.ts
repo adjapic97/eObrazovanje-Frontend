@@ -38,27 +38,6 @@ export class UserSideMenuComponent implements OnInit {
               icon: 'copy-outline',
               link: 'sluzba/subject-manage-exam'
             },
-            {
-              title: 'Upravljanje aktivnim rokom',
-              icon: 'checkmark-outline',
-              link: 'sluzba/passed-subjects'
-            },
-            {
-              title: 'Istorija polaganja',
-              icon: 'clock-outline',
-              link: 'sluzba/exam-history'
-
-            },
-            {
-              title: 'Prijava ispita',
-              link: 'sluzba/prijava-ispita',
-              icon: 'radio-button-off-outline',
-            },
-            {
-              title: 'Odjava ispita',
-              icon: 'close-circle',
-              link: 'sluzba/odjava-ispita'
-            },
           ],
         },
         {

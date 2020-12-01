@@ -1,3 +1,4 @@
+import { iExamObject } from './../../classes/ExamObject';
 import { ExamObject } from '../../classes/ExamObject';
 import { Observable } from 'rxjs';
 import { Subject } from './../../classes/Subject';
@@ -49,7 +50,7 @@ export class ExamService {
   }
 
 
-  sendExamObjectList(examObject : ExamObject[], subjectId){
+  sendExamObjectList(examObject : iExamObject[], subjectId){
     return this.http.post('http://localhost:8080/api/exam-record/send-students?subjectId=' + subjectId, httpOptions)
   }
 

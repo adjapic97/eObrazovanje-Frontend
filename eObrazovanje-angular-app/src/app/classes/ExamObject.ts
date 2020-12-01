@@ -1,5 +1,5 @@
 import { Student } from "./Student";
-export class ExamObject {
+export class ExamObject implements iExamObject {
   studentId: number;
   pointNumber: number;
   grade: number;
@@ -19,4 +19,13 @@ export class ExamObject {
     this.passed = passed;
     this.note = note;
   }
+}
+
+
+export interface iExamObject {
+  studentId: number;
+  pointNumber: number;
+  grade: number;
+  passed: boolean;
+  note: string;
 }
