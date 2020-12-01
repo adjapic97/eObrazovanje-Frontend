@@ -12,7 +12,7 @@
             {{article.articleText}}
           </nb-card-body>
           <nb-card-footer>
-            <small disabled> created by : {{article.lecturer.firstName}} {{article.lecturer.lastName}} </small>
+            <small disabled> created by : {{article.lecturer?.firstName}} {{article.lecturer?.lastName}} </small>
           <br><small>{{article.dateCreated}}</small>
           </nb-card-footer>
         </nb-card>

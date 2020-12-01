@@ -1,4 +1,5 @@
-import { StudentHasSubject } from 'src/app/classes/StudentHasSubject';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { StudentHasSubject } from "src/app/classes/StudentHasSubject";
 import { ExamService } from "./../../services/exam-service/exam.service";
 import { ExamObject } from "../../classes/ExamObject";
 import { Observable } from "rxjs";
@@ -23,6 +24,7 @@ export class SubjectManagerComponent implements OnInit {
   pointNumber: number;
   grade: number;
   selectedOcena: number = 5;
+  setterForm: FormGroup;
   //isDisabled: boolean = false;
 
   click: boolean = false;
@@ -30,52 +32,42 @@ export class SubjectManagerComponent implements OnInit {
   constructor(
     private subjectService: SubjectService,
     private studentService: StudentService,
-    private examService: ExamService
+    private examService: ExamService,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.grade = this.checkGrade(this.pointNumber);
+    this.setterForm = this.createForm();
+  }
+
+  createForm(): FormGroup {
+    return this.fb.group({
+      examPlace: ["", Validators.required],
+      examDate: ["", Validators.required]
+    });
   }
 
   pushStudent(student, pointNumber, grade) {
     console.log(student.id);
-    // var studentExam = new ExamObject();
-    // studentExam.studentId = student.id;
-    // //grade = this.checkGrade(this.pointNumber);
-    // studentExam.grade = Number(this.selectedOcena);
-    // studentExam.pointNumber = 0;
-    // // studentExam.pointNumber = pointNumber;
-    // studentExam.passed = true;
 
-    //this.passedStudents.push(...new ExamObject(student.id,0, Number(this.selectedOcena), true));
-   /*  this.passedStudents = [
-      ...this.passedStudents,
-      new ExamObject(
-        student.id,
-        0,
+    const studentExists = this.passedStudents.find(
+      (s) => s.studentId === student.id
+    );
+    if (!studentExists) {
+      this.passedStudents.push({
+        studentId: student.id,
+        pointNumber: 0,
+        grade: Number(this.selectedOcena),
+        passed: true,
+        note: "aaa",
+      });
+    } else {
+      this.updateGrade(
         Number(this.selectedOcena),
-        true,
-        "Note + add dynamic"
-      ),
-    ]; */
-
-    const studentExists = this.passedStudents.find(s=> s.studentId === student.id)
-    if(!studentExists) {
-<<<<<<< HEAD
-      this.passedStudents.push({ "studentId": student.id, 
-                                  "pointNumber": 0, 
-                                  "grade": this.selectedOcena, 
-                                  "passed": true });
-      console.log(this.subject.id);
-=======
-      this.passedStudents.push({ "studentId": student.id,
-                                  "pointNumber": 0,
-                                  "grade": Number(this.selectedOcena),
-                                  "passed": true,
-                                "note": 'aaa' });
-    }else{
-      this.updateGrade(Number(this.selectedOcena), this.passedStudents, student)
->>>>>>> c5880df01c0a04d4d216a518f4abc0ed41672b8e
+        this.passedStudents,
+        student
+      );
     }
 
     console.log(studentExists);
@@ -83,7 +75,6 @@ export class SubjectManagerComponent implements OnInit {
     console.log(this.passedStudents);
     //this.isDisabled = true;
     this.click = true;
-
   }
 
   selectChangeHandler(event: any) {
@@ -96,12 +87,8 @@ export class SubjectManagerComponent implements OnInit {
     this.examService
       .sendExamObjectList(this.passedStudents, this.subject.id)
       .subscribe((response) => {
-<<<<<<< HEAD
-        console.log(response);        
-=======
         console.log(response);
         window.location.reload();
->>>>>>> c5880df01c0a04d4d216a518f4abc0ed41672b8e
       });
   }
 
@@ -127,6 +114,18 @@ export class SubjectManagerComponent implements OnInit {
     }
   }
 
+  updateSubject(subjectId){
+    this.subjectService.updatePlaceAndDate(this.setterForm.value, subjectId).subscribe(
+      data => {
+        console.log(this.setterForm)
+      },
+      err => {
+        console.log(err.error.message)
+      }
+    )
+
+  }
+
   checkGrade(pointNumber): number {
     var grade = 0;
     if (pointNumber == 0 && pointNumber <= 50) {
@@ -145,9 +144,9 @@ export class SubjectManagerComponent implements OnInit {
     return grade;
   }
 
-  updateGrade(grade, passedStudents, student){
-    const stud = this.passedStudents.find(s=> s.studentId === student.id)
+  updateGrade(grade, passedStudents, student) {
+    const stud = this.passedStudents.find((s) => s.studentId === student.id);
     stud.grade = grade;
-    console.log(this.passedStudents)
+    console.log(this.passedStudents);
   }
 }
