@@ -63,8 +63,11 @@ export class SubjectManagerComponent implements OnInit {
     if(!studentExists) {
       this.passedStudents.push({ "studentId": student.id,
                                   "pointNumber": 0,
-                                  "grade": this.selectedOcena,
-                                  "passed": true });
+                                  "grade": Number(this.selectedOcena),
+                                  "passed": true,
+                                "note": 'aaa' });
+    }else{
+      this.updateGrade(Number(this.selectedOcena), this.passedStudents, student)
     }
 
     console.log(studentExists);
@@ -127,5 +130,11 @@ export class SubjectManagerComponent implements OnInit {
       grade = 10;
     }
     return grade;
+  }
+
+  updateGrade(grade, passedStudents, student){
+    const stud = this.passedStudents.find(s=> s.studentId === student.id)
+    stud.grade = grade;
+    console.log(this.passedStudents)
   }
 }
