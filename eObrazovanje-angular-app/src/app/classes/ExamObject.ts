@@ -19,13 +19,13 @@ export class ExamObject implements iExamObject {
     this.passed = passed;
     this.note = note;
   }
+
+
 }
-
-
 export interface iExamObject {
   studentId: number;
   pointNumber: number;
   grade: number;
   passed: boolean;
   note: string;
-}
+  }

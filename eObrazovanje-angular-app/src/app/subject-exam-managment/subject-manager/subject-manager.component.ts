@@ -7,6 +7,7 @@ import { SubjectService } from "./../../services/subject-service/subject.service
 import { Subject } from "./../../classes/Subject";
 import { AfterViewInit, Component, Input, OnInit } from "@angular/core";
 import { Student } from "src/app/classes/Student";
+import { iExamObject } from "../../classes/ExamObject";
 
 @Component({
   selector: "app-subject-manager",
@@ -17,7 +18,7 @@ export class SubjectManagerComponent implements OnInit {
   @Input() subject: Subject;
   @Input() students$: Observable<Student[]>;
   @Input() allStudents$: Observable<StudentHasSubject[]>;
-  passedStudents: ExamObject[] = [];
+  passedStudents: iExamObject[] = [];
   polozio: boolean = false;
   pointNumber: number;
   grade: number;
@@ -47,10 +48,27 @@ export class SubjectManagerComponent implements OnInit {
     // studentExam.passed = true;
 
     //this.passedStudents.push(...new ExamObject(student.id,0, Number(this.selectedOcena), true));
-    this.passedStudents = [
+   /*  this.passedStudents = [
       ...this.passedStudents,
-      new ExamObject(student.id, 0, Number(this.selectedOcena), true, "Note + add dynamic"),
-    ];
+      new ExamObject(
+        student.id,
+        0,
+        Number(this.selectedOcena),
+        true,
+        "Note + add dynamic"
+      ),
+    ]; */
+
+    const studentExists = this.passedStudents.find(s=> s.studentId === student.id)
+    if(!studentExists) {
+      this.passedStudents.push({ "studentId": student.id,
+                                  "pointNumber": 0,
+                                  "grade": this.selectedOcena,
+                                  "passed": true });
+    }
+
+    console.log(studentExists);
+
     console.log(this.passedStudents);
     //this.isDisabled = true;
     this.click = true;
