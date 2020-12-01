@@ -65,6 +65,7 @@ export class SubjectManagerComponent implements OnInit {
                                   "pointNumber": 0, 
                                   "grade": this.selectedOcena, 
                                   "passed": true });
+      console.log(this.subject.id);
     }
     
     console.log(studentExists);
@@ -84,7 +85,7 @@ export class SubjectManagerComponent implements OnInit {
     this.examService
       .sendExamObjectList(this.passedStudents, this.subject.id)
       .subscribe((response) => {
-        console.log(response);
+        console.log(response);        
       });
   }
 
