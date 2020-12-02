@@ -25,6 +25,7 @@ export class SubjectManagerComponent implements OnInit {
   grade: number;
   selectedOcena: number = 5;
   setterForm: FormGroup;
+  time = {hour: 13, minute: 30};
   //isDisabled: boolean = false;
 
   click: boolean = false;
@@ -44,7 +45,8 @@ export class SubjectManagerComponent implements OnInit {
   createForm(): FormGroup {
     return this.fb.group({
       examPlace: ["", Validators.required],
-      examDate: ["", Validators.required]
+      examDate: ["", Validators.required],
+      time: ["",Validators.required]
     });
   }
 
@@ -108,8 +110,8 @@ export class SubjectManagerComponent implements OnInit {
     }
   }
 
-  updateSubject(subjectId){
-    this.subjectService.updatePlaceAndDate(this.setterForm.value, subjectId).subscribe(
+  updateSubject(subject, time){
+    this.subjectService.updatePlaceAndDate(this.setterForm.value, subject, time).subscribe(
       data => {
         console.log(this.setterForm)
       },

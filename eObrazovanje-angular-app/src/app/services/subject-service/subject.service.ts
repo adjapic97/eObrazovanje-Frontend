@@ -29,6 +29,7 @@ export class SubjectService {
   private _subjects$ = new BehaviorSubject<Subject[]>([]);
   private _total$ = new BehaviorSubject<number>(0);
   private subjectsList: Subject[];
+  dateString: string;
 
   constructor(private http: HttpClient, private pipe: DecimalPipe) {}
 
@@ -71,13 +72,19 @@ export class SubjectService {
     );
   }
 
-  updatePlaceAndDate(form, subjectId) {
+  updatePlaceAndDate(form, subject : Subject,  time) {
+    this.dateString = form.examDate.year + "/" + form.examDate.month + "/" + form.examDate.day;
+    var date = new Date(this.dateString);
+    date.setHours(time.hour);
+    date.setMinutes(time.minute);
+    console.log(date);
+    subject.placeOfExam = form.examPlace;
+    subject.examDate = date;
     return this.http.put(
       SUBJECTURL +
-        "update-place-date?subjectId=" +
-        subjectId +
-        "&examPlace=" +
-        form.examPlace,
+        "update-place-date?hour=" + time.hour +
+        "&minute=" + time.minute,
+        subject,
       httpOptions
     );
   }

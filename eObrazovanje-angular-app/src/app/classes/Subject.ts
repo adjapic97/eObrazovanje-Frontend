@@ -1,3 +1,4 @@
+import { Time } from '@angular/common';
 import { Colloqium } from './Colloqium';
 import { Courses } from './Courses';
 import { Lecturer } from './Lecturer';
@@ -15,6 +16,7 @@ export class Subject {
   selected?: boolean = true;
   placeOfExam?: string;
   examDate?: Date;
+  examTime?: Time;
 
 
   constructor() { }
