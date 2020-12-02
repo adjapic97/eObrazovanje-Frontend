@@ -28,13 +28,27 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class NgbdModalContent {
   @Input() lecturer : Lecturer;
+  @Input() subjectId : number;
+  @Input() lecturerArray : Lecturer [];
 
   constructor(public activeModal: NgbActiveModal, private lecturerService : LecturerService) {}
 
 
   deleteFromSubject(lecturer){
-   // this.lecturerService.deleteFromSubject(lecturer);
+   this.lecturerService.deleteFromSubject(lecturer, this.subjectId).subscribe(
+     response => {
+       this.removeFromArray(this.lecturerArray,lecturer);
+     }
+   )
     this.activeModal.close();
+
+  }
+
+  removeFromArray(array,lecturer){
+    const index = array.indexOf(lecturer)
+      if(index > -1){
+        array.splice(index,1);
+      }
 
   }
 }
@@ -55,13 +69,16 @@ export class EditSubjectComponent implements OnInit {
   lecturer: Lecturer;
 
 
+
   ngOnInit(): void {
   }
 
 
-  open(lecturer) {
+  open(lecturer, subject, lecturers) {
     const modalRef = this.modalService.open(NgbdModalContent);
     modalRef.componentInstance.lecturer = lecturer;
+    modalRef.componentInstance.subjectId = subject.id;
+    modalRef.componentInstance.lecturerArray = subject.lecturerDTO;
   }
 
 

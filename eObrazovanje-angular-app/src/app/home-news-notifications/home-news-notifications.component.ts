@@ -1,3 +1,4 @@
+import { TokenStorageService } from './../services/token-storage.service';
 import { Article } from './../classes/Article';
 import { ArticleService } from './../services/article-service/article.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -15,8 +16,9 @@ export class HomeNewsNotificationsComponent implements OnInit {
   articleForm : FormGroup;
   created : boolean = false;
   articles : Article[] = [];
+  isStudent: boolean;
 
-  constructor(private modalService: NgbModal, private fb : FormBuilder, private articleService : ArticleService) { }
+  constructor(private modalService: NgbModal, private fb : FormBuilder, private articleService : ArticleService, private tokenStorageService : TokenStorageService) { }
 
   ngOnInit(): void {
     this.articleForm = this.createForm();
@@ -24,6 +26,12 @@ export class HomeNewsNotificationsComponent implements OnInit {
     this.articleService.getAllArticles().subscribe(
       response => this.articles = response
     )
+    if(this.tokenStorageService.getUser() == null){
+      this.isStudent = true;
+    }else{
+      this.isStudent = this.tokenStorageService.getUser().authorities.includes('STUDENT');
+
+    }
   }
 
   createForm(): FormGroup{

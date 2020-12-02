@@ -86,11 +86,8 @@ export class LecturerService {
     );
   }
 
-  deleteFromSubject(lecturer: any) {
+  deleteFromSubject(lecturer: any, subjectId) {
     return this.http
-      .delete(LECTURER_URL + "delete-for-subject/" + lecturer.id)
-      .subscribe(
-        response => console.log(response)
-      );
+      .delete(LECTURER_URL + "delete-from-subject?lecturerId=" + lecturer.id + "&subjectId=" + subjectId);
   }
 }
