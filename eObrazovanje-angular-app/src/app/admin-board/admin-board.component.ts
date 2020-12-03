@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Lecturer } from './../classes/Lecturer';
 import { FinancialCard } from './../classes/FinancialCard';
 import { Student } from './../classes/Student';
@@ -14,6 +15,7 @@ export class AdminBoardComponent implements OnInit {
   active = 1;
   subject: Subject;
   student: Student;
+
   lecturer: Lecturer;
   financialCard: FinancialCard;
   isEditSubject: boolean;
@@ -31,6 +33,7 @@ export class AdminBoardComponent implements OnInit {
     console.log(fromSubjectAdminEmitter.subject.subjectName)
     this.subject = fromSubjectAdminEmitter.subject;
     console.log(fromSubjectAdminEmitter.showw);
+
   }
 
   editStudents(fromStudentAdminEmitter){

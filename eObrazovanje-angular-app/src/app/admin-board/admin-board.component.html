@@ -4,7 +4,7 @@
     <a ngbNavLink>Predmeti</a>
     <ng-template ngbNavContent>
       <app-subjects-admin-board (fromSubjectAdminEmitter)="editSubject($event)"></app-subjects-admin-board>
-      <app-edit-subject *ngIf="isEditSubject" [subject]="subject"></app-edit-subject>
+      <app-edit-subject *ngIf="isEditSubject" [subject]="subject" ></app-edit-subject>
     </ng-template>
   </li>
   <li [ngbNavItem]="2">
@@ -18,7 +18,7 @@
     <a ngbNavLink class="nav-link">Profesori</a>
     <ng-template ngbNavContent>
       <app-edit-lecturer-board (fromLecturerAdminEmitter)="editLecturer($event)"></app-edit-lecturer-board>
-      <app-edit-lecturer *ngIf="isEditLecturer" [lecturer]="lecturer"></app-edit-lecturer>
+      <app-edit-lecturer *ngIf="isEditLecturer" [lecturer]="lecturer" ></app-edit-lecturer>
     </ng-template>
   </li>
   <li [ngbNavItem]="4">
