@@ -1,7 +1,3 @@
-import { ExamService } from './../services/exam-service/exam.service';
-import { StudentHasSubject } from './../classes/StudentHasSubject';
-import { Lecturer } from './../classes/Lecturer';
-import { Subject } from './../classes/Subject';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,20 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NonPassedSubjectsComponent implements OnInit {
 
-  subjects: Subject[] = [];
-  lecturer: Lecturer[] = [];
-  studentHasSubjects: StudentHasSubject[] = [];
-
-  constructor(private examService: ExamService) { }
+  constructor() { }
 
   ngOnInit(): void {
-      this.examService.getNonPassedSubjects()
-        .subscribe((response) => this.handleNonPassedSubjects(response));
-  }
-
-  handleNonPassedSubjects(response) {
-    this.studentHasSubjects = response;
-    console.log(this.studentHasSubjects);
   }
 
 }
