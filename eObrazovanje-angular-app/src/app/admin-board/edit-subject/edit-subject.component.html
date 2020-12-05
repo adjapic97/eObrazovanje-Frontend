@@ -27,11 +27,6 @@
             <input type="text" class="form-control" id="ectsPoints" [(ngModel)]="subject.ectsPoints" name="ectsPoints">
           </div>
 
-          <div class="form-group">
-            <label for="ectsPoints">Ects Points</label>
-            <input type="text" class="form-control" id="ectsPoints" [(ngModel)]="subject.ectsPoints" name="ectsPoints">
-          </div>
-
 
           <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
         </fieldset>
@@ -42,6 +37,26 @@
       <div class="row">
         <div class="col">
           <p>Profesori</p>
+
+          <div class="row">
+            <div class="col">
+              <ng-select [multiple]="true" [closeOnSelect]="false" class="custom" id="profSelect" [multiple]="true"
+                [(ngModel)]="lecturersToAdd">
+                <ng-option *ngFor="let lecturer of lecturers$ | async" [value]="lecturer">{{lecturer.firstName}}
+                  {{lecturer.lastName}}
+                  <br>
+                  <small *ngFor="let role of lecturer.roles">{{role.name}} <br></small>
+                </ng-option>
+
+              </ng-select>
+              <small *ngIf="isArrayEmtpy" style="color: red;">Niste odabrali profesora!</small>
+            </div>
+            <div class="col">
+              <button class="btn btn-primary btn-small" (click)="addLecturers()"><nb-icon icon="person-add-outline"></nb-icon></button>
+
+            </div>
+          </div>
+
 
           <br>
           <table class="table table-bordered table-sm table-striped table-hover">
@@ -64,7 +79,9 @@
                 <td>
                   <p *ngFor="let role of lecturer.roles">{{ role.name }}</p>
                 </td>
-                <td><button type="button" class="btn btn-danger btn-sm" (click)="open(lecturer, subject)"><nb-icon icon="trash-outline" ></nb-icon></button>
+                <td><button type="button" class="btn btn-danger btn-sm" (click)="open(lecturer, subject)">
+                    <nb-icon icon="trash-outline"></nb-icon>
+                  </button>
 
                 </td>
               </tr>

@@ -3,7 +3,7 @@ import { LecturerService } from './../../services/lecturer-service/lecturer.serv
 import { Lecturer } from './../../classes/Lecturer';
 import { SubjectService } from './../../services/subject-service/subject.service';
 import { Subject } from './../../classes/Subject';
-import { Component, OnInit, Input, Type } from '@angular/core';
+import { Component, OnInit, Input, Type, OnChanges } from '@angular/core';
 import { delay } from 'rxjs/operators';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -30,6 +30,7 @@ export class NgbdModalContent {
   @Input() lecturer : Lecturer;
   @Input() subjectId : number;
   @Input() lecturerArray : Lecturer [];
+
 
   constructor(public activeModal: NgbActiveModal, private lecturerService : LecturerService) {}
 
@@ -59,28 +60,47 @@ export class NgbdModalContent {
   templateUrl: './edit-subject.component.html',
   styleUrls: ['./edit-subject.component.css']
 })
-export class EditSubjectComponent implements OnInit {
+export class EditSubjectComponent implements OnInit, OnChanges {
   isSuccessful = false;
   isDisabled = true;
-  constructor(private service : SubjectService, private modalService: NgbModal) { }
-
-
+  isArrayEmtpy: boolean = false;
+  lecturers$: Observable<Lecturer[]>;
   @Input() subject: Subject;
   lecturer: Lecturer;
+  lecturersToAdd : Lecturer [] = [];
+  constructor(private service : SubjectService, private modalService: NgbModal, private lecturerService : LecturerService) { }
 
 
+
+
+  ngOnChanges(){
+    this.lecturers$ = this.lecturerService.getAllNotInSubject(this.subject.id)
+    this.lecturersToAdd = [];
+  }
 
   ngOnInit(): void {
+
   }
 
 
-  open(lecturer, subject, lecturers) {
+  open(lecturer, subject) {
     const modalRef = this.modalService.open(NgbdModalContent);
     modalRef.componentInstance.lecturer = lecturer;
     modalRef.componentInstance.subjectId = subject.id;
     modalRef.componentInstance.lecturerArray = subject.lecturerDTO;
   }
 
+
+  addLecturers(){
+    console.log(this.lecturersToAdd)
+    if(this.lecturersToAdd == undefined || this.lecturersToAdd.length == 0){
+      this.isArrayEmtpy = true;
+    }else{
+      this.lecturerService.addToSubject(this.lecturersToAdd, this.subject.id).subscribe(response =>{
+        this.isArrayEmtpy = false;
+      })
+    }
+  }
 
 
 

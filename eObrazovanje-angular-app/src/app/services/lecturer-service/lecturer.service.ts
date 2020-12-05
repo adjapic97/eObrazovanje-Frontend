@@ -22,6 +22,10 @@ export class LecturerService {
     return this.http.get<Lecturer[]>(LECTURER_URL + "get-all");
   }
 
+  getAllNotInSubject(subjectId): Observable<Lecturer[]> {
+    return this.http.get<any>(LECTURER_URL + "get-not-in-subject?subjectId=" + subjectId);
+  }
+
   getAllNotEnrolled(subject): Observable<Lecturer[]>{
     return this.http.get<any>(LECTURER_URL + "get-not-enrolled/" + subject.id)
   }
@@ -58,6 +62,14 @@ export class LecturerService {
       },
       httpOptions
     );
+  }
+
+  addToSubject(lecturersToAdd : Lecturer[], subjectId): Observable<any>{
+    return this.http.post(
+      LECTURER_URL + "add-to-subject?subjectId=" + subjectId,
+      lecturersToAdd,
+      httpOptions
+    )
   }
 
   update(lecturer): Observable<any> {

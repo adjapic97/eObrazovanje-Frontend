@@ -16,7 +16,7 @@
           <th> {{ subject?.subjectName }}</th>
           <td>{{ subject?.shortName }}</td>
           <td>{{ subject?.ectsPoints | number }}</td>
-          <td>{{ subject?.examDate }}</td>
+          <td>{{ subject?.examDate }} / {{subject?.examTime}}</td>
           <td>{{ subject?.placeOfExam }}</td>
           <td><div class="form-check">
               <input  class="form-check-input" type="checkbox" [value]="subject"  (change)="onChange(subject, $event.target.checked)">

@@ -31,5 +31,6 @@ export class PassedSubjectsComponent implements OnInit {
     this.subjects = response;
     this.lecturer = response.lecturerDTO;
     this.studentHasSubjects = response;
+    console.log(this.studentHasSubjects);
   }
 }

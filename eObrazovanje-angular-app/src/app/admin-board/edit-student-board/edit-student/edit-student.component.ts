@@ -1,8 +1,9 @@
+import { Transaction } from './../../../classes/Transaction';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FinancialCard } from './../../../classes/FinancialCard';
 import { StudentService } from './../../../services/student-service/student.service';
 import { Student } from './../../../classes/Student';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { delay } from 'rxjs/operators';
 
 @Component({
@@ -10,11 +11,15 @@ import { delay } from 'rxjs/operators';
   templateUrl: './edit-student.component.html',
   styleUrls: ['./edit-student.component.css']
 })
-export class EditStudentComponent implements OnInit {
+export class EditStudentComponent implements OnInit, OnChanges {
 
   isSuccessful = false;
   isDisabled = true;
   finCardForm: FormGroup;
+  page=1;
+  pageSize=20;
+  collectionSize = 0;
+  transactions : Transaction[] = [];
   constructor(private service: StudentService, private fb : FormBuilder) { }
 
   @Input() student: Student;
@@ -25,6 +30,16 @@ export class EditStudentComponent implements OnInit {
 
   }
 
+  ngOnChanges(){
+    this.collectionSize = this.student.financialCard.transactionDTO.length;
+    this.refreshTransactions();
+  }
+
+  refreshTransactions() {
+    this.transactions =this.student.financialCard.transactionDTO
+      .map((country, i) => ({id: i + 1, ...country}))
+      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  }
 
   createForm(): FormGroup {
     return this.fb.group({
