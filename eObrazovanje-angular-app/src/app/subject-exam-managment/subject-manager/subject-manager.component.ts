@@ -88,6 +88,13 @@ export class SubjectManagerComponent implements OnInit {
       });
   }
 
+  resetTimeDate(){
+    this.time.hour = 0;
+    this.time.minute = 0;
+    this.setterForm.value.examDate = " ";
+    this.setterForm.value.examPlace = " ";
+  }
+
   removeStudent(student: Student) {
     //this.passedStudents.push(student)
     var found = false;
