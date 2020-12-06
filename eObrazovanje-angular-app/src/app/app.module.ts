@@ -60,6 +60,7 @@ import { EditLecturerBoardComponent } from './admin-board/edit-lecturer-board/ed
 import { EditLecturerComponent } from './admin-board/edit-lecturer/edit-lecturer.component';
 import { ExampleComponentComponent } from './example-component/example-component.component';
 import { ExamManagmentComponent } from './admin-board/exam-managment/exam-managment.component';
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 
 
 
@@ -96,6 +97,7 @@ import { ExamManagmentComponent } from './admin-board/exam-managment/exam-managm
     EditLecturerComponent,
     ExampleComponentComponent,
     ExamManagmentComponent,
+    ForgotPasswordComponent,
 
 
 

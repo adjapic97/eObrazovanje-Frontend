@@ -1,3 +1,4 @@
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 import { ExamCheckOutComponent } from './exam-check-out/exam-check-out.component';
 import { SubjectExamManagmentComponent } from './subject-exam-managment/subject-exam-managment.component';
 import { DocumentsComponent } from './documents/documents.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
 
 
   { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: 'forgotten-password', component: ForgotPasswordComponent},
   { path: 'home', component: HomeNewsNotificationsComponent},
   { path: 'login',component: LoginComponent},
   { path:'sluzba',
