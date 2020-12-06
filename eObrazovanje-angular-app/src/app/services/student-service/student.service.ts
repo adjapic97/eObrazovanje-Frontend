@@ -37,6 +37,10 @@ export class StudentService implements OnInit {
     );
   }
 
+  getNotInSubject(subjectId): Observable<Student[]> {
+    return this.http.get<any>(STUDENTURL + "get-not-in-subject?subjectId=" + subjectId);
+  }
+
   getStudentStatus(): Observable<any> {
     return this.http.get<Student>(STUDENTURL + "get-student-status");
   }
@@ -51,6 +55,14 @@ export class StudentService implements OnInit {
     return this.http.get<StudentHasSubject[]>(
       STUDENTURL + "get-all-for-subject?subjectId=" + subjectId
     );
+  }
+
+  addToSubject(studentsToAdd: Student[], subjectId): Observable<any> {
+    return this.http.post(
+      STUDENTURL + "add-to-subject?subjectId=" + subjectId,
+      studentsToAdd,
+      httpOptions
+    )
   }
 
   update(student): Observable<any> {
@@ -126,6 +138,11 @@ export class StudentService implements OnInit {
 
   getStudentFinancialCard(id): Observable<any> {
     return this.http.get(STUDENTURL + "get-financial-card?studentId=" + id);
+  }
+
+  deleteStudentFromSubject(studentId, subjectId) {
+    return this.http.delete('http://localhost:8080/api/student/delete-from-subject?studentId=' + studentId + "&subjectId=" + subjectId);
+
   }
 
   depositAmount(amount, student) {

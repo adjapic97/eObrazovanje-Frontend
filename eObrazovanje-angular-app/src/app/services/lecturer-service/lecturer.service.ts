@@ -102,4 +102,5 @@ export class LecturerService {
     return this.http
       .delete(LECTURER_URL + "delete-from-subject?lecturerId=" + lecturer.id + "&subjectId=" + subjectId);
   }
+
 }
