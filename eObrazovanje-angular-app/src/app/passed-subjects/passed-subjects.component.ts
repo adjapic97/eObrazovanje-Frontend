@@ -17,6 +17,7 @@ export class PassedSubjectsComponent implements OnInit {
   subjects: Subject[] = [];
   lecturer: Lecturer[] = [];
   studentHasSubjects: StudentHasSubject[] = [];
+  avgGrade = 0;
   constructor(private examService: ExamService) {}
   ngOnInit(): void {
     this.examService
@@ -28,5 +29,9 @@ export class PassedSubjectsComponent implements OnInit {
     console.log(this.subjects);
     this.lecturer = response.lecturerDTO;
     this.studentHasSubjects = response;
+    this.avgGrade = response.map(a => a.ocena).reduce(function(a,b){
+      return a + b;
+    })
+
   }
 }

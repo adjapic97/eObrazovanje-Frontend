@@ -3,18 +3,18 @@ import { FinancialCard } from "./../../classes/FinancialCard";
 import { TokenStorageService } from "./../../services/token-storage.service";
 import { StudentService } from "./../../services/student-service/student.service";
 import { Subject } from "./../../classes/Subject";
-import { AfterViewInit, Component, Input, OnInit } from "@angular/core";
+import { AfterViewInit, Component, Input, OnChanges, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-financial-status",
   templateUrl: "./financial-status.component.html",
   styleUrls: ["./financial-status.component.css"],
 })
-export class FinancialStatusComponent implements OnInit, AfterViewInit {
+export class FinancialStatusComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() totalPrice: number;
   @Input() ispitiZaPrijavu: Subject[];
   @Input() exPerName: string;
-
+  ispitiZaP: Subject[] = []
   financialCard: FinancialCard;
   afterCheckValue: number = 0;
   subs: any;
@@ -25,6 +25,9 @@ export class FinancialStatusComponent implements OnInit, AfterViewInit {
   ) {
 
 
+  }
+  ngOnChanges(){
+    this.ispitiZaP = this.ispitiZaPrijavu;
   }
 
   ngOnInit(): void {}

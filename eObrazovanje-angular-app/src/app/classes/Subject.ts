@@ -12,7 +12,7 @@ export class Subject {
   lecturerDTO?: Lecturer[];
   coursesDTO?: Courses[];
   colloqiums?: Colloqium[];
-  studentHasSubjects?: StudentHasSubject[];
+  studentHasSubDTO?: StudentHasSubject[];
   selected?: boolean = true;
   placeOfExam?: string;
   examDate?: Date;

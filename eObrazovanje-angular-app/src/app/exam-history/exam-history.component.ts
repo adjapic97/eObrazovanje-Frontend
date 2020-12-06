@@ -12,14 +12,18 @@ export class ExamHistoryComponent implements OnInit {
 
   examRecords: ExamRecord[] = [];
   studentHasSubject: StudentHasSubject[] = [];
+  avgGrade = 0;
 
 
   constructor(private examService: ExamService) { }
 
   ngOnInit(): void {
 
+
+
     this.examService.getPassedSubjectsHistory().subscribe(
       response => this.handlePassedSubjectsHistory(response)
+
     )
   }
 
