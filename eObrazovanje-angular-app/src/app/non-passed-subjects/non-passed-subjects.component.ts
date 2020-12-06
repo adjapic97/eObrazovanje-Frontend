@@ -1,3 +1,6 @@
+import { StudentHasSubject } from 'src/app/classes/StudentHasSubject';
+import { ExamService } from './../services/exam-service/exam.service';
+import { Subject } from './../classes/Subject';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NonPassedSubjectsComponent implements OnInit {
 
-  constructor() { }
+  subjects: Subject[] = [];
+  studentHasSubjects: StudentHasSubject[] = [];
+
+  constructor(private examService: ExamService) { }
 
   ngOnInit(): void {
+    this.examService
+      .getNepolozeni()
+      .subscribe((response) => this.handleNepolozeni(response));
+  }
+
+  handleNepolozeni(response) {
+    this.studentHasSubjects = response;
+    console.log(this.studentHasSubjects);
   }
 
 }

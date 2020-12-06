@@ -1,1 +1,22 @@
-<p>test</p>
+<table class="table table-striped table-hover table-bordered table-sm">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" sortable="subjectShortName">Oznaka</th>
+      <th scope="col" sortable="subjectName">Naziv predmeta</th>
+      <th scope="col" sortable="ectsPoints">Broj prijava</th>
+      <th scope="col" sortable="ectsPoints">Ects poeni</th>
+      <th scope="col" sortable="subjectLecturer">Nastavnik</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let subject of studentHasSubjects index as i">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{subject.shortName}}</td>
+      <td>{{subject.subjectName}}</td>
+      <td>{{subject.brPokusaja}}</td>
+      <td>{{subject.ectsPoints}}</td>
+      <td>{{subject.lecturerName}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -6,7 +6,8 @@
     <ng-template ngbPanelContent>
       <p>Pocetak roka: {{examPeriod.startDate}}</p>
       <hr>
-      <button class="btn btn-primary btn-sm" (click)="deactivateExamPeriod(examPeriod.id)">Deaktiviraj</button>
+      <button *ngIf="!examPeriod.active" id="btnAktiviraj" class="btn btn-primary btn-sm" (click)="activateExamPeriod(examPeriod.id)">Aktiviraj</button>
+      <button *ngIf="examPeriod.active" class="btn btn-primary btn-sm" (click)="deactivateExamPeriod(examPeriod.id)">Deaktiviraj</button>
     </ng-template>
   </ngb-panel>
 

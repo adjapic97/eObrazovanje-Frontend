@@ -14,7 +14,16 @@ export class ExamManagmentComponent implements OnInit {
   constructor(private examPeriodService: ExamService) {}
 
   ngOnInit(): void {
-    this.examPeriods$ = this.examPeriodService.getActivePeriod();
+    this.examPeriods$ = this.examPeriodService.getAllExamPeriod();
+  }
+
+  activateExamPeriod(id) {
+    this.examPeriodService
+    .activate(id)
+    .subscribe((response) => {
+      console.log(response);
+      window.location.reload();
+    });
   }
 
   deactivateExamPeriod(id) {

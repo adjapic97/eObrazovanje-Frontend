@@ -87,6 +87,13 @@ export class StudentService implements OnInit {
     );
   }
 
+  deleteStudent(studentId) {
+    return this.http.delete('http://localhost:8080/api/student/delete?studentId=' + studentId, {
+      headers: new HttpHeaders({ 'Content-Type': 'text' })
+    });
+
+  }
+
   updatePartial(form): Observable<any> {
     console.log(form);
     return this.http.put(

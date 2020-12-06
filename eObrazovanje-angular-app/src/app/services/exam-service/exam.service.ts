@@ -16,6 +16,10 @@ const httpOptions = {
 })
 export class ExamService {
   constructor(private http: HttpClient) { }
+  getAllExamPeriod(): Observable<ExamPeriod[]>{
+    return this.http.get<ExamPeriod[]>(EXAM_API + "/get-all")
+  }
+
   getActivePeriod(): Observable<ExamPeriod[]>{
     return this.http.get<ExamPeriod[]>(EXAM_API + "/get-active-exam-period")
   }
@@ -34,6 +38,16 @@ export class ExamService {
   sendExamObjectList(examObject : ExamObject[], subjectId){
     return this.http.post('http://localhost:8080/api/exam-record/send-students?subjectId=' + subjectId, examObject, httpOptions)
   }
+  getNepolozeni(): Observable<Subject[]> {
+    return this.http.get<Subject[]>('http://localhost:8080/api/exam-record/get-non-passed-subjects?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
+  }
+
+  activate(id) {
+    return this.http.post('http://localhost:8080/api/exam-period/activate?examPeriodId=' + id,{
+      headers: new HttpHeaders({ 'Content-Type': 'text' })
+    });
+  }
+
   deactivate(id){
     return this.http.post('http://localhost:8080/api/exam-period/deactivate?examPeriodId=' + id,{
       headers: new HttpHeaders({ 'Content-Type': 'text' })
