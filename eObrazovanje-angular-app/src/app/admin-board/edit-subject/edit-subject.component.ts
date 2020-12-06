@@ -106,7 +106,7 @@ export class NgbdModalContent {
       <button
         type="button"
         class="btn btn-danger"
-        (click)="deleteFromSubject(studentId, subjectId)"
+        (click)="deleteFromSubject(studentId)"
       >
         Ok
       </button>
