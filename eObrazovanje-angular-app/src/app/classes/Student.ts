@@ -3,7 +3,7 @@ import { StudentHasSubject } from './StudentHasSubject';
 import { Courses } from './Courses';
 import { Role } from './Role';
 export class Student{
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
   deleted: boolean;

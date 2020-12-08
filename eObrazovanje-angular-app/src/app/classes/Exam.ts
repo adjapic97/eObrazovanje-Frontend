@@ -7,6 +7,6 @@ export class Exam{
   examDate: Date;
   examPlace: string;
   examName: string;
-  studentId: number;
+  studentId: string;
   subjectId: number;
 }

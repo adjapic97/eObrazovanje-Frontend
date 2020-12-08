@@ -3,7 +3,7 @@ import { Role } from './Role';
 
 export class Lecturer{
 
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
   deleted: boolean;

@@ -2,7 +2,7 @@ import { Exam } from './Exam';
 
 export class StudentHasSubject {
 
-  studentId: number;
+  studentId: string;
   subjectId: number;
   ocena: number;
   studentName: string;

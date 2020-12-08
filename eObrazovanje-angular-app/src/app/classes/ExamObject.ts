@@ -1,13 +1,13 @@
 import { Student } from "./Student";
 export class ExamObject implements iExamObject {
-  studentId: number;
+  studentId: string;
   pointNumber: number;
   grade: number;
   passed: boolean;
   note: string;
 
   constructor(
-    studentId: number,
+    studentId: string,
     pointNumber: number,
     grade: number,
     passed: boolean,
@@ -23,7 +23,7 @@ export class ExamObject implements iExamObject {
 
 }
 export interface iExamObject {
-  studentId: number;
+  studentId: string;
   pointNumber: number;
   grade: number;
   passed: boolean;
