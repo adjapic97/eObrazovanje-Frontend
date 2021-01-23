@@ -100,7 +100,7 @@ export class StudentService implements OnInit {
   }
 
   deleteStudent(studentId) {
-    return this.http.delete('http://localhost:8080/api/student/delete?studentId=' + studentId, {
+    return this.http.put('http://localhost:8080/api/student/delete?studentId=' + studentId, {
       headers: new HttpHeaders({ 'Content-Type': 'text' })
     });
 
