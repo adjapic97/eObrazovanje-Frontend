@@ -45,6 +45,7 @@ export class SubjectCreationComponent implements OnInit {
     this.subjectService.createSubject(this.subjectForm.value, this.selectedLecturers).subscribe(
       data => {
         console.log(this.subjectForm)
+        window.location.replace('sluzba/admin-board')
       },
       err => {
         console.log(err.error.message)

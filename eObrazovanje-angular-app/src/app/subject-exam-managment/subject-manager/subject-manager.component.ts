@@ -1,4 +1,4 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { StudentHasSubject } from "src/app/classes/StudentHasSubject";
 import { ExamService } from "./../../services/exam-service/exam.service";
 import { ExamObject } from "../../classes/ExamObject";
@@ -25,7 +25,7 @@ export class SubjectManagerComponent implements OnInit {
   grade: number;
   selectedOcena: number = 5;
   setterForm: FormGroup;
-  time = {hour: 13, minute: 30};
+  time = { hour: 13, minute: 30 };
   //isDisabled: boolean = false;
 
   click: boolean = false;
@@ -46,24 +46,30 @@ export class SubjectManagerComponent implements OnInit {
     return this.fb.group({
       examPlace: ["", Validators.required],
       examDate: ["", Validators.required],
-      time: ["",Validators.required]
+      time: ["", Validators.required],
     });
   }
 
   pushStudent(student, pointNumber, grade) {
     console.log(student.id);
 
-
-
-    const studentExists = this.passedStudents.find(s=> s.studentId === student.id)
-    if(!studentExists) {
-      this.passedStudents.push({ "studentId": student.id,
-                                  "pointNumber": 0,
-                                  "grade": Number(this.selectedOcena),
-                                  "passed": true,
-                                "note": 'aaa' });
-    }else{
-      this.updateGrade(Number(this.selectedOcena), this.passedStudents, student)
+    const studentExists = this.passedStudents.find(
+      (s) => s.studentId === student.id
+    );
+    if (!studentExists) {
+      this.passedStudents.push({
+        studentId: student.id,
+        pointNumber: 0,
+        grade: Number(this.selectedOcena),
+        passed: true,
+        note: "aaa",
+      });
+    } else {
+      this.updateGrade(
+        Number(this.selectedOcena),
+        this.passedStudents,
+        student
+      );
     }
 
     console.log(studentExists);
@@ -88,7 +94,7 @@ export class SubjectManagerComponent implements OnInit {
       });
   }
 
-  resetTimeDate(){
+  resetTimeDate() {
     this.time.hour = 0;
     this.time.minute = 0;
     this.setterForm.value.examDate = " ";
@@ -117,16 +123,17 @@ export class SubjectManagerComponent implements OnInit {
     }
   }
 
-  updateSubject(subject, time){
-    this.subjectService.updatePlaceAndDate(this.setterForm.value, subject, time).subscribe(
-      data => {
-        console.log(this.setterForm)
-      },
-      err => {
-        console.log(err.error.message)
-      }
-    )
-
+  updateSubject(subject, time) {
+    this.subjectService
+      .updatePlaceAndDate(this.setterForm.value, subject, time)
+      .subscribe(
+        (data) => {
+          console.log(this.setterForm);
+        },
+        (err) => {
+          console.log(err.error.message);
+        }
+      );
   }
 
   checkGrade(pointNumber): number {

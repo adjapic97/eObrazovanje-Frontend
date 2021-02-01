@@ -175,6 +175,7 @@ export class EditSubjectComponent implements OnInit, OnChanges {
   ngOnChanges() {
     this.lecturers$ = this.lecturerService.getAllNotInSubject(this.subject.id);
     this.students$ = this.studentService.getNotInSubject(this.subject.id);
+    console.log(this.students$)
     this.lecturersToAdd = [];
     this.studentsToAdd = [];
     console.log(this.subject.studentHasSubDTO);

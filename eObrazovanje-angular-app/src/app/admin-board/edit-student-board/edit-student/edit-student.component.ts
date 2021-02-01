@@ -60,23 +60,22 @@ export class EditStudentComponent implements OnInit, OnChanges {
   onSubmit(){
     this.service.update(this.student).subscribe(
       data => {
-
-        (async () => {
-          // Do something before delay
-          this.isSuccessful = true;
-          this.isDisabled = true;
-
-          await delay(2000);
-          this.isSuccessful = false;
-          // Do something after
-         // this.isSuccessful = false;
-      })();
+        this.resolveAfter2Seconds();
+        this.isSuccessful = true;
       },
       err => {
 
       }
 
     )
+  }
+
+  resolveAfter2Seconds() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        this.isSuccessful = false;
+      }, 3000);
+    });
   }
 
 

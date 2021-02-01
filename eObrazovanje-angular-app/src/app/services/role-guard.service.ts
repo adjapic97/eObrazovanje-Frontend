@@ -32,7 +32,7 @@ export class RoleGuardService implements CanActivate {
       !this.isAdmin
     ) {
       window.alert("Not authorized to be here!");
-      this.router.navigate(['/home']);
+      //this.router.navigate(['/home']);
       return false;
     }
     return true;

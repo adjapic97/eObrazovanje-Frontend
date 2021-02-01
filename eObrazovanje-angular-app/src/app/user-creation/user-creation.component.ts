@@ -213,6 +213,7 @@ export class UserCreationComponent implements OnInit {
     this.userService.createNewStudent(this.angForm.value).subscribe(
       data => {
           console.log(this.angForm)
+          window.location.reload();
       },
       err => {
 
@@ -226,6 +227,7 @@ export class UserCreationComponent implements OnInit {
     this.lecturerService.createLecturer(this.lectForm.value,this.selectedRoles, this.selectedSubjects).subscribe(
       data => {
         console.log(data)
+        window.location.replace('sluzba/admin-board');
       },
       err => {
         console.log(err.error.message)

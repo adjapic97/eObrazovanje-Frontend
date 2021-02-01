@@ -23,9 +23,11 @@ export class FinancialCardComponent implements OnInit {
   }
     handleFinancialCardForStudent(response) {
       this.financialCard = response;
-      this.transactionDTO = response.transactionDTO;
+      this.transactionDTO = response.transactionDTO.sort((a,b) => b.transactionDate.localeCompare(a.transactionDate));
       console.log(this.financialCard)
     }
+
+
 
 
 }

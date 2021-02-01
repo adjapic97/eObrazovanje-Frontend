@@ -360,7 +360,8 @@
                   *ngIf="selectedOption == 'PROFESSOR' || selectedOption == 'DEMONSTRATOR' || selectedOption == 'HELPER' || selectedOption == 'ASSISTANT_PROFESSOR' || selectedOption == 'ROLE_ADMIN' "
                   class="form-group">
                   <label class="input-field-label" for="roleSelect">Zvanja i uloge</label>
-                  <ng-select class="custom" id="roleSelect" [multiple]="true" [closeOnSelect]="false" [(ngModel)]="selectedRoles">
+                  <ng-select class="custom" id="roleSelect" [multiple]="true" [closeOnSelect]="false"
+                    [(ngModel)]="selectedRoles">
                     <ng-option *ngFor="let role of roles" [value]="role">{{role.name.toLowerCase()}}
                     </ng-option>
 
@@ -372,7 +373,8 @@
                   *ngIf="selectedOption == 'PROFESSOR' || selectedOption == 'DEMONSTRATOR' || selectedOption == 'HELPER' || selectedOption == 'ASSISTANT_PROFESSOR' || selectedOption == 'ROLE_ADMIN' "
                   class="form-group">
                   <label class="input-field-label" for="subjectSelect">Predmeti</label>
-                  <ng-select class="custom" id="subjectSelect" [multiple]="true" [closeOnSelect]="false" [(ngModel)]="selectedSubjects">
+                  <ng-select class="custom" id="subjectSelect" [multiple]="true" [closeOnSelect]="false"
+                    [(ngModel)]="selectedSubjects">
                     <ng-option *ngFor="let role of subjects" [value]="role">{{role.subjectName}}
                     </ng-option>
 

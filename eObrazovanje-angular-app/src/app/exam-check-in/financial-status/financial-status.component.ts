@@ -18,6 +18,7 @@ export class FinancialStatusComponent implements OnInit, AfterViewInit, OnChange
   financialCard: FinancialCard;
   afterCheckValue: number = 0;
   subs: any;
+  isSuccessful = false;
 
   constructor(
     private studentService: StudentService,
@@ -43,11 +44,17 @@ export class FinancialStatusComponent implements OnInit, AfterViewInit, OnChange
     this.studentService
       .prijaviIspite(this.ispitiZaPrijavu, this.totalPrice, this.exPerName)
       .subscribe(
-        (response) => {
-         window.location.reload();
+        response => {
+          this.resolveAfter2Seconds();
+          this.isSuccessful = true;
+          window.location.reload();
+
         },
-        (err) => {
-         window.location.reload();
+        err => {
+          this.isSuccessful = true;
+          this.resolveAfter2Seconds();
+         //window.location.reload();
+
         }
       );
     this.ngOnInit();
@@ -56,5 +63,16 @@ export class FinancialStatusComponent implements OnInit, AfterViewInit, OnChange
   change(event: any) {
     console.log(event.target.value);
     this.afterCheckValue = this.financialCard.balance - this.totalPrice;
+  }
+
+
+  resolveAfter2Seconds() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        this.isSuccessful = false;
+        window.location.reload();
+        console.log("aa");
+      }, 2000);
+    });
   }
 }

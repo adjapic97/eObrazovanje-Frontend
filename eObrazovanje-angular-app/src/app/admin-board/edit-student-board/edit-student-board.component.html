@@ -4,7 +4,7 @@
   <table class="table table-striped table-hover table-bordered table-sm  table-responsive">
     <thead>
       <tr>
-        <th scope="col">#</th>
+
         <th scope="col" sortable="firstName">Ime</th>
         <th scope="col" sortable="lastName">Prezime</th>
         <th scope="col" sortable="indexNumber">broj indeksa</th>
@@ -32,7 +32,6 @@
     </thead>
     <tbody>
       <tr *ngFor="let student of students">
-        <th scope="row">{{ student.id }}</th>
         <td>
           {{student.firstName}}
         </td>

@@ -21,8 +21,8 @@
 
               <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="dp" formControlName="examDate"
                 ngbDatepicker #d="ngbDatepicker"
-                [minDate]="{year: 2020, month: 1, day: 1}"
-                [maxDate]="{year: 2021, month: 1, day: 1}">
+                [minDate]="{year: 2021, month: 1, day: 1}"
+                [maxDate]="{year: 2021, month: 12, day: 31}">
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary btn-sm" (click)="d.toggle()" type="button">
                   <nb-icon icon="calendar-outline"></nb-icon>
