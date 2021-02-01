@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
   private authorities: string[];
   isLoggedIn = false;
   showAdminBoard = false;
+  showProfessorBoard = false;
   username: string;
   accountsForUser: Account[];
   clickedAccount: Account[];
@@ -59,7 +60,8 @@ export class AppComponent implements OnInit {
       this.authorities = user.authorities;
 
       this.showAdminBoard = this.authorities.includes('ROLE_ADMIN');
-     /// this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+     // this.showAdminBoard = this.authorities.includes('PROFESSOR');
+      this.showProfessorBoard = this.authorities.includes('PROFESSOR');
      if(this.showAdminBoard && this.checkIfContainsRole("PROFESSOR") == true || this.checkIfContainsRole("ASSISTANT_PROFESSOR") ){
        console.log(this.showAdminBoard)
        this.role = 'administrator/professor'

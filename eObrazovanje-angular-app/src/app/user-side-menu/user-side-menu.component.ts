@@ -15,6 +15,7 @@ export class UserSideMenuComponent implements OnInit {
   @Input() authorities: [];
   @Input() testString: string;
   @Input() showAdminBoard: boolean;
+  @Input() showProfessorBoard: boolean;
   items: NbMenuItem[];
 
   constructor() { }
@@ -53,7 +54,37 @@ export class UserSideMenuComponent implements OnInit {
 
       ];
     }
-    else{
+    else if(this.showProfessorBoard){
+      this.items =  [
+        {
+          title: 'Pocetna',
+          link: '/home'
+        },
+
+        {
+          title: 'Ispiti',
+          icon: 'book-outline',
+          expanded: true,
+          children: [
+            {
+              title: 'predmeti koje predaje',
+              icon: 'copy-outline',
+              link: 'sluzba/subject-manage-exam'
+            },
+          ],
+        },
+        {
+          title: 'Dokumenti',
+          icon: 'file-text-outline',
+          link: 'sluzba/documents'
+        },
+
+
+      ];
+
+
+    }else{
+
       this.items =  [
 
         {
