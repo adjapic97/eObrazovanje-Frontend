@@ -19,7 +19,7 @@ export class FinancialCardService {
 
 
   getFinancialCardForStudent(): Observable<FinancialCard[]> {
-    return this.http.get<FinancialCard[]>('http://localhost:8080/api/student/get-financial-card?studentId=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
+    return this.http.get<FinancialCard[]>('http://localhost:8080/api/student/get-financial-card?studentId=' + JSON.parse(localStorage.getItem('auth-user')).id)
   }
 
 }

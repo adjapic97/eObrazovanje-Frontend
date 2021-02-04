@@ -24,22 +24,22 @@ export class ExamService {
     return this.http.get<ExamPeriod[]>(EXAM_API + "/get-active-exam-period")
   }
   getNonPassedSubjects(): Observable<Subject[]>{
-    return this.http.get<Subject[]>('http://localhost:8080/api/exam-period/get-subjects?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
+    return this.http.get<Subject[]>('http://localhost:8080/api/exam-period/get-subjects?id=' + JSON.parse(localStorage.getItem('auth-user')).id)
   }
   getPrijavioSubjects(): Observable<Subject[]> {
-    return this.http.get<Subject[]>('http://localhost:8080/api/exam-period/get-subjects-prijavio?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
+    return this.http.get<Subject[]>('http://localhost:8080/api/exam-period/get-subjects-prijavio?id=' + JSON.parse(localStorage.getItem('auth-user')).id)
   }
   getPassedSubjects(): Observable<StudentHasSubject[]> {
-    return this.http.get<StudentHasSubject[]>('http://localhost:8080/api/exam-record/get-passed-subjects?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
+    return this.http.get<StudentHasSubject[]>('http://localhost:8080/api/exam-record/get-passed-subjects?id=' + JSON.parse(localStorage.getItem('auth-user')).id)
   }
   getPassedSubjectsHistory(): Observable<ExamRecord[]> {
-    return this.http.get<ExamRecord[]>('http://localhost:8080/api/exam-record/get-passed-subjects-history?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
+    return this.http.get<ExamRecord[]>('http://localhost:8080/api/exam-record/get-passed-subjects-history?id=' + JSON.parse(localStorage.getItem('auth-user')).id)
   }
   sendExamObjectList(examObject : ExamObject[], subjectId){
     return this.http.post('http://localhost:8080/api/exam-record/send-students?subjectId=' + subjectId, examObject, httpOptions)
   }
   getNepolozeni(): Observable<Subject[]> {
-    return this.http.get<Subject[]>('http://localhost:8080/api/exam-record/get-non-passed-subjects?id=' + JSON.parse(sessionStorage.getItem('auth-user')).id)
+    return this.http.get<Subject[]>('http://localhost:8080/api/exam-record/get-non-passed-subjects?id=' + JSON.parse(localStorage.getItem('auth-user')).id)
   }
 
   activate(id) {

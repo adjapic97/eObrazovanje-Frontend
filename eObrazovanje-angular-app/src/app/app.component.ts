@@ -138,8 +138,8 @@ export class AppComponent implements OnInit {
 
 
 
-      if(sessionStorage.getItem('selectedAccount') != null){
-        this.clickedAccount = JSON.parse(sessionStorage.getItem('selectedAccount'));
+      if(localStorage.getItem('selectedAccount') != null){
+        this.clickedAccount = JSON.parse(localStorage.getItem('selectedAccount'));
         this.isAccountChosen = true;
       }
 

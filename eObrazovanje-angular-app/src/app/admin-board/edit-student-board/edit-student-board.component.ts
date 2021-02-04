@@ -50,7 +50,7 @@ export class deleteStudentContent{
   deleteStudent(student: Student) {
     //this.fromStudentAdminEmitter.emit({ student: student, financialCard: this.financialCard, show: show });
 
-    if(JSON.parse(sessionStorage.getItem('auth-user')).id !== student.id) {
+    if(JSON.parse(localStorage.getItem('auth-user')).id !== student.id) {
       this.service.deleteStudent(student.id).subscribe(response => {
         this.removeFromArray(this.studentsArray, student);
       },
@@ -139,10 +139,10 @@ export class EditStudentBoardComponent implements OnInit, OnChanges {
   deleteStudent(student: Student) {
     //this.fromStudentAdminEmitter.emit({ student: student, financialCard: this.financialCard, show: show });
 
-    if(JSON.parse(sessionStorage.getItem('auth-user')).id !== student.id) {
+    if(JSON.parse(localStorage.getItem('auth-user')).id !== student.id) {
       this.service.deleteStudent(student.id);
       console.log("Obrisan student");
-      //.log(JSON.parse(sessionStorage.getItem('auth-user')).id);
+
       //console.log(student.id);
       //.log("Ne mozete obrisati ulogovanog studenta!");
     } else {
