@@ -83,6 +83,7 @@ export class EditStudentComponent implements OnInit, OnChanges {
     console.log(this.student)
     console.log(this.finCardForm.value.amount)
     this.service.depositAmount(this.finCardForm.value.amount, this.student)
+    this.ngOnInit();
   }
 
 }

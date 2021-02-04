@@ -203,7 +203,7 @@ handleSuccessfulResponse(response)
 
 checkIfContainsRole(role){
 
-  return this.showAdminBoard && JSON.parse(sessionStorage.getItem('auth-user')).authorities.includes(role);
+  return this.showAdminBoard && JSON.parse(localStorage.getItem('auth-user')).authorities.includes(role);
 }
 
 logout() {
